@@ -6,6 +6,7 @@ import { MyCarsComponent } from './my-cars/my-cars.component';
 import { MyRequestsComponent } from './my-requests/my-requests.component';
 import { MyBorrowingsComponent } from './my-borrowings/my-borrowings.component';
 import { MyPaymentsComponent } from './my-payments/my-payments.component';
+import { CarRegisterComponent } from './car-register/car-register.component';
 
 
 
@@ -17,6 +18,7 @@ import { MyPaymentsComponent } from './my-payments/my-payments.component';
     MyRequestsComponent,
     MyBorrowingsComponent,
     MyPaymentsComponent,
+    CarRegisterComponent,
   ],
   imports: [
     CommonModule
