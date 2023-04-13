@@ -5,16 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PopLoginComponent } from './Components/pop-login/pop-login.component';
 import { PopRegisterComponent } from './Components/pop-register/pop-register.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarModule } from './car/car.module';
 @NgModule({
   declarations: [
     AppComponent,
     PopLoginComponent,
-    PopRegisterComponent
+    PopRegisterComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    CarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
