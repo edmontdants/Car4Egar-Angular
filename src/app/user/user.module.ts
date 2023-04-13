@@ -7,6 +7,7 @@ import { MyRequestsComponent } from './my-requests/my-requests.component';
 import { MyBorrowingsComponent } from './my-borrowings/my-borrowings.component';
 import { MyPaymentsComponent } from './my-payments/my-payments.component';
 import { CarRegisterComponent } from './car-register/car-register.component';
+import { UserDashBoardComponent } from './user-dash-board/user-dash-board.component';
 
 
 
@@ -19,6 +20,7 @@ import { CarRegisterComponent } from './car-register/car-register.component';
     MyBorrowingsComponent,
     MyPaymentsComponent,
     CarRegisterComponent,
+    UserDashBoardComponent,
   ],
   imports: [
     CommonModule
