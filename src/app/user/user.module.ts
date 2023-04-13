@@ -8,7 +8,8 @@ import { MyBorrowingsComponent } from './my-borrowings/my-borrowings.component';
 import { MyPaymentsComponent } from './my-payments/my-payments.component';
 import { CarRegisterComponent } from './car-register/car-register.component';
 import { UserDashBoardComponent } from './user-dash-board/user-dash-board.component';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -21,9 +22,12 @@ import { UserDashBoardComponent } from './user-dash-board/user-dash-board.compon
     MyPaymentsComponent,
     CarRegisterComponent,
     UserDashBoardComponent,
+
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatTabsModule,
+    MatIconModule
   ]
 })
 export class UserModule { }
