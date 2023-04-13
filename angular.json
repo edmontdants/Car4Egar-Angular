@@ -30,13 +30,11 @@
               "src/assets"
             ],
             "styles": [
-<<<<<<< HEAD
+
               "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
-=======
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
->>>>>>> 3f358e347ca28f809ee43613199a98fb29821e5f
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
