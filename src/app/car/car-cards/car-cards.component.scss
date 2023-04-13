@@ -111,11 +111,38 @@ main{
   background-color:#F5F5F5;
   padding: 10px;
 }
-.filterList{
+.filterList, .searchResult{
   background-color: white;
   padding: 15px;
   margin-top: 20px;
 }
+.filterList h2{
+  color: #E71853;
+}
+.filterList h2::after{
+  content: '';
+  width: 50%;
+  display: block;
+  background-color: #9d002d;
+  height: 2px;
+  position: relative;
+  left: 25%;
+  top: 3px;
+  bottom: 5px;
+}
+// .filterList hr.filter_hr{
+//   color: #3c0011;
+//   width: 50%;
+//   height: 2px;
+//   font-weight: bold;
+//   margin-left: 25%;
+// }
 mat-slider {
   width: 100%;
+}
+.searchResult p{
+  font-size: 20px;
+}
+.searchResult p> span{
+  color: #E71853;
 }

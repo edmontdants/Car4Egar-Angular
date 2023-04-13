@@ -43,14 +43,14 @@
 
 <main>
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <aside class="col-sm-12 col-md-3">
         <div class="filterList">
-          <h2><i class="fa-solid fa-bars-staggered"></i> Search Filters </h2>
+          <h2 class="text-center"><i class="fa-solid fa-bars-staggered"></i> Search Filters </h2>
 
 
-          <hr>
+          <hr class="filter_hr">
           <mat-accordion>
             <mat-expansion-panel (opened)="panelOpenState = true"
                                  (closed)="panelOpenState = false">
@@ -62,11 +62,11 @@
               <hr>
               <mat-checkbox color="warn" class="example-margin">Available Cars Only</mat-checkbox>
               <hr>
-              <mat-checkbox color="warn" class="example-margin">(in my location only)</mat-checkbox>
+              <mat-checkbox color="warn" class="example-margin">Cars in your location only</mat-checkbox>
               <br>
-              <mat-checkbox color="warn" class="example-margin">(in other locations)</mat-checkbox>
-
-              <p>Price Per Day</p>
+              <mat-checkbox color="warn" class="example-margin">Cars in other locations</mat-checkbox>
+              <br> <br>
+              <span>Price Per Day</span>
               <mat-slider min="250" max="3000" step="250" showTickMarks discrete [displayWith]="PricePerDaySearch" color="warn">
                 <input matSliderThumb>
               </mat-slider>
@@ -100,8 +100,8 @@
                   <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
                 </mat-select>
               </mat-form-field>
-
-              <p>Year Model</p>
+              <br><br>
+              <span>Year Model</span>
               <mat-slider min="2010" max="2024" step="1" showTickMarks discrete [displayWith]="yearModelSearch" color="warn">
                 <input matSliderThumb>
               </mat-slider>
@@ -147,8 +147,10 @@
         </div>
       </aside>
 
-      <div class="searchResult col-sm-12 col-md-8">
-        aaa
+      <div class="col-sm-12 col-md-9">
+        <div class="searchResult">
+          <p><span>{{NumberOfAvailableCarsOnly}}</span>  Cars Availabe Now</p>
+        </div>
       </div>
 
 

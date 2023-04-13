@@ -35,5 +35,5 @@ export class CarCardsComponent {
     'Indiana',
     'Iowa'
   ];
-
+  NumberOfAvailableCarsOnly:number=0;
 }
