@@ -36,4 +36,10 @@ export class CarCardsComponent {
     'Iowa'
   ];
   NumberOfAvailableCarsOnly:number=0;
+  CarPricePerDay:number=250;
+  CarModel:string='Hyundai';
+  CarBrand:string='Verna';
+  CarYear:number=2010;
+  CarRating:number = 2.5;
+  OwnerName:string='Eslam';
 }

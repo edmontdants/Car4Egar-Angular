@@ -39,7 +39,7 @@
 .endDateSearch, .endDateSearchInput{
   background-color: whitesmoke;
   position: relative;
-  top: 7px;
+  top: 9.2px;
 }
 .startDateSearch,
 .endDateSearch{
@@ -111,8 +111,10 @@ main{
   background-color:#F5F5F5;
   padding: 10px;
 }
-.filterList, .searchResult{
+.filterList{
   background-color: white;
+}
+.filterList, .searchResult{
   padding: 15px;
   margin-top: 20px;
 }
@@ -143,6 +145,76 @@ mat-slider {
 .searchResult p{
   font-size: 20px;
 }
-.searchResult p> span{
+.searchResult span.NumberOfAvailableCarsOnly{
   color: #E71853;
+}
+
+//****************************************//
+//****************************************//
+//****************************************//
+
+.car_card{
+  background-color: white;
+}
+.CarsCards a{
+  text-decoration: none;
+  color: black;
+}
+.carImgBox{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.CarPricePerDay{
+  position: absolute;
+  z-index: 2;
+  background-color: #E71853;
+  color: white;
+  width: 100px;
+  right: 0px;
+  top: 0px;
+  text-align: right;
+  border-bottom-left-radius: 20px;
+  opacity: .8;
+  padding: 4px;
+}
+.CarPricePerDay span{
+  font-size: 12px ;
+  display: block;
+}
+.carImgBox img{
+  width: 100%;
+}
+.carImgBox:hover img{
+  transform: scale(1.2) rotate(-2deg);
+  transform-origin: center;
+  transition: all .2s linear;
+}
+.OwnerInfo{
+  display: inline-block;
+  padding-left: 10px;
+  position: relative;
+  top: -20px;
+}
+.OwnerInfo span{
+  background-color: whitesmoke;
+  padding: 5px 15px;
+  border-radius: 10px;
+  position: relative;
+  left: -5px;
+}
+.OwnerInfo img{
+  border:5px solid whitesmoke;
+}
+
+.CarInfo{
+  padding: 10px;
+  padding-top: 0px;
+  position: relative;
+}
+.CarInfo span{
+  display: block;
+}
+.car_card{
+  margin: 10px;
 }
