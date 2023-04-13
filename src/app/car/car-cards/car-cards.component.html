@@ -1,1 +1,160 @@
-<p>car-cards works!</p>
+<!-- <app-nav-car></app-nav-car> -->
+<div class="search-nav">
+
+
+  <div>
+    <mat-form-field appearance="fill" class="searchByLocation">
+      <mat-label><i class="fa-solid fa-location-dot"></i> Location</mat-label>
+      <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+    <mat-form-field appearance="fill">
+      <mat-label><i class="fa-solid fa-car-side"></i> Brand</mat-label>
+      <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="startDateSearch d-inline-block">
+      <input [matDatepicker]="picker" placeholder="MM/DD/YYYY" class="startDateSearchInput" placeholder="StartDate">
+      <mat-datepicker-toggle matIconSuffix [for]="picker" class="startDateSearchButton"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+
+    <!-- <div class="endDateSearch">
+        <input [matDatepicker]="picker" placeholder="MM/DD/YYYY" class="endDateSearchInput" placeholder="EndDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker" class="endDateSearchButton"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div> -->
+
+  </div>
+
+
+  <button class="searchCarBtn"> <i class="fa-solid fa-magnifying-glass"></i> SEARCH </button>
+
+</div>
+
+
+<main>
+
+  <div class="container">
+    <div class="row">
+      <aside class="col-sm-12 col-md-3">
+        <div class="filterList">
+          <h2><i class="fa-solid fa-bars-staggered"></i> Search Filters </h2>
+
+
+          <hr>
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Search Type
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <hr>
+              <mat-checkbox color="warn" class="example-margin">Available Cars Only</mat-checkbox>
+              <hr>
+              <mat-checkbox color="warn" class="example-margin">(in my location only)</mat-checkbox>
+              <br>
+              <mat-checkbox color="warn" class="example-margin">(in other locations)</mat-checkbox>
+
+              <p>Price Per Day</p>
+              <mat-slider min="250" max="3000" step="250" showTickMarks discrete [displayWith]="PricePerDaySearch" color="warn">
+                <input matSliderThumb>
+              </mat-slider>
+              <hr>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+          <hr>
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Make and Model
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <br>Make:<br>
+              <mat-form-field appearance="fill" color="warn">
+                <mat-label>All</mat-label>
+                <mat-select>
+                  <mat-option>All</mat-option>
+                  <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <br>Model:<br>
+              <mat-form-field appearance="fill" color="warn">
+                <mat-label>All</mat-label>
+                <mat-select>
+                  <mat-option>All</mat-option>
+                  <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <p>Year Model</p>
+              <mat-slider min="2010" max="2024" step="1" showTickMarks discrete [displayWith]="yearModelSearch" color="warn">
+                <input matSliderThumb>
+              </mat-slider>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+
+
+          <hr>
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Specifications
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <mat-checkbox color="warn" class="example-margin">Automatic Gearbox</mat-checkbox>
+              <mat-checkbox color="warn" class="example-margin">Manual Gearbox</mat-checkbox>
+
+              <br>Car type:<br>
+              <mat-form-field appearance="fill" color="warn">
+                <mat-label>All</mat-label>
+                <mat-select>
+                  <mat-option>All</mat-option>
+                  <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <br>Color<br>
+              <mat-form-field appearance="fill" color="warn">
+                <mat-label>All</mat-label>
+                <mat-select>
+                  <mat-option>All</mat-option>
+                  <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+
+        </div>
+      </aside>
+
+      <div class="searchResult col-sm-12 col-md-8">
+        aaa
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+</main>

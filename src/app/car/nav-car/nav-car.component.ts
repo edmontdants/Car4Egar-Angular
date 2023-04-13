@@ -5,6 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './nav-car.component.html',
   styleUrls: ['./nav-car.component.scss']
 })
-export class NavCarComponent {
+export class NavCarComponent  {
 
+  myF(){
+    alert ("val");
+  }
 }
