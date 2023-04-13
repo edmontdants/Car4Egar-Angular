@@ -278,7 +278,10 @@
                     <div class="CarInfo">
                       <span>{{CarModel}} - {{CarBrand}}</span>
                       <span>{{CarYear}}</span>
-                      <span>stars {{CarRating}}</span>
+                      <div class="row">
+                        <div class="col"><app-star class="stars" [rating]="CarRating"></app-star></div>
+                        <div class="col">( {{CarRating}} )</div>
+                      </div>
                     </div>
                   </div>
                 </a>
