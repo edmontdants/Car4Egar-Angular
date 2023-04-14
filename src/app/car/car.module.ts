@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SideBarComponent } from './side-bar/side-bar.component';
-import { NavCarComponent } from './nav-car/nav-car.component';
+
 import { CarCardsComponent } from './car-cards/car-cards.component';
-import { PagingComponent } from './paging/paging.component';
+
 import { CarProfileComponent } from './car-profile/car-profile.component';
-import { PopCarCardComponent } from './pop-car-card/pop-car-card.component';
+
 import { StarComponent } from './star/star.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -21,14 +20,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
-    SideBarComponent,
-    NavCarComponent,
     CarCardsComponent,
-    PagingComponent,
     CarProfileComponent,
-    PopCarCardComponent,
     StarComponent
-
   ],
   imports: [
     CommonModule,
@@ -46,12 +40,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
   ],
   exports:[
-    SideBarComponent,
-    NavCarComponent,
     CarCardsComponent,
-    PagingComponent,
     CarProfileComponent,
-    PopCarCardComponent,
     StarComponent]
 })
 

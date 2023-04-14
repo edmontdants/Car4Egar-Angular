@@ -30,9 +30,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/p_p.css",
+
               "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "@angular/material/prebuilt-themes/deeppurple-amber.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
@@ -97,7 +98,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/p_p.css"
+              "src/p_p.css",
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/styles.scss"
             ],
             "scripts": []
           }

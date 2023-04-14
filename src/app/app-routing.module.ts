@@ -5,9 +5,11 @@ import { MyAccountComponent } from './user/my-account/my-account.component';
 import { MyCarsComponent } from './user/my-cars/my-cars.component';
 import { MyPaymentsComponent } from './user/my-payments/my-payments.component';
 import { MyBorrowingsComponent } from './user/my-borrowings/my-borrowings.component';
+import { CarCardsComponent } from './car/car-cards/car-cards.component';
 
 const routes: Routes = [
-  {path: 'UserDashBoard', component:UserDashBoardComponent}
+  {path: 'UserDashBoard', component:UserDashBoardComponent},
+  {path: 'SearchACar', component:CarCardsComponent}
 //,children:[
 //   {path: 'MyAccount', component:MyAccountComponent},
 //   {path: 'MyCars', component:MyCarsComponent},
