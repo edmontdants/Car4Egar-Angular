@@ -10,6 +10,10 @@ import { CarRegisterComponent } from './car-register/car-register.component';
 import { UserDashBoardComponent } from './user-dash-board/user-dash-board.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
 
 
 @NgModule({
@@ -27,7 +31,9 @@ import {MatIconModule} from '@angular/material/icon';
   imports: [
     CommonModule,
     MatTabsModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule
   ]
 })
 export class UserModule { }
