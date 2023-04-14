@@ -1,7 +1,7 @@
-import { Owner } from "./Owner"
-import { Rent } from "./Rent"
+import { IOwner } from "./IOwner"
+import { IRent } from "./IRent"
 
-export interface Car{
+export interface ICar{
 VIN:string,
 Color:string,
 LicenseNumber:string
@@ -22,7 +22,6 @@ RegistrationDate:Date,
 Insurance:boolean,
 GearBoxType:string,
 IsActivated:boolean,
-Owner:Owner,
-Rent:Rent
+OwnerId:string
 }
 
