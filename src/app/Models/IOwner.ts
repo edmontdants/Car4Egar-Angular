@@ -1,4 +1,4 @@
-export interface Owner{
+export interface IOwner{
 NID:string,
 Name:string,
 Address:string,
@@ -11,6 +11,7 @@ Bank_CSC:string,
 Photo:string,
 Balance:number,
 Fine:number,
-IsActivated:boolean
+IsActivated:boolean,
+CarsVin:string[]
 }
 

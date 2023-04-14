@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CarCardsComponent } from './car-cards/car-cards.component';
 
 import { CarProfileComponent } from './car-profile/car-profile.component';
@@ -36,7 +37,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatCheckboxModule,
     MatSliderModule,
     MatExpansionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   exports:[

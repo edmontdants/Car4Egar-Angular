@@ -59,11 +59,10 @@
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <hr>
-              <mat-checkbox color="warn" class="example-margin">Available Cars Only</mat-checkbox>
+              <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByAvailableOnlyCheck">Available Cars Only</mat-checkbox>
               <hr>
-              <mat-checkbox color="warn" class="example-margin">Cars in your location only</mat-checkbox>
-              <br>
-              <mat-checkbox color="warn" class="example-margin">Cars in other locations</mat-checkbox>
+              <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByLocationOnlyCheck">Cars in your location only</mat-checkbox>
+              <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByTopRatedOnlyCheck">Top Rated Cars only</mat-checkbox>
               <br> <br>
               <span>Price Per Day</span>
               <mat-slider min="250" max="3000" step="250" showTickMarks discrete [displayWith]="PricePerDaySearch"
@@ -160,132 +159,33 @@
 
           <div class="CarsCards">
             <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let car of FilteredCars">
                 <a href="#">
                   <div class="car_card">
                     <div class="carImgBox">
-                      <img src="../../../assets/car.jpg" alt="" height="200">
-                      <p class="CarPricePerDay"> {{CarPricePerDay}} LE<span>Price Per Day</span></p>
+                      <img src="../../../assets/{{car.Image}}" alt="" height="200">
+                      <p class="CarPricePerDay"> {{car.CostPerDay}} LE<span>Price Per Day</span></p>
                     </div>
                     <div class="OwnerInfo">
                       <img src="../../../assets/user1.png" class="rounded-circle" alt="" width="50">
-                      <span>{{OwnerName}}</span>
+                      <span>{{car.OwnerId}}</span>
                     </div>
                     <div class="CarInfo">
-                      <span>{{CarModel}} - {{CarBrand}}</span>
-                      <span>{{CarYear}}</span>
-                      <span>stars {{CarRating}}</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <div class="col-lg-4 col-md-6 col-sm-12">
-                <a href="#">
-                  <div class="car_card">
-                    <div class="carImgBox">
-                      <img src="../../../assets/car.jpg" alt="" height="200">
-                      <p class="CarPricePerDay"> {{CarPricePerDay}} LE<span>Price Per Day</span></p>
-                    </div>
-                    <div class="OwnerInfo">
-                      <img src="../../../assets/user1.png" class="rounded-circle" alt="" width="50">
-                      <span>{{OwnerName}}</span>
-                    </div>
-                    <div class="CarInfo">
-                      <span>{{CarModel}} - {{CarBrand}}</span>
-                      <span>{{CarYear}}</span>
-                      <span>stars {{CarRating}}</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-
-              <div class="col-lg-4 col-md-6 col-sm-12">
-                <a href="#">
-                  <div class="car_card">
-                    <div class="carImgBox">
-                      <img src="../../../assets/car.jpg" alt="" height="200">
-                      <p class="CarPricePerDay"> {{CarPricePerDay}} LE<span>Price Per Day</span></p>
-                    </div>
-                    <div class="OwnerInfo">
-                      <img src="../../../assets/user1.png" class="rounded-circle" alt="" width="50">
-                      <span>{{OwnerName}}</span>
-                    </div>
-                    <div class="CarInfo">
-                      <span>{{CarModel}} - {{CarBrand}}</span>
-                      <span>{{CarYear}}</span>
-                      <span>stars {{CarRating}}</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-
-              <div class="col-lg-4 col-md-6 col-sm-12">
-                <a href="#">
-                  <div class="car_card">
-                    <div class="carImgBox">
-                      <img src="../../../assets/car.jpg" alt="" height="200">
-                      <p class="CarPricePerDay"> {{CarPricePerDay}} LE<span>Price Per Day</span></p>
-                    </div>
-                    <div class="OwnerInfo">
-                      <img src="../../../assets/user1.png" class="rounded-circle" alt="" width="50">
-                      <span>{{OwnerName}}</span>
-                    </div>
-                    <div class="CarInfo">
-                      <span>{{CarModel}} - {{CarBrand}}</span>
-                      <span>{{CarYear}}</span>
-                      <span>stars {{CarRating}}</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-
-              <div class="col-lg-4 col-md-6 col-sm-12">
-                <a href="#">
-                  <div class="car_card">
-                    <div class="carImgBox">
-                      <img src="../../../assets/car.jpg" alt="" height="200">
-                      <p class="CarPricePerDay"> {{CarPricePerDay}} LE<span>Price Per Day</span></p>
-                    </div>
-                    <div class="OwnerInfo">
-                      <img src="../../../assets/user1.png" class="rounded-circle" alt="" width="50">
-                      <span>{{OwnerName}}</span>
-                    </div>
-                    <div class="CarInfo">
-                      <span>{{CarModel}} - {{CarBrand}}</span>
-                      <span>{{CarYear}}</span>
-                      <span>stars {{CarRating}}</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-
-              <div class="col-lg-4 col-md-6 col-sm-12">
-                <a href="#">
-                  <div class="car_card">
-                    <div class="carImgBox">
-                      <img src="../../../assets/car.jpg" alt="" height="200">
-                      <p class="CarPricePerDay"> {{CarPricePerDay}} LE<span>Price Per Day</span></p>
-                    </div>
-                    <div class="OwnerInfo">
-                      <img src="../../../assets/user1.png" class="rounded-circle" alt="" width="50">
-                      <span>{{OwnerName}}</span>
-                    </div>
-                    <div class="CarInfo">
-                      <span>{{CarModel}} - {{CarBrand}}</span>
-                      <span>{{CarYear}}</span>
+                      <span>{{car.ModelName}} - {{car.Year}}</span><br>
+                      <span>{{car.BrandName}}</span>
                       <div class="row">
-                        <div class="col"><app-star class="stars" [rating]="CarRating"></app-star></div>
-                        <div class="col">( {{CarRating}} )</div>
+                        <div class="col-sm-8"><app-star class="d-inline" [rating]="car.Rate"></app-star></div>
+                        <div class="col-sm-4"><span>( {{car.Rate}} )</span></div>
                       </div>
+
                     </div>
                   </div>
                 </a>
               </div>
+
+
+
+
 
             </div>
 
