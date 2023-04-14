@@ -53,6 +53,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfilePicComponent } from './profile-pic/profile-pic.component';
+import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+
 
 
 
@@ -119,7 +122,9 @@ import { ProfilePicComponent } from './profile-pic/profile-pic.component';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    
   ]
 })
 export class UserModule { }

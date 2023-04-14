@@ -1,0 +1,21 @@
+.card {
+  // ...
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+
+      mat-form-field {
+        width: 45%;
+      }
+    }
+
+    mat-form-field {
+      margin-bottom: 16px;
+    }
+  }
+}
