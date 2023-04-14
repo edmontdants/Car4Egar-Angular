@@ -7,6 +7,9 @@ import {FormBuilder, Validators} from '@angular/forms'
   styleUrls: ['./my-account.component.scss']
 })
 export class MyAccountComponent {
+  hide1 = true;
+  hide2 = true;
+  hide3 = true;
+  hide4 = true;
 
-  
 }
