@@ -30,7 +30,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/p_p.css",
+
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/cropperjs/dist/cropper.css"
@@ -99,7 +99,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/p_p.css"
+              "src/p_p.css",
+              "src/styles.scss"
             ],
             "scripts": []
           }
