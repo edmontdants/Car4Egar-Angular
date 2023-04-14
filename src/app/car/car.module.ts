@@ -6,6 +6,7 @@ import { CarCardsComponent } from './car-cards/car-cards.component';
 import { PagingComponent } from './paging/paging.component';
 import { CarProfileComponent } from './car-profile/car-profile.component';
 import { PopCarCardComponent } from './pop-car-card/pop-car-card.component';
+import { StarComponent } from './star/star.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -24,7 +25,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CarCardsComponent,
     PagingComponent,
     CarProfileComponent,
-    PopCarCardComponent
+    PopCarCardComponent,
+    StarComponent
 
   ],
   imports: [
@@ -47,7 +49,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CarCardsComponent,
     PagingComponent,
     CarProfileComponent,
-    PopCarCardComponent]
+    PopCarCardComponent,
+    StarComponent]
 })
 
 export class CarModule {
