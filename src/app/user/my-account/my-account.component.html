@@ -1,24 +1,179 @@
-<div class="container-fluid my-4 ">
-  <div class="row">
-    <div class="col-3 m-3 shadow p-3 mb-5  bg-white rounded ">
-      <button mat-fab extended color="accent" class="my-2 px-4">
-        <mat-icon>account_box</mat-icon>
-        Personal Information
-      </button>
-      <button mat-fab extended color="accent" class="my-2 px-4 ">
+<div class="my-4">
+  <mat-tab-group backgroundColor="primary" color="accent">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>account_box</mat-icon>&nbsp; Personal Information
+      </ng-template>
+      <div>
+        <!-- -------------------form 1------------------------------------- -->
+        <form>
+          <div class="container-fluid my-5">
+            <div class="row ">
+              <div class="col-12 col-md-6 col-lg-3">
+                <div style="text-align: left;margin-bottom: 20px; font-size: large;">Your Account Picture:
+                  <mat-divider style="width: 185px;"></mat-divider>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center align-items-center g-2" >
+              <div class="col-12 col-md-6 col-lg-3">
+                <app-profile-pic></app-profile-pic>
+              </div>
+            </div>
+            <div class="row ">
+              <div class="col-12 col-md-6 col-lg-3">
+                <div style="text-align: left;margin-bottom: 20px; font-size: large;">Your information:
+                  <mat-divider style="width: 150px;"></mat-divider>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center align-items-center g-2">
+              <div class="col-12 col-md-6 col-lg-3">
+                <p>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Placeholder">
+                    <mat-icon matSuffix>perm_identity</mat-icon>
+                    <mat-hint>Hint</mat-hint>
+                  </mat-form-field>
+                </p>
+              </div>
+              <div class="col-12 col-md-6 col-lg-3">
+                <p>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Placeholder">
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-hint>Hint</mat-hint>
+                  </mat-form-field>
+                </p>
+              </div>
+              <div class="col-12 col-md-6 col-lg-3">
+                <p>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Phone</mat-label>
+                    <input matInput placeholder="Placeholder">
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-hint>Hint</mat-hint>
+                  </mat-form-field>
+                </p>
+              </div>
+
+            </div>
+
+            <div class="row justify-content-center align-items-center g-2">
+              <div class="col-12 col-md-6 col-lg-3">
+                <p>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Placeholder">
+                    <mat-icon matSuffix>location_on</mat-icon>
+                    <mat-hint>Hint</mat-hint>
+                  </mat-form-field>
+                </p>
+              </div>
+              <div class="col-12 col-md-6 col-lg-3">
+                <mat-form-field appearance="fill">
+                  <mat-label>Birth date</mat-label>
+                  <input matInput [matDatepicker]="picker">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6 col-lg-3">
+                <p>
+                  <mat-form-field appearance="fill" style="width: 250px;">
+                    <mat-label><b>
+                        <mat-icon>person_search</mat-icon> Gender
+                      </b></mat-label>
+                    <mat-select>
+                      <mat-option value="primary"><i class="fa fa-male" aria-hidden="true"></i> Male</mat-option>
+                      <mat-option value="accent"><i class="fa fa-female" aria-hidden="true"></i> Female</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </p>
+              </div>
+
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>verified_user</mat-icon>&nbsp; Borrowing Verification
+      </ng-template>
+      <div>
+        <!-- -------------------form 2------------------------------------- -->
+
+      </div>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>settings</mat-icon>&nbsp; Account Settings
+      </ng-template>
+      <div>
+        <!-- -------------------form 3------------------------------------- -->
+
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+
+
+
+<!-- <div class="d-flex align-items-start m-3">
+  <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home"
+      type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"> <mat-icon>account_box</mat-icon>Personal Information</button>
+
+    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile"
+      type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+
+    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages"
+      type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
+
+
+
+  </div>
+  <div class="tab-content" id="v-pills-tabContent">
+    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+      8888888888888</div>
+    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+      ...8888888888888888</div>
+    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">.8888888.
+    </div>
+
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container-fluid my-4 ">
+    <div class="row">
+      <div class="col-3 m-3 shadow p-3 mb-5  bg-white rounded ">
+            <button mat-fab extended color="accent" class="my-2 px-4">
+              <mat-icon>account_box</mat-icon>
+              Personal Information
+            </button>
+
+        <button mat-fab extended color="accent" class="my-2 px-4 ">
         <mat-icon>verified_user</mat-icon>
         Borrowing Verification
       </button>
     </div>
-    <div class="col-8  shadow p-3 mb-5  bg-white rounded ">
-
-        <!-- <mat-form-field appearance="fill">
-          <mat-label>Fill form field</mat-label>
-          <input matInput placeholder="Placeholder">
-          <mat-icon matSuffix>verified_user</mat-icon>
-          <mat-hint>Hint</mat-hint>
-        </mat-form-field> -->
-
+    <div class="col-8 m-3 shadow p-3 mb-5  bg-white rounded ">
     </div>
   </div>
-</div>
+</div> -->
