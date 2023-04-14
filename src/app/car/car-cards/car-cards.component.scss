@@ -185,6 +185,10 @@ mat-slider {
 .carImgBox img{
   width: 100%;
 }
+.car_card:hover .CarPricePerDay{
+  transform: scale(.8);
+  transition: all .3s linear;
+}
 .car_card:hover img:not(.OwnerInfo img){
   transform: scale(1.2) rotate(-2deg);
   transform-origin: center;
@@ -216,5 +220,5 @@ mat-slider {
   display: block;
 }
 .car_card{
-  margin: 10px;
+  margin-bottom: 10px;
 }

@@ -17,6 +17,7 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatSliderModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatPaginatorModule
 
   ],
   exports:[
