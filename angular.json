@@ -32,6 +32,7 @@
             "styles": [
 
               "src/styles.scss",
+              "src/p_p.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/cropperjs/dist/cropper.css"
             ],
