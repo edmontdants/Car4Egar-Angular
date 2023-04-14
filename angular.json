@@ -32,11 +32,13 @@
             "styles": [
 
               "src/styles.scss",
+              "src/p_p.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "@angular/material/prebuilt-themes/deeppurple-amber.css"
+              "node_modules/cropperjs/dist/cropper.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/cropperjs/dist/cropper.js"
             ]
           },
           "configurations": {
@@ -99,7 +101,6 @@
             ],
             "styles": [
               "src/p_p.css",
-              "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
