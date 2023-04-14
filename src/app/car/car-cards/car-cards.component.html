@@ -61,14 +61,14 @@
               <hr>
               <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByAvailableOnlyCheck">Available Cars Only</mat-checkbox>
               <hr>
-              <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByLocationOnlyCheck">Cars in your location only</mat-checkbox>
+              <!-- <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByLocationOnlyCheck">Cars in your location only</mat-checkbox> -->
               <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByTopRatedOnlyCheck">Top Rated Cars only</mat-checkbox>
               <br> <br>
               <span>Price Per Day</span>
-              <mat-slider min="250" max="3000" step="250" showTickMarks discrete [displayWith]="PricePerDaySearch"
-                color="warn">
-                <input matSliderThumb>
+              <mat-slider  min="0" max="3000" step="100" showTickMarks discrete [displayWith]="PricePerDay" color="warn">
+                <input matSliderThumb [(ngModel)]="filterByPricePerDaydOnlyValue">
               </mat-slider>
+
               <hr>
             </mat-expansion-panel>
           </mat-accordion>
