@@ -19,7 +19,12 @@ export class CarCardsComponent {
 //***************************************//
   private _filterByAvailableOnlyCheck:boolean=false;
   filterByAvailableOnly(check:boolean):ICar[]{
+    this._filterByPricePerDaydOnlyValue=0;
     if(check==true){
+      if(this._filterByTopRatedOnlyCheck){
+        this._filterByTopRatedOnlyCheck = !this._filterByTopRatedOnlyCheck;
+      }
+
       return this.Cars.filter((car:ICar) =>
       car.AvailableForRent==true);
     }
@@ -38,39 +43,17 @@ export class CarCardsComponent {
     this._filterByAvailableOnlyCheck = !this._filterByAvailableOnlyCheck;
     this.FilteredCars = this.filterByAvailableOnly(this._filterByAvailableOnlyCheck);
   }
-
-//***************************************//
-//******Filter By Cars In My Location****//
-//***************************************//
-
-  private _filterByLocationOnlyCheck:boolean=false;
-  filterByLocationOnly(check:boolean):ICar[]{
-    if(check==true){
-      return this.Cars.filter((car:ICar) =>
-      car.AvailableForRent==true);
-    }
-    else{
-      this.FilteredCars=this.Cars
-    }
-    return this.FilteredCars;
-  }
-
-  public get filterByLocationOnlyCheck():boolean
-  {
-    return this._filterByLocationOnlyCheck;
-  }
-  public set filterByLocationOnlyCheck(value:boolean)
-  {
-    this._filterByLocationOnlyCheck = !this._filterByLocationOnlyCheck;
-    this.FilteredCars = this.filterByLocationOnly(this._filterByLocationOnlyCheck);
-  }
-
 //***************************************//
 //******Filter By Top Rated Cars Only****//
 //***************************************//
 
   private _filterByTopRatedOnlyCheck:boolean=false;
   filterByTopRatedOnly(check:boolean):ICar[]{
+    this._filterByPricePerDaydOnlyValue=0;
+
+    if(this._filterByAvailableOnlyCheck){
+      this._filterByAvailableOnlyCheck = !this._filterByAvailableOnlyCheck;
+    }
     if(check==true){
       return this.Cars.filter((car:ICar) =>
       car.Rate==5);
@@ -90,16 +73,39 @@ export class CarCardsComponent {
     this._filterByTopRatedOnlyCheck = !this._filterByTopRatedOnlyCheck;
     this.FilteredCars = this.filterByTopRatedOnly(this._filterByTopRatedOnlyCheck);
   }
-
-
-
-
-  PricePerDaySearch(value: number): string {
-    if (value >= 0) {
-      return Math.round(value) + 'LE';
-    }
-    return `${value}`;
+//***************************************//
+//******Filter By Price Per Day****//
+//***************************************//
+private _filterByPricePerDaydOnlyValue:number=0;
+public get filterByPricePerDaydOnlyValue():number
+{
+  return this._filterByPricePerDaydOnlyValue;
+}
+public set filterByPricePerDaydOnlyValue(value:number)
+{
+  this._filterByPricePerDaydOnlyValue = value;
+  this.FilteredCars = this.filterByPricePerDaydOnly(this._filterByPricePerDaydOnlyValue);
+}
+filterByPricePerDaydOnly(value:number):ICar[]{
+  if(this._filterByAvailableOnlyCheck){
+    this._filterByAvailableOnlyCheck = !this._filterByAvailableOnlyCheck;
   }
+  if(this._filterByTopRatedOnlyCheck){
+    this._filterByTopRatedOnlyCheck = !this._filterByTopRatedOnlyCheck;
+  }
+  if (value ==0) {
+    return this.Cars;
+  }
+  return this.Cars.filter((car:ICar) =>
+  car.CostPerDay == this.filterByPricePerDaydOnlyValue);
+}
+PricePerDay(value: number): string {
+  if (value > 0) {
+    return Math.round(value) + 'LE';
+  }
+
+  return `${value}`;
+}
 
   yearModelSearch(value: number): string {
     return `${value}`;
@@ -143,7 +149,7 @@ AvailableForRent:true,
 ModelName:'Model',
 BrandName:'Brand',
 LocationOfRent:'Assuit',
-CostPerDay:290,
+CostPerDay:250,
 Image:'car.jpg',
 RegistrationDate:new Date(),
 Insurance:true,
@@ -167,8 +173,8 @@ AvailableForRent:false,
 ModelName:'Model',
 BrandName:'Brand',
 LocationOfRent:'Minia',
-CostPerDay:590,
-Image:'car2.PNG',
+CostPerDay:600,
+Image:'car2.png',
 RegistrationDate:new Date(),
 Insurance:true,
 GearBoxType:'Automatic',
@@ -187,12 +193,36 @@ Mailage:50,
 CarType:'Kia',
 LicenseEXDate:new Date(),
 Year:'2020',
-AvailableForRent:false,
+AvailableForRent:true,
 ModelName:'Model',
 BrandName:'Brand',
 LocationOfRent:'Minia',
 CostPerDay:2100,
-Image:'car2.PNG',
+Image:'car3.jpg',
+RegistrationDate:new Date(),
+Insurance:true,
+GearBoxType:'Automatic',
+IsActivated:true,
+OwnerId:'12345678901234'
+
+    },
+    {
+      VIN : '4',
+Color : 'Red',
+LicenseNumber : '123455',
+Seats :4,
+Rate:5,
+RatedPeople:7,
+Mailage:50,
+CarType:'Kia',
+LicenseEXDate:new Date(),
+Year:'2020',
+AvailableForRent:true,
+ModelName:'Model',
+BrandName:'Brand',
+LocationOfRent:'Minia',
+CostPerDay:200,
+Image:'car4.jpg',
 RegistrationDate:new Date(),
 Insurance:true,
 GearBoxType:'Automatic',
