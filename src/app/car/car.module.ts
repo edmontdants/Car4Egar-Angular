@@ -16,7 +16,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     CarCardsComponent,
@@ -38,7 +38,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatPaginatorModule,
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
 
   ],
   exports:[

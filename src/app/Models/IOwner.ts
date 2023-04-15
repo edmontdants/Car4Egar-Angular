@@ -11,7 +11,7 @@ Bank_CSC:string,
 Photo:string,
 Balance:number,
 Fine:number,
-IsActivated:boolean,
+isActivated:boolean,
 CarsVin:string[]
 }
 

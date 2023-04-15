@@ -3733,7 +3733,7 @@ textarea.cdk-textarea-autosize-measuring-firefox {
 .mat-toolbar .mat-form-field-underline,
 .mat-toolbar .mat-form-field-ripple,
 .mat-toolbar .mat-focused .mat-form-field-ripple {
-  background-color: currentColor
+  background-color: currentcolor
 }
 
 .mat-toolbar .mat-form-field-label,
@@ -3745,7 +3745,7 @@ textarea.cdk-textarea-autosize-measuring-firefox {
 }
 
 .mat-toolbar .mat-input-element {
-  caret-color: currentColor
+  caret-color: currentcolor
 }
 
 .mat-toolbar-multiple-rows {

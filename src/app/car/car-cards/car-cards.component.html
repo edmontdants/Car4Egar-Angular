@@ -59,7 +59,7 @@
               <hr>
               <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByAvailableOnlyCheck">Available Cars Only</mat-checkbox>
               <!-- <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByLocationOnlyCheck">Cars in your location only</mat-checkbox> -->
-              <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByTopRatedOnlyCheck">Top Rated Cars only</mat-checkbox>
+              <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByTopratedOnlyCheck">Top rated Cars only</mat-checkbox>
               <br><hr>
               <span>Price Per Day</span>
               <mat-slider  min="0" max="3000" step="100" showTickMarks discrete [displayWith]="PricePerDay" color="warn">
@@ -74,7 +74,7 @@
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Brand - Model's Year
+                  Brand - Model's year
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <br>Brand:<br>
@@ -94,10 +94,10 @@
                 </mat-select>
               </mat-form-field> -->
               <br><br>
-              <span>Year Model</span>
+              <span>year Model</span>
               <mat-slider min="2010" max="2024" step="1" showTickMarks discrete [displayWith]="yearModelSearch" color="warn">
-                <input [(ngModel)]="MinModelYearValue" value="2010" matSliderStartThumb>
-                <input [(ngModel)]="MaxModelYearValue" value="2024" matSliderEndThumb>
+                <input [(ngModel)]="MinModelyearValue" value="2010" matSliderStartThumb>
+                <input [(ngModel)]="MaxModelyearValue" value="2024" matSliderEndThumb>
               </mat-slider>
 
             </mat-expansion-panel>
@@ -125,11 +125,11 @@
                 </mat-select>
               </mat-form-field> -->
 
-              <br>Color<br>
+              <br>color<br>
               <mat-form-field appearance="fill" color="warn">
                 <mat-label>All</mat-label>
-                <mat-select [(ngModel)]="SearchByCarColorValue">
-                  <mat-option *ngFor="let color of CarsColors" [value]="color">{{color}}</mat-option>
+                <mat-select [(ngModel)]="SearchByCarcolorValue">
+                  <mat-option *ngFor="let color of Carscolors" [value]="color">{{color}}</mat-option>
                 </mat-select>
               </mat-form-field>
 
@@ -157,20 +157,20 @@
                 <a href="#">
                   <div class="car_card">
                     <div class="carImgBox">
-                      <img src="../../../assets/{{car.Image}}" alt="" height="200">
-                      <p class="CarPricePerDay"> {{car.CostPerDay}} LE<span>Price Per Day</span></p>
+                      <img src="../../../assets/{{car.image}}" alt="" height="200">
+                      <p class="CarPricePerDay"> {{car.costPerDay}} LE<span>Price Per Day</span></p>
                     </div>
                     <div class="OwnerInfo">
                       <img src="../../../assets/user1.png" class="rounded-circle" alt="" width="50">
-                      <span>{{car.OwnerId}}</span>
+                      <span>{{car.ownerId}}</span>
                     </div>
                     <div class="CarInfo">
-                      <span class="fw-bold">{{car.BrandName}} - {{car.ModelName}} </span>
-                      (<span class="yearModel fw-bold">{{car.Year}}</span>)<br>
+                      <span class="fw-bold">{{car.brandName}} - {{car.modelName}} </span>
+                      (<span class="yearModel fw-bold">{{car.year}}</span>)<br>
 
                       <div class="row">
-                        <div class="col-sm-8"><app-star class="d-inline" [rating]="car.Rate"></app-star></div>
-                        <div class="col-sm-4"><span>( {{car.Rate}} )</span></div>
+                        <div class="col-sm-8"><app-star class="d-inline" [rating]="car.rate"></app-star></div>
+                        <div class="col-sm-4"><span>( {{car.rate}} )</span></div>
                       </div>
 
                     </div>
