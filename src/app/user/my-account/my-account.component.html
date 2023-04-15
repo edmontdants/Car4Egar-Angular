@@ -1,33 +1,38 @@
 <div class="my-4">
   <mat-tab-group backgroundColor="primary" color="accent">
+    <!-- ----------------------------------------Tab1---------------------------------------------------------- -->
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon>account_box</mat-icon>&nbsp; Personal Information
       </ng-template>
+      <!-- -------------------form 1------------------------------------- -->
       <div>
-        <!-- -------------------form 1------------------------------------- -->
         <form>
           <div class="container-fluid my-5">
             <div class="row ">
               <div class="col-12 col-md-6 col-lg-3">
                 <div style="text-align: left;margin-bottom: 20px; font-size: large;">
                   <h2 style="color: #35296D;"> <i class="fa-solid fa-circle-user"></i>&nbsp; Your Account Picture:
-                    <mat-divider style="width: 250px;"></mat-divider>
+                    <mat-divider ></mat-divider>
                   </h2>
                 </div>
               </div>
             </div>
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-12 col-md-6 col-lg-3">
-                <div class="mx-5"><app-profile-pic></app-profile-pic></div>
+                <div class="mx-5">
+                  <app-profile-pic></app-profile-pic>
+                </div>
               </div>
             </div>
+            <br>
+            <br>
             <div class="row ">
               <div class="col-12 col-md-6 col-lg-3">
                 <div style="text-align: left;margin-bottom: 20px; font-size: large;">
                   <h2 style="color: #35296D;"> <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp; Your
                     information:
-                    <mat-divider style="width: 185px;"></mat-divider>
+                    <mat-divider ></mat-divider>
                   </h2>
                 </div>
               </div>
@@ -63,9 +68,7 @@
                   </mat-form-field>
                 </p>
               </div>
-
             </div>
-
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-12 col-md-6 col-lg-3">
                 <p>
@@ -109,36 +112,135 @@
                   </p>
                 </div>
               </div>
-
-
             </div>
           </div>
         </form>
       </div>
     </mat-tab>
+    <!-- ----------------------------------------Tab2---------------------------------------------------------- -->
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon>verified_user</mat-icon>&nbsp; Borrowing Verification
       </ng-template>
+      <!-- -------------------form 2------------------------------------- -->
       <div>
-        <!-- -------------------form 2------------------------------------- -->
-
-
+        <form>
+          <div class="container-fluid my-5">
+            <div class="row ">
+              <div class="col-12 col-md-6 col-lg-3">
+                <div style="text-align: left;margin-bottom: 20px; font-size: large;">
+                  <h2 style="color: #35296D;">
+                    <mat-icon>verified_user</mat-icon>&nbsp; Borrowing
+                    Verification:
+                    <mat-divider ></mat-divider>
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center align-items-center g-2">
+              <div class="col-12  col-lg-6" >
+                <mat-form-field style="width: 350px;">
+                  <div>
+                    <mat-toolbar>
+                      <!-- Display files names -->
+                      <input matInput [(ngModel)]="fileAttr" readonly name="name"  />
+                      <!-- Browse Button -->
+                      <button mat-fab extended color="primary"><mat-icon>upload</mat-icon>Upload</button>
+                    </mat-toolbar>
+                    <!-- Fetch selected filed on change -->
+                    <input
+                      type="file"
+                      #fileInput
+                      id="uploadFile"
+                      (change)="uploadFileEvt($event)"
+                      name="uploadFile"
+                      multiple="multiple"
+                      accept="image/*"
+                    />
+                  </div>
+                </mat-form-field>
+              </div>
+              <div class="col-12  col-lg-6" >
+                <mat-form-field style="width: 350px;">
+                  <div>
+                    <mat-toolbar>
+                      <!-- Display files names -->
+                      <input matInput [(ngModel)]="fileAttr2" readonly name="name2"  />
+                      <!-- Browse Button -->
+                      <button mat-fab extended color="primary"><mat-icon>upload</mat-icon>Upload</button>
+                    </mat-toolbar>
+                    <!-- Fetch selected filed on change -->
+                    <input
+                      type="file"
+                      #fileInput2
+                      id="uploadFile"
+                      (change)="uploadFileEvt2($event)"
+                      name="uploadFile"
+                      multiple="multiple"
+                      accept="image/*"
+                    />
+                  </div>
+                </mat-form-field>
+              </div>
+              <div class="row justify-content-center align-items-center g-2">
+                <div class="col-12 col-md-6 col-lg-3">
+                  <p>
+                    <mat-form-field appearance="fill">
+                      <mat-label>License Number</mat-label>
+                      <input matInput placeholder="Placeholder">
+                      <mat-icon matSuffix>fact_check</mat-icon>
+                      <mat-hint>Hint</mat-hint>
+                    </mat-form-field>
+                  </p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Birth date</mat-label>
+                    <input matInput [matDatepicker]="picker1">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Expiration Date</mat-label>
+                    <input matInput [matDatepicker]="picker2">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row justify-content-center  align-items-start g-2 ">
+                <div class="col-12 col-md-6 col-lg-3">
+                  <p>
+                    <button mat-fab extended color="accent">
+                      <mat-icon>verified_user</mat-icon>&nbsp;
+                      Verify&nbsp;&nbsp;&nbsp;
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </mat-tab>
+    <!-- ----------------------------------------Tab3---------------------------------------------------------- -->
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon>settings</mat-icon>&nbsp; Account Settings
       </ng-template>
+      <!-- -------------------form 3------------------------------------- -->
       <div>
-        <!-- -------------------form 3------------------------------------- -->
         <form>
           <div class="container-fluid my-5">
             <div class="row ">
               <div class="col-12 col-md-6 col-lg-3">
                 <div style="text-align: left;margin-bottom: 20px; font-size: large;">
                   <h2 style="color: #35296D;"> <i class="fa-solid fa-envelope"></i>&nbsp; Change Email:
-                    <mat-divider style="width: 185px;"></mat-divider>
+                    <mat-divider ></mat-divider>
                   </h2>
                 </div>
               </div>
@@ -155,6 +257,8 @@
                 </p>
               </div>
             </div>
+            <br>
+            <br>
             <div class="row justify-content-center  align-items-start g-2 ">
               <div class="col-12 col-md-6 col-lg-3">
                 <p>
@@ -179,12 +283,11 @@
                 </p>
               </div>
             </div>
-
             <div class="row ">
               <div class="col-12 col-md-6 col-lg-3">
                 <div style="text-align: left;margin-bottom: 20px; font-size: large;">
                   <h2 style="color: #35296D;"><i class="fa fa-key" aria-hidden="true"></i>&nbsp; Change Password:
-                    <mat-divider style="width: 185px;"></mat-divider>
+                    <mat-divider ></mat-divider>
                   </h2>
                 </div>
               </div>
@@ -247,59 +350,3 @@
     </mat-tab>
   </mat-tab-group>
 </div>
-
-
-
-
-<!-- <div class="d-flex align-items-start m-3">
-  <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-    <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home"
-      type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"> <mat-icon>account_box</mat-icon>Personal Information</button>
-
-    <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile"
-      type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
-
-    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages"
-      type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
-
-
-
-  </div>
-  <div class="tab-content" id="v-pills-tabContent">
-    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-      8888888888888</div>
-    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-      ...8888888888888888</div>
-    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">.8888888.
-    </div>
-
-</div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="container-fluid my-4 ">
-    <div class="row">
-      <div class="col-3 m-3 shadow p-3 mb-5  bg-white rounded ">
-            <button mat-fab extended color="accent" class="my-2 px-4">
-              <mat-icon>account_box</mat-icon>
-              Personal Information
-            </button>
-
-        <button mat-fab extended color="accent" class="my-2 px-4 ">
-        <mat-icon>verified_user</mat-icon>
-        Borrowing Verification
-      </button>
-    </div>
-    <div class="col-8 m-3 shadow p-3 mb-5  bg-white rounded ">
-    </div>
-  </div>
-</div> -->
