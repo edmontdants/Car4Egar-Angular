@@ -1452,7 +1452,7 @@ export class CarCardsComponent {
     // },
   ];
 
-  FilteredCars: ICar[] = this.Cars;
+  FilteredCars: ICar[] = this.Cars.slice(0,12);;
 
 
   //***************************************//
@@ -1736,7 +1736,9 @@ export class CarCardsComponent {
     }
   }
 
-
+  //***************************************//
+  //****** Filter By Car Location *********//
+  //***************************************//
 
   private _SearchByLocationValue='';
   public get SearchByLocationValue(){
@@ -1767,15 +1769,17 @@ export class CarCardsComponent {
     }
   }
 
+  //***************************************//
+  //*********** Paginator *****************//
+  //***************************************//
 
-
-  public pageSlice = this.FilteredCars.slice(0,12);
+  // public pageSlice = this.FilteredCars.slice(0,12);
   OnPageChanges(event: PageEvent){
     const startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
     if(endIndex> this.FilteredCars.length){
       endIndex = this.FilteredCars.length;
     }
-    this.pageSlice = this.FilteredCars.slice(startIndex,endIndex)
+    this.FilteredCars = this.FilteredCars.slice(startIndex,endIndex)
   }
 }
