@@ -5,19 +5,17 @@
   <div>
     <mat-form-field appearance="fill" class="searchByLocation">
       <mat-label><i class="fa-solid fa-location-dot"></i> Location</mat-label>
-      <mat-select>
-        <mat-option value="one">First option</mat-option>
-        <mat-option value="two">Second option</mat-option>
-      </mat-select>
+      <mat-select [(ngModel)]="SearchByLocationValue">
+        <mat-option *ngFor="let location of Locations" [value]="location">{{location}}</mat-option>
+        </mat-select>
     </mat-form-field>
 
 
 
     <mat-form-field appearance="fill">
       <mat-label><i class="fa-solid fa-car-side"></i> Brand</mat-label>
-      <mat-select>
-        <mat-option value="one">First option</mat-option>
-        <mat-option value="two">Second option</mat-option>
+      <mat-select [(ngModel)]="SearchByBrand">
+        <mat-option *ngFor="let brand of Brands" [value]="brand">{{brand}}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -83,7 +81,6 @@
               <mat-form-field appearance="fill" color="warn">
                 <mat-label>All</mat-label>
                 <mat-select [(ngModel)]="SearchByBrand">
-
                   <mat-option *ngFor="let state of Brands" [value]="state">{{state}}</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -156,7 +153,7 @@
 
           <div class="CarsCards">
             <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let car of FilteredCars">
+              <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let car of pageSlice">
                 <a href="#">
                   <div class="car_card">
                     <div class="carImgBox">
@@ -181,21 +178,18 @@
                 </a>
               </div>
 
-
-
-
-
             </div>
 
           </div>
+
+          <mat-paginator [length]="this.FilteredCars.length"
+          [pageSize]="12"
+          [pageSizeOptions]="[12, 24, 48, 96]"
+          aria-label="Select page"
+          (page) = "OnPageChanges($event)">
+    </mat-paginator>
         </div>
 
-        <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
-              (page) = "OnPageChanges($event)"
-        </mat-paginator>
       </div>
 
 

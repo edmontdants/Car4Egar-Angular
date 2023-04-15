@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CarCardsComponent } from './car-cards/car-cards.component';
-
 import { CarProfileComponent } from './car-profile/car-profile.component';
-
 import { StarComponent } from './star/star.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatBadgeModule} from '@angular/material/badge';
