@@ -193,6 +193,7 @@
                         <hr>
                         <div class="row">
                           <div class="col-lg-9">
+                            <h2>Car Info:</h2>
                             <p class="bg-light mb-2">Model: {{car.modelName}}</p>
                             <p class="bg-light mb-2">Brand: {{car.brandName}}</p>
                             <p class="bg-light mb-2">Model Year: {{car.year}}</p>
@@ -204,9 +205,10 @@
                             </div>
                             <hr>
                             <div class="row">
+                              <h2>Car Rating:</h2>
                               <div class="col-sm-3"><app-star class="d-inline" [rating]="car.rate"></app-star></div>
                               <div class="col-sm-3"><span>( {{car.rate}} OF 5 )</span></div>
-                              <div class="col-sm-3"><span>(Rated By: {{car.ratedPeople}} Person )</span></div>
+                              <div class="col-sm-6"><span>(Rated By: {{car.ratedPeople}} Person )</span></div>
                             </div>
                           </div>
                           <hr>
