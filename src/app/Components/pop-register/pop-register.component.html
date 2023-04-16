@@ -49,7 +49,7 @@
           <mat-hint *ngIf="passin1.value!=passin2.value&&passin2.dirty">Password Not Match</mat-hint>
           <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide2">
-            <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
       </div>
