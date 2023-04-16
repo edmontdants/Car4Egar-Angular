@@ -14,7 +14,7 @@ export class LandingPageComponent {
 
   openRegistrationDialog(): void {
     const dialogRef = this.dialog.open(PopRegisterComponent, {
-      width: '500px'
+      width: '550px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

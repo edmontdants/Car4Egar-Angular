@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, ElementRef, OnChanges, OnInit } from '@angular/core';
+import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { ISystemUser } from 'src/app/Models/isystem-user';
 import { RegistrationService } from 'src/app/Services/registration.service';
 import { Router } from '@angular/router';
+import { FormGroup, NgModel, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-pop-register',
   templateUrl: './pop-register.component.html',
   styleUrls: ['./pop-register.component.scss'],
 })
-export class PopRegisterComponent implements OnInit {
-  datenow:string =this.getCurrentDateTime()
+export class  PopRegisterComponent
+{
+  //datenow:string =this.getCurrentDateTime()
+  hide1:boolean=true;
+  hide2:boolean=true;
+  confirmPassword?: string;
+  passwordMismatch:boolean=false;
   newUser: ISystemUser = {
     nid: '',
     userName: '',
@@ -45,10 +51,10 @@ export class PopRegisterComponent implements OnInit {
     public dialogRef: MatDialogRef<PopRegisterComponent>,
     private userRegister: RegistrationService,
     private router: Router
-  ) {}
-  ngOnInit(): void {
-    //alert(`${this.datenow}`)
+  ) {
+    
   }
+
 
   addnewuser() {
     const observer = {
@@ -65,21 +71,27 @@ export class PopRegisterComponent implements OnInit {
 
     this.userRegister.RegistrationNewUser(this.newUser).subscribe(observer);
   }
-  getCurrentDateTime(): string {
-    let now: Date = new Date();
-    let year: number = now.getFullYear();
-    let month: number = now.getMonth() + 1; // month is zero-indexed, so add 1 to get the correct month
-    let day: number = now.getDate();
-    let hour: number = now.getHours();
-    let minute: number = now.getMinutes();
-    let second: number = now.getSeconds();
-    let monthStr: string = month.toString().padStart(2, '0');
-  let dayStr: string = day.toString().padStart(2, '0');
-  let hourStr: string = hour.toString().padStart(2, '0');
-  let minuteStr: string = minute.toString().padStart(2, '0');
-  let secondStr: string = second.toString().padStart(2, '0');
-  return `${year}-${monthStr}-${dayStr} ${hourStr}:${minuteStr}:${secondStr}`;
+
 
 }
 
-}
+
+
+//   getCurrentDateTime(): string {
+//     let now: Date = new Date();
+//     let year: number = now.getFullYear();
+//     let month: number = now.getMonth() + 1; // month is zero-indexed, so add 1 to get the correct month
+//     let day: number = now.getDate();
+//     let hour: number = now.getHours();
+//     let minute: number = now.getMinutes();
+//     let second: number = now.getSeconds();
+//     let monthStr: string = month.toString().padStart(2, '0');
+//   let dayStr: string = day.toString().padStart(2, '0');
+//   let hourStr: string = hour.toString().padStart(2, '0');
+//   let minuteStr: string = minute.toString().padStart(2, '0');
+//   let secondStr: string = second.toString().padStart(2, '0');
+//   return `${year}-${monthStr}-${dayStr} ${hourStr}:${minuteStr}:${secondStr}`;
+
+// }
+
+
