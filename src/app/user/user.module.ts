@@ -72,6 +72,7 @@ import { Component } from '@angular/core';
     UserDashBoardComponent,
     ProfilePicComponent,
 
+
   ],
   imports: [
     CommonModule,
@@ -124,7 +125,7 @@ import { Component } from '@angular/core';
     ScrollingModule,
     ReactiveFormsModule,
     FormsModule,
-    
+
   ]
 })
 export class UserModule { }
