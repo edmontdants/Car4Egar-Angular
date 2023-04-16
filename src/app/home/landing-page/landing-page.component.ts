@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PopLoginComponent } from 'src/app/Components/pop-login/pop-login.component';
 import { PopRegisterComponent } from 'src/app/Components/pop-register/pop-register.component';
 
 @Component({
@@ -22,5 +23,17 @@ export class LandingPageComponent {
       }
     });
   }
+  openLoginDialog(): void {
+    const dialogRef = this.dialog.open(PopLoginComponent, {
+      width: '500px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(result); // This is where you would handle the login data
+      }
+    });
+  }
+
 
 }

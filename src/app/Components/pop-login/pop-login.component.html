@@ -1,1 +1,16 @@
-<p>pop-login works!</p>
+<h2 mat-dialog-title>Login</h2>
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput name="email" placeholder="Email" ngModel required email>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" name="password" placeholder="Password" ngModel required>
+    </mat-form-field>
+    <mat-checkbox name="rememberMe" [(ngModel)]="rememberMe">Remember me</mat-checkbox>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button type="submit" [disabled]="!loginForm.valid">Login</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</form>
