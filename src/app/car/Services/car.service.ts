@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ICar } from 'src/app/Models/ICar';
 import { Observable } from 'rxjs';
+import { IRentRequest } from 'src/app/Models/IRentRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +16,25 @@ export class CarService {
       return this.http.get<any[]>(this.baseApiUrl + '/Admin/GetAllCars');
     }
 
-  // SendCarRequest(id:string, carVin:string ,days:number) : Observable<ICar>
+    private baseUrl2 = 'https://localhost:7136'; // Replace with your API endpoint
+    public async sendCarRentalRequest(param1: string, param2: string, param3: number){
+      const url = `${this.baseUrl2}/Borrower/CarRentalRequest`;
+      const headers = new HttpHeaders({
+        'id': param1,
+        'carVin': param2,
+        'days': String(param3)
+      });
+
+      const response = await this.http.post(url,null ,{ headers }).toPromise();
+      return response;
+
+    }
+  // baseApiUrl2 :string = 'https://localhost:7136/Borrower/CarRentalRequest';
+  // SendCarRequest(id:string, carVin:string ,days:number) : Observable<IRentRequest>
   // {
   //   id = '12345678901234';
-  //   return this.http.post<Developer>(this.baseApiUrl + '/api/Developer', adddeveloper);
+  //   const url = `${this.baseApiUrl}/${id}/${carVin}/${days}`;
+  //   return this.http.post(url,null);
   // }
   // addDeveloper(adddeveloper:Developer) : Observable<Developer>
   // {

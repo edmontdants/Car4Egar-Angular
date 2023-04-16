@@ -5,11 +5,15 @@ import { ICar } from 'src/app/Models/ICar';
 import { CarService } from '../Services/car.service';
 import { MatDialog,MAT_DIALOG_DATA, } from '@angular/material/dialog';
 import { CarProfileComponent } from '../car-profile/car-profile.component';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { IRentRequest } from 'src/app/Models/IRentRequest';
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-car-cards',
@@ -21,9 +25,8 @@ export class CarCardsComponent implements OnInit {
   animal: string='';
   name: string='';
 
-  constructor(private carService: CarService, public dialog: MatDialog) {
-    // this.FilteredCars = this.Cars;
-  }
+  constructor(private carService: CarService, public dialog: MatDialog,private httpClient: HttpClient)
+  {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CarProfileComponent, {
@@ -550,7 +553,7 @@ export class CarCardsComponent implements OnInit {
 
     if(value == true)
     return this.Cars.filter(
-      (car: ICar) => car.gearBoxType == "AutomaticGearBox"
+      (car: ICar) => car.gearBoxType == "Automatic"
     );
     else{
       return this.Cars
@@ -583,7 +586,7 @@ export class CarCardsComponent implements OnInit {
 
     if(value == true)
     return this.Cars.filter(
-      (car: ICar) => car.gearBoxType == "ManualGearbox"
+      (car: ICar) => car.gearBoxType == "Manual"
     );
     else{
       return this.Cars
@@ -666,7 +669,19 @@ export class CarCardsComponent implements OnInit {
     this.FilteredCars = this.FilteredCars.slice(startIndex,endIndex)
   }
   //***************************************//
-  //*********** Pop up Card ***************//
+  //***** Pop up Card To Send Request *****//
   //***************************************//
+  // param1: string='';
+  // param2: string='';
+  param3: number=0;
+  async sendCarRequest(p1:string,p2:string){
+    try {
+      const response = await this.carService.sendCarRentalRequest(p1,p2,this.param3);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
 
 }
