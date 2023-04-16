@@ -1,20 +1,29 @@
 export interface ISystemUser {
-  NID: string;    //f1
-  UserName: string; //f1
-  Password: string; //f3
-  Email: string;  //f1 //f3
-  Role: string;
-  IsActivated: boolean;
-  Address: string;  //f1
-  PhoneNumber: string;  //f1
-  Gender: string;   //f1
-  BirthDate: string; //f1
-  Bank_CardNumber: string;
-  Bank_ExpireDate: string;
-  Bank_CSC: string;
-  Photo: string;  //f1
-  Balance: number;
-  Fine: number;
-  Rate: number;
-  RatedPeople: number;
+  nid: string;    //f1
+  userName: string; //f1
+  password: string; //f3
+  email: string;  //f1 //f3
+  role: string;
+  isActivated: boolean;
+  address: string;  //f1
+  phoneNumber: string;  //f1
+  gender: string;   //f1
+  birthDate: string; //f1
+  photo: string;
+  identityPhoto: string;
+  driverLicencePhoto: string;
+  driverLicenceNumber: string;  //f1
+  driverLicenceEXDate: string;
+  bank_NID: string;
+  bank_Name: string;
+  bank_AccountNumber:string;  //
+  bank_Branch:string;  //
+  card_EXDate: string;
+  card_Number:string; //
+  card_CVC: string;
+  card_HolderName: string;
+  balance: number;
+  fine: number;
+  rate: number;
+  ratedPeople: number;
 }
