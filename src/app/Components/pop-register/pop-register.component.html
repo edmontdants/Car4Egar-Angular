@@ -1,21 +1,22 @@
 <h2 mat-dialog-title>Register</h2>
-<form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
+<div>{{newUser | json}}</div>
+<form #registrationForm="ngForm" (ngSubmit)="addnewuser()">
   <mat-dialog-content>
     <mat-form-field>
-      <input matInput name="username" placeholder="Username" ngModel required>
-      
+      <input matInput name="username" placeholder="Username" [(ngModel)]="newUser.userName" required pattern="[A-Za-z]{3,}">
+
     </mat-form-field>
     <mat-form-field>
-      <input matInput name="email" placeholder="Email" ngModel required email>
+      <input matInput name="email" placeholder="Email" [(ngModel)]="newUser.email" required email>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="password" name="password" placeholder="Password" ngModel required>
+      <input matInput #pass type="password" name="password" placeholder="Password" [(ngModel)]="newUser.password" required >
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="password" name="confirmPassword" placeholder="Confirm Password" ngModel required>
+      <input matInput #Cpass  type="password" name="confirmPassword" placeholder="Confirm Password"  required   >
     </mat-form-field>
     <mat-form-field>
-      <input matInput name="nid" placeholder="National ID" ngModel required>
+      <input matInput name="nid" placeholder="National ID" [(ngModel)]="newUser.nid" required>
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions>
