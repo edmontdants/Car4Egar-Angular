@@ -14,6 +14,12 @@ export class CarService {
     {
       return this.http.get<any[]>(this.baseApiUrl + '/Admin/GetAllCars');
     }
+
+  // SendCarRequest(id:string, carVin:string ,days:number) : Observable<ICar>
+  // {
+  //   id = '12345678901234';
+  //   return this.http.post<Developer>(this.baseApiUrl + '/api/Developer', adddeveloper);
+  // }
   // addDeveloper(adddeveloper:Developer) : Observable<Developer>
   // {
   //   adddeveloper.id = '8AA63E57-0000-418B-8CE2-3946C8D4E5FC';
