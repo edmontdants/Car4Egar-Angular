@@ -17,6 +17,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
+import {MatDialogModule} from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     CarCardsComponent,
@@ -39,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
 
   ],
   exports:[

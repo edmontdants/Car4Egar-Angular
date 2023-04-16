@@ -224,3 +224,21 @@ mat-slider {
   color: #E71853;
 
 }
+.cardPopUp{
+  outline: none;
+  border: none;
+  padding: 0;
+}
+.SendRequestBtn{
+  background-color: #E71853 !important;
+  color: white !important;
+  font-size: 22px;
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+.SendRequestBtn:focus{
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
