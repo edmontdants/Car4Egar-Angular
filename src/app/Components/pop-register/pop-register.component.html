@@ -1,1 +1,25 @@
-<p>pop-register works!</p>
+<h2 mat-dialog-title>Register</h2>
+<form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput name="username" placeholder="Username" ngModel required>
+      
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="email" placeholder="Email" ngModel required email>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" name="password" placeholder="Password" ngModel required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" name="confirmPassword" placeholder="Confirm Password" ngModel required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="nid" placeholder="National ID" ngModel required>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button type="submit" [disabled]="!registrationForm.valid">Register</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</form>
