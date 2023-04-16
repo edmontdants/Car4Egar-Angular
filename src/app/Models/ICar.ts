@@ -18,6 +18,8 @@ image:string,
 insurance:boolean,
 gearBoxType:string,
 isActivated:boolean,
-ownerId:string
+ownerId:string,
+ownerPic:string,
+ownerName:string
 }
 

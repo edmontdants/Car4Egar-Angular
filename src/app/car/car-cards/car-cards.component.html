@@ -153,16 +153,17 @@
 
           <div class="CarsCards">
             <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let car of FilteredCars">
-                <a href="#">
+              <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let car of FilteredCars" >
+
+                <a type="button" class="cardPopUp" data-bs-toggle="modal" href='#{{car.vin}}'>
                   <div class="car_card">
                     <div class="carImgBox">
                       <img src="../../../assets/{{car.image}}" alt="" height="200">
                       <p class="CarPricePerDay"> {{car.costPerDay}} LE<span>Price Per Day</span></p>
                     </div>
                     <div class="OwnerInfo">
-                      <img src="../../../assets/user1.png" class="rounded-circle" alt="" width="50">
-                      <span>{{car.ownerId}}</span>
+                      <img src="../../../assets/{{car.ownerPic}}" class="rounded-circle" alt="" width="50">
+                      <span>{{car.ownerName}}</span>
                     </div>
                     <div class="CarInfo">
                       <span class="fw-bold">{{car.brandName}} - {{car.modelName}} </span>
@@ -176,6 +177,52 @@
                     </div>
                   </div>
                 </a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="{{car.vin}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered  modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="text-center" id="staticBackdropLabel">Car Informations</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+
+
+                        <img src="../../../assets/{{car.image}}" alt="" class="w-100" height="300">
+                        <hr>
+                        <div class="row">
+                          <div class="col-lg-9">
+                            <p class="bg-light mb-2">Model: {{car.modelName}}</p>
+                            <p class="bg-light mb-2">Brand: {{car.brandName}}</p>
+                            <p class="bg-light mb-2">Model Year: {{car.year}}</p>
+                            <hr>
+                            <h2>Owner Info:</h2>
+                            <div class="OwnerInfo">
+                              <img src="../../../assets/{{car.ownerPic}}" class="rounded-circle" alt="" width="50">
+                              <p>Owner Name: {{car.ownerName}}</p>
+                            </div>
+                            <hr>
+                            <div class="row">
+                              <div class="col-sm-3"><app-star class="d-inline" [rating]="car.rate"></app-star></div>
+                              <div class="col-sm-3"><span>( {{car.rate}} OF 5 )</span></div>
+                              <div class="col-sm-3"><span>(Rated By: {{car.ratedPeople}} Person )</span></div>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="col-lg-3">
+                            <h1>{{car.costPerDay*7}}</h1>
+                            <h2>Total For 7 Days</h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#" type="button" class="btn btn-success w-100 SendRequestBtn">Send Request</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
 
             </div>
@@ -183,8 +230,8 @@
           </div>
 
           <mat-paginator [length]="this.FilteredCars.length"
-          [pageSize]="12"
-          [pageSizeOptions]="[12, 24, 48, 96]"
+          [pageSize]="6"
+          [pageSizeOptions]="[6 ,12,24,48,96]"
           aria-label="Select page"
           (page) = "OnPageChanges($event)"
           class="mt-3">
