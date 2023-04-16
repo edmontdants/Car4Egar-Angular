@@ -47,7 +47,7 @@ export class PopRegisterComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    alert(`${this.datenow}`)
+    //alert(`${this.datenow}`)
   }
 
   addnewuser() {
@@ -59,7 +59,7 @@ export class PopRegisterComponent implements OnInit {
         this.router.navigateByUrl('/UserDashBoard');
       },
       error: (err: Error) => {
-        alert(err.message);
+        //alert(err.message);
       },
     };
 
