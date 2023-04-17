@@ -11,9 +11,12 @@ import { environment } from 'src/environment/environment';
 @Injectable({
   providedIn: 'root',
 })
+////Class////////
 export class RegistrationService {
+  //Variable//
   httpOpsion;
-
+  //-----------------------------------
+  //constructor//
   constructor(private httpclient: HttpClient) {
     this.httpOpsion = {
       headers: new HttpHeaders({
@@ -22,7 +25,8 @@ export class RegistrationService {
       }),
     };
   }
-
+  //--------------------------------------
+  //Methods//
   RegistrationNewUser(newUser: ISystemUser): Observable<ISystemUser> {
     return this.httpclient.post<ISystemUser>(
       `${environment.apiBaseUrl}/SystemUser/Register`,
@@ -30,4 +34,30 @@ export class RegistrationService {
       this.httpOpsion
     );
   }
+
+  getalluser(): Observable<ISystemUser> {
+    return this.httpclient.get<ISystemUser>(
+      `${environment.apiBaseUrl}/SystemUser/AllUsers`
+    );
+  }
+
+  getuserByEmail(email:string): Observable<ISystemUser> {
+    const data :string = `"${email}"`
+    return this.httpclient.post<ISystemUser>(`${environment.apiBaseUrl}/SystemUser/UsersEmail`,
+    data,
+    this.httpOpsion);
+  }
+
+  getuserByNID(nid:string): Observable<ISystemUser> {
+    return this.httpclient.get<ISystemUser>(`${environment.apiBaseUrl}/SystemUser/UsersNID`+'/'+nid);
+  }
+
+  isloggedin(){
+    return sessionStorage.getItem('userNID')!=null;
+  }
+  getrole(){
+    return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';
+  }
+  //--------------------------------------------------------
+
 }
