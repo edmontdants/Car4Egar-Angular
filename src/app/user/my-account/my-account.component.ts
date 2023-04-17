@@ -1,20 +1,64 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ISystemUser } from 'src/app/Models/isystem-user';
+import { RegistrationService } from 'src/app/Services/registration.service';
 
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.scss'],
 })
-export class MyAccountComponent {
+export class MyAccountComponent implements OnInit  {
   hide1 = true;
   hide2 = true;
   hide3 = true;
   hide4 = true;
-
   @ViewChild('fileInput') fileInput!: ElementRef;
   fileAttr = 'Driver Licence';
   fileAttr2 = 'Identity Doc';
+  UsarLogine?:ISystemUser;
+  userLoginNID!:string;
+
+  constructor(
+    private userRegister: RegistrationService,
+    private _snackBar: MatSnackBar
+  ){}
+
+
+
+  ngOnInit(): void {
+
+// this.userLoginNID = sessionStorage.getItem('userNID')?.toString()
+
+// const observer = {
+//   next: (userlogin: ISystemUser) => {
+
+//   },
+//   error: (error: HttpErrorResponse) => {
+//     if (error.error == 'Not Register User') {
+//       this._snackBar.open(`${error.error}`, 'Dismiss', {
+//         duration: 3000,
+//         panelClass: ['my-snackbar'],
+//       });
+//     } else {
+//       this._snackBar.open('Cant Connect To The Server', 'Dismiss', {
+//         duration: 3000,
+//         panelClass: ['my-snackbar'],
+//       });
+//     }
+//   },
+// };
+
+
+// this.userRegister.getuserByNID((sessionStorage.getItem('userNID'))?).subscribe(observer)
+
+
+
+
+  }
+;
   uploadFileEvt(imgFile: any) {
     if (imgFile.target.files && imgFile.target.files[0]) {
       this.fileAttr = '';

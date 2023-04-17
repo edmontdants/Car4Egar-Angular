@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {render} from 'creditcardpayments/creditCardPayments';
-import { configure, payment } from 'paypal-rest-sdk';
+//import {render} from 'creditcardpayments/creditCardPayments';
+//import { configure, payment } from 'paypal-rest-sdk';
 
 @Component({
   selector: 'app-my-payments',
