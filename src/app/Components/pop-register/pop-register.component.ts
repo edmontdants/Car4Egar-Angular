@@ -3,7 +3,12 @@ import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { ISystemUser } from 'src/app/Models/isystem-user';
 import { RegistrationService } from 'src/app/Services/registration.service';
 import { Router } from '@angular/router';
-import { FormGroup, NgModel, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {
+  FormGroup,
+  NgModel,
+  ValidationErrors,
+  ValidatorFn,
+} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -12,13 +17,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './pop-register.component.html',
   styleUrls: ['./pop-register.component.scss'],
 })
-export class  PopRegisterComponent
-{
-  //datenow:string =this.getCurrentDateTime()
-  hide1:boolean=true;
-  hide2:boolean=true;
+export class PopRegisterComponent {
+  hide1: boolean = true;
+  hide2: boolean = true;
   confirmPassword?: string;
-  durationInSeconds = 5;
   newUser: ISystemUser = {
     nid: '',
     userName: '',
@@ -52,38 +54,36 @@ export class  PopRegisterComponent
   constructor(
     public dialogRef: MatDialogRef<PopRegisterComponent>,
     private userRegister: RegistrationService,
-    private router: Router,private _snackBar: MatSnackBar
-  ) {
-
-  }
-
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
   addnewuser() {
     const observer = {
       next: (user: ISystemUser) => {
         console.log('Registration is Done');
         this.dialogRef.close();
-        // not recommended
-        // Use instead Toast (snackbar: https://material.angular.io/components/snack-bar/overview), BS Alert,...
         this.router.navigateByUrl('/UserDashBoard');
       },
-      error:  (error: HttpErrorResponse) => {
-        this._snackBar.open(`${error.error}`, 'Dismiss', {
-          duration: 3000,
-          panelClass: ['my-snackbar'],
-        });
+      error: (error: HttpErrorResponse) => {
+        if (error.error=="This User Already Exist") {
+          this._snackBar.open(`${error.error}`, 'Dismiss', {
+            duration: 3000,
+            panelClass: ['my-snackbar'],
+          });
+
+
+        }
+        else{
+          this._snackBar.open("Cant Connect To The Server", 'Dismiss', {
+            duration: 3000,
+            panelClass: ['my-snackbar'],
+          });
+        }
+
       },
     };
 
     this.userRegister.RegistrationNewUser(this.newUser).subscribe(observer);
   }
-
-
-
 }
-
-
-
-
-
-
