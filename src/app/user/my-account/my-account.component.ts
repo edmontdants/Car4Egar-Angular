@@ -19,7 +19,7 @@ export class MyAccountComponent implements OnInit  {
   fileAttr = 'Driver Licence';
   fileAttr2 = 'Identity Doc';
   UsarLogine?:ISystemUser;
-  userLoginNID!:string;
+  userLoginNID:string="";
 
   constructor(
     private userRegister: RegistrationService,
@@ -30,29 +30,29 @@ export class MyAccountComponent implements OnInit  {
 
   ngOnInit(): void {
 
-// this.userLoginNID = sessionStorage.getItem('userNID')?.toString()
+//this.userLoginNID = sessionStorage.getItem('userNID')
 
-// const observer = {
-//   next: (userlogin: ISystemUser) => {
+const observer = {
+  next: (userlogin: ISystemUser) => {
 
-//   },
-//   error: (error: HttpErrorResponse) => {
-//     if (error.error == 'Not Register User') {
-//       this._snackBar.open(`${error.error}`, 'Dismiss', {
-//         duration: 3000,
-//         panelClass: ['my-snackbar'],
-//       });
-//     } else {
-//       this._snackBar.open('Cant Connect To The Server', 'Dismiss', {
-//         duration: 3000,
-//         panelClass: ['my-snackbar'],
-//       });
-//     }
-//   },
-// };
+  },
+  error: (error: HttpErrorResponse) => {
+    if (error.error == 'Not Register User') {
+      this._snackBar.open(`${error.error}`, 'Dismiss', {
+        duration: 3000,
+        panelClass: ['my-snackbar'],
+      });
+    } else {
+      this._snackBar.open('Cant Connect To The Server', 'Dismiss', {
+        duration: 3000,
+        panelClass: ['my-snackbar'],
+      });
+    }
+  },
+};
 
 
-// this.userRegister.getuserByNID((sessionStorage.getItem('userNID'))?).subscribe(observer)
+//this.userRegister.getuserByNID((sessionStorage.getItem('userNID'))?).subscribe(observer)
 
 
 
