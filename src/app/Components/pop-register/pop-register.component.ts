@@ -4,6 +4,8 @@ import { ISystemUser } from 'src/app/Models/isystem-user';
 import { RegistrationService } from 'src/app/Services/registration.service';
 import { Router } from '@angular/router';
 import { FormGroup, NgModel, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pop-register',
@@ -16,7 +18,7 @@ export class  PopRegisterComponent
   hide1:boolean=true;
   hide2:boolean=true;
   confirmPassword?: string;
-  passwordMismatch:boolean=false;
+  durationInSeconds = 5;
   newUser: ISystemUser = {
     nid: '',
     userName: '',
@@ -50,9 +52,9 @@ export class  PopRegisterComponent
   constructor(
     public dialogRef: MatDialogRef<PopRegisterComponent>,
     private userRegister: RegistrationService,
-    private router: Router
+    private router: Router,private _snackBar: MatSnackBar
   ) {
-    
+
   }
 
 
@@ -60,12 +62,16 @@ export class  PopRegisterComponent
     const observer = {
       next: (user: ISystemUser) => {
         console.log('Registration is Done');
-        this.dialogRef.close(); // not recommended
+        this.dialogRef.close();
+        // not recommended
         // Use instead Toast (snackbar: https://material.angular.io/components/snack-bar/overview), BS Alert,...
         this.router.navigateByUrl('/UserDashBoard');
       },
-      error: (err: Error) => {
-        //alert(err.message);
+      error:  (error: HttpErrorResponse) => {
+        this._snackBar.open(`${error.error}`, 'Dismiss', {
+          duration: 3000,
+          panelClass: ['my-snackbar'],
+        });
       },
     };
 
@@ -73,25 +79,11 @@ export class  PopRegisterComponent
   }
 
 
+
 }
 
 
 
-//   getCurrentDateTime(): string {
-//     let now: Date = new Date();
-//     let year: number = now.getFullYear();
-//     let month: number = now.getMonth() + 1; // month is zero-indexed, so add 1 to get the correct month
-//     let day: number = now.getDate();
-//     let hour: number = now.getHours();
-//     let minute: number = now.getMinutes();
-//     let second: number = now.getSeconds();
-//     let monthStr: string = month.toString().padStart(2, '0');
-//   let dayStr: string = day.toString().padStart(2, '0');
-//   let hourStr: string = hour.toString().padStart(2, '0');
-//   let minuteStr: string = minute.toString().padStart(2, '0');
-//   let secondStr: string = second.toString().padStart(2, '0');
-//   return `${year}-${monthStr}-${dayStr} ${hourStr}:${minuteStr}:${secondStr}`;
 
-// }
 
 

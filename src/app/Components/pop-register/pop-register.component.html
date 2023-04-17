@@ -29,7 +29,7 @@
           <input #passin1="ngModel" matInput [type]="hide1 ? 'password' : 'text'" name="password"
             [(ngModel)]="newUser.password" placeholder="At Last 8 Char" required pattern="^.{8,}$">
           <mat-hint *ngIf="passin1.errors?.['pattern']">At Last 8 Char</mat-hint>
-          <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+          <button mat-icon-button matSuffix type="button" (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide1">
             <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
@@ -40,10 +40,10 @@
         <mat-form-field appearance="fill">
           <mat-label>Confirm Password</mat-label>
           <input #passin2="ngModel" matInput [type]="hide2 ? 'password' : 'text'" name="confirmPassword"
-            [(ngModel)]="confirmPassword" [ngModelOptions]="{updateOn: 'blur'}" required
+            [(ngModel)]="confirmPassword" required
             #confirmPasswordInput="ngModel" placeholder="At Last 8 Char">
           <mat-hint *ngIf="passin1.value!=passin2.value&&passin2.dirty">Password Not Match</mat-hint>
-          <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+          <button mat-icon-button matSuffix type="button" (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide2">
             <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
