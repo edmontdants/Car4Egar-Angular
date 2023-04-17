@@ -8,11 +8,22 @@ import { MyBorrowingsComponent } from './user/my-borrowings/my-borrowings.compon
 import { CarCardsComponent } from './car/car-cards/car-cards.component';
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 
+
+// const routes: Routes = [
+//   {path: '', redirectTo: '/home', pathMatch:'full'},
+//   {path : 'home', component: HomeComponent, title: 'Home'},
+//   {path: 'products', component: ProductListComponent,  canActivate: [UserAuthGuard]},
+//   {path: 'products/:id', component: ProductDetailComponent, canActivate: [UserAuthGuard, ProductDetailGuard]},
+//   {path: 'user', loadChildren: () => import('src/app/user/user.module').then((m)=> m.UserModule)},
+//   {path:"**", component:NotFoundComponent}
+// ];
+
+
 const routes: Routes = [
   {path: '', component:LandingPageComponent},
   {path: 'UserDashBoard', component:UserDashBoardComponent},
   {path: 'SearchACar', component:CarCardsComponent},
-  {path: 'LandingPage', component:LandingPageComponent}
+  {path: 'LandingPage', component:LandingPageComponent,title: 'LandingPage'}
 
 //,children:[
 //   {path: 'MyAccount', component:MyAccountComponent},

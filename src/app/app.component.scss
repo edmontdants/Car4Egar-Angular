@@ -2,9 +2,12 @@
   position: fixed;
   bottom: 15px;
   right: 15px;
+  z-index: 5;
+
 }
 .watsapp_api svg{
   font-size: 3.5em;
+  color: #E71853;
 }
 @media (max-width:700px) {
   .watsapp_api{
@@ -34,11 +37,16 @@
   justify-content: space-between;
 }
 
-.body{
-  padding-top: 64px;
+.bg-light{
+  background-color: #35296D !important;
+
 }
-@media (max-width:599px) {
-  .body{
-    padding-top: 56px;
-  }
+.navbar-brand , .nav-link{
+    color: white !important;
+}
+.navbar-toggler{
+  color: #E71853 !important;
+}
+.navbar-toggler-icon span{
+  color: white !important;
 }
