@@ -65,6 +65,7 @@ export class PopRegisterComponent {
         this.router.navigateByUrl('/UserDashBoard');
         sessionStorage.setItem('userNID', this.newUser.nid);
         sessionStorage.setItem('role', this.newUser.role);
+        this.userRegister.login();
         this.router.navigate(['UserDashBoard']);
       },
       error: (error: HttpErrorResponse) => {

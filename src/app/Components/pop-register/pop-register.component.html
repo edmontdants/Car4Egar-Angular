@@ -27,7 +27,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
           <input #passin1="ngModel" matInput [type]="hide1 ? 'password' : 'text'" name="password"
-            [(ngModel)]="newUser.password" placeholder="At Last 8 Char" required pattern="^.{8,}$">
+            [(ngModel)]="newUser.password" placeholder="At Last 8 Char" required pattern="^.{8,40}$">
           <mat-hint *ngIf="passin1.errors?.['pattern']">At Last 8 Char</mat-hint>
           <button mat-icon-button matSuffix type="button" (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide1">

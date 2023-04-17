@@ -33,6 +33,7 @@ export class PopLoginComponent {
             this.dialogRef.close();
             sessionStorage.setItem('userNID', this.userlogined.nid);
             sessionStorage.setItem('role', this.userlogined.role);
+            this.userRegister.login();
             this.router.navigateByUrl('/UserDashBoard');
         }
         else this.inviledpass=true;

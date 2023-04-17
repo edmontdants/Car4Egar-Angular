@@ -7,13 +7,13 @@
       </ng-template>
       <!-- -------------------form 1------------------------------------- -->
       <div>
-        <form>
+        <form #PersonalInfo="ngForm" (ngSubmit)="saveinfo()">
           <div class="container-fluid my-5">
             <div class="row ">
               <div class="col-12 col-md-6 col-lg-3">
                 <div style="text-align: left;margin-bottom: 20px; font-size: large;">
                   <h2 style="color: #35296D;"> <i class="fa-solid fa-circle-user"></i>&nbsp; Your Account Picture:
-                    <mat-divider ></mat-divider>
+                    <mat-divider></mat-divider>
                   </h2>
                 </div>
               </div>
@@ -32,7 +32,7 @@
                 <div style="text-align: left;margin-bottom: 20px; font-size: large;">
                   <h2 style="color: #35296D;"> <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp; Your
                     information:
-                    <mat-divider ></mat-divider>
+                    <mat-divider></mat-divider>
                   </h2>
                 </div>
               </div>
@@ -40,11 +40,12 @@
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-12 col-md-6 col-lg-3">
                 <p>
-                  <mat-form-field appearance="fill">
-                    <mat-label>Name</mat-label>
-                    <input matInput placeholder="Placeholder">
+                  <mat-form-field>
+                    <input #userNameInp="ngModel" matInput name="username" placeholder="Letters Only"
+                      [(ngModel)]="UsarLogine.userName" required pattern="[A-Za-z]{3,}">
+                    <mat-label>User Name</mat-label>
                     <mat-icon matSuffix>perm_identity</mat-icon>
-                    <mat-hint>Hint</mat-hint>
+                    <mat-hint *ngIf="userNameInp.errors?.['pattern']&&userNameInp.touched">Must be alphabet at least 3 letters</mat-hint>
                   </mat-form-field>
                 </p>
               </div>
@@ -52,9 +53,10 @@
                 <p>
                   <mat-form-field appearance="fill">
                     <mat-label>Email</mat-label>
-                    <input matInput placeholder="Placeholder">
+                    <input #Emailinp="ngModel" matInput name="email" placeholder="aa@aa.aa"
+                      [(ngModel)]="UsarLogine.email" disabled>
                     <mat-icon matSuffix>email</mat-icon>
-                    <mat-hint>Hint</mat-hint>
+                    <mat-hint>Can Modified IN Account Setting </mat-hint>
                   </mat-form-field>
                 </p>
               </div>
@@ -62,9 +64,10 @@
                 <p>
                   <mat-form-field appearance="fill">
                     <mat-label>Phone</mat-label>
-                    <input matInput placeholder="Placeholder">
+                    <input #PhoneNum="ngModel" name="Phone" matInput placeholder="011/012/010/015/12345678"
+                      [(ngModel)]="UsarLogine.phoneNumber" required pattern="^(011|012|010|015)\d{8}$">
                     <mat-icon matSuffix>phone</mat-icon>
-                    <mat-hint>Hint</mat-hint>
+                    <mat-hint *ngIf="PhoneNum.errors?.['pattern']&&PhoneNum.touched">Must be (01)1/2/0/5/12345678</mat-hint>
                   </mat-form-field>
                 </p>
               </div>
@@ -74,17 +77,19 @@
                 <p>
                   <mat-form-field appearance="fill">
                     <mat-label>Address</mat-label>
-                    <input matInput placeholder="Placeholder">
+                    <input matInput #Address="ngModel" name="Address" matInput placeholder="Address"
+                      [(ngModel)]="UsarLogine.address" required>
                     <mat-icon matSuffix>location_on</mat-icon>
-                    <mat-hint>Hint</mat-hint>
+                    <mat-hint *ngIf="Address.errors?.['required']&&Address.touched">Must be Entered</mat-hint>
                   </mat-form-field>
                 </p>
               </div>
               <div class="col-12 col-md-6 col-lg-3">
                 <mat-form-field appearance="fill">
                   <mat-label>Birth date</mat-label>
-                  <input matInput [matDatepicker]="picker">
-                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <input matInput [matDatepicker]="picker" #BirthDate="ngModel" name="BirthDate"
+                    [(ngModel)]="UsarLogine.birthDate" required>
+                  <mat-hint *ngIf="Address.errors?.['required']&&BirthDate.touched">MM/DD/YYYY Must Entered</mat-hint>
                   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -95,10 +100,11 @@
                     <mat-label><b>
                         <mat-icon>person_search</mat-icon> Gender
                       </b></mat-label>
-                    <mat-select>
-                      <mat-option value="primary"><i class="fa fa-male" aria-hidden="true"></i> Male</mat-option>
-                      <mat-option value="accent"><i class="fa fa-female" aria-hidden="true"></i> Female</mat-option>
+                    <mat-select #Gander="ngModel" [(ngModel)]="UsarLogine.gender" name="Gander" required>
+                      <mat-option value="Male"><i class="fa fa-male" aria-hidden="true"></i> Male</mat-option>
+                      <mat-option value="Female"><i class="fa fa-female" aria-hidden="true"></i> Female</mat-option>
                     </mat-select>
+                    <mat-hint *ngIf="Gander.errors?.['required']&&Gander.touched">Must Chosen</mat-hint>
                   </mat-form-field>
                 </p>
               </div>
@@ -107,9 +113,9 @@
                   <p>
                     <mat-form-field appearance="fill">
                       <mat-label>National ID</mat-label>
-                      <input matInput placeholder="Placeholder">
+                      <input matInput #NID="ngModel" [(ngModel)]="UsarLogine.nid" placeholder="14 Numbers" name="NID" disabled>
                       <mat-icon matSuffix>featured_play_list</mat-icon>
-                      <mat-hint>Hint</mat-hint>
+                      <mat-hint>Can`t Modified</mat-hint>
                     </mat-form-field>
                   </p>
                 </div>
@@ -117,7 +123,7 @@
               <div class="row justify-content-center  align-items-start g-2 ">
                 <div class="col-12 col-md-6 col-lg-3">
                   <p>
-                    <button mat-fab extended color="accent">
+                    <button mat-fab extended color="accent" type="submit" [disabled]="!PersonalInfo.valid">
                       <mat-icon>change_circle</mat-icon>
                       Save Changes
                     </button>
@@ -136,7 +142,7 @@
       </ng-template>
       <!-- -------------------form 2------------------------------------- -->
       <div>
-        <form>
+        <form #BorrowingVV="ngForm" (ngSubmit)="EditBorrower()">
           <div class="container-fluid my-5">
             <div class="row ">
               <div class="col-12 col-md-6 col-lg-3">
@@ -144,53 +150,43 @@
                   <h2 style="color: #35296D;">
                     <mat-icon>verified_user</mat-icon>&nbsp; Borrowing
                     Verification:
-                    <mat-divider ></mat-divider>
+                    <mat-divider></mat-divider>
                   </h2>
                 </div>
               </div>
             </div>
             <div class="row justify-content-center align-items-center g-2">
-              <div class="col-12  col-lg-6" >
+              <div class="col-12  col-lg-6">
                 <mat-form-field style="width: 350px;">
                   <div>
                     <mat-toolbar>
                       <!-- Display files names -->
-                      <input matInput [(ngModel)]="fileAttr" readonly name="name"  />
+                      <input matInput [(ngModel)]="fileAttr" readonly name="name" />
                       <!-- Browse Button -->
-                      <button mat-fab extended color="primary"><mat-icon>upload</mat-icon>Upload</button>
+                      <button mat-fab extended color="primary" type="button">
+                        <mat-icon>upload</mat-icon>Upload
+                      </button>
                     </mat-toolbar>
                     <!-- Fetch selected filed on change -->
-                    <input
-                      type="file"
-                      #fileInput
-                      id="uploadFile"
-                      (change)="uploadFileEvt($event)"
-                      name="uploadFile"
-                      multiple="multiple"
-                      accept="image/*"
-                    />
+                    <input type="file" #fileInput id="uploadFile" (change)="uploadFileEvt($event)" name="uploadFile"
+                      multiple="multiple" accept="image/*" />
                   </div>
                 </mat-form-field>
               </div>
-              <div class="col-12  col-lg-6" >
+              <div class="col-12  col-lg-6">
                 <mat-form-field style="width: 350px;">
                   <div>
                     <mat-toolbar>
                       <!-- Display files names -->
-                      <input matInput [(ngModel)]="fileAttr2" readonly name="name2"  />
+                      <input matInput [(ngModel)]="fileAttr2" readonly name="name2" />
                       <!-- Browse Button -->
-                      <button mat-fab extended color="primary"><mat-icon>upload</mat-icon>Upload</button>
+                      <button mat-fab extended color="primary" type="button">
+                        <mat-icon>upload</mat-icon>Upload
+                      </button>
                     </mat-toolbar>
                     <!-- Fetch selected filed on change -->
-                    <input
-                      type="file"
-                      #fileInput2
-                      id="uploadFile"
-                      (change)="uploadFileEvt2($event)"
-                      name="uploadFile"
-                      multiple="multiple"
-                      accept="image/*"
-                    />
+                    <input type="file" #fileInput2 id="uploadFile" (change)="uploadFileEvt2($event)" name="uploadFile"
+                      multiple="multiple" accept="image/*" />
                   </div>
                 </mat-form-field>
               </div>
@@ -252,7 +248,7 @@
               <div class="col-12 col-md-6 col-lg-3">
                 <div style="text-align: left;margin-bottom: 20px; font-size: large;">
                   <h2 style="color: #35296D;"> <i class="fa-solid fa-envelope"></i>&nbsp; Change Email:
-                    <mat-divider ></mat-divider>
+                    <mat-divider></mat-divider>
                   </h2>
                 </div>
               </div>
@@ -299,7 +295,7 @@
               <div class="col-12 col-md-6 col-lg-3">
                 <div style="text-align: left;margin-bottom: 20px; font-size: large;">
                   <h2 style="color: #35296D;"><i class="fa fa-key" aria-hidden="true"></i>&nbsp; Change Password:
-                    <mat-divider ></mat-divider>
+                    <mat-divider></mat-divider>
                   </h2>
                 </div>
               </div>
