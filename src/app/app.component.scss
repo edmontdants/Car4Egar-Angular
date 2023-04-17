@@ -15,3 +15,30 @@
     font-size: 3em;
   }
 }
+
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.mat-toolbar-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.body{
+  padding-top: 64px;
+}
+@media (max-width:599px) {
+  .body{
+    padding-top: 56px;
+  }
+}

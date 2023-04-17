@@ -56,6 +56,7 @@ import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
 import{LandingPageComponent} from './home/landing-page/landing-page.component';
 import { HomeModule } from './home/home.module';
+import { HeaderComponent } from './home/header/header.component';
 
 
 @NgModule({
@@ -121,7 +122,7 @@ import { HomeModule } from './home/home.module';
     ScrollingModule,
     ReactiveFormsModule,
     FormsModule,
-
+    HomeModule
 
   ],
   providers: [],

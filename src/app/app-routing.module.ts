@@ -9,6 +9,7 @@ import { CarCardsComponent } from './car/car-cards/car-cards.component';
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 
 const routes: Routes = [
+  {path: '', component:LandingPageComponent},
   {path: 'UserDashBoard', component:UserDashBoardComponent},
   {path: 'SearchACar', component:CarCardsComponent},
   {path: 'LandingPage', component:LandingPageComponent}

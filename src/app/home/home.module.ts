@@ -48,7 +48,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { Component } from '@angular/core';
+import { LayoutModule } from '@angular/cdk/layout';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -109,7 +112,14 @@ import { Component } from '@angular/core';
     ScrollingModule,
     ReactiveFormsModule,
     FormsModule,
-
+    LayoutModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatSidenavModule
+  ],
+  exports:[
+    HeaderComponent,
   ]
+
 })
 export class HomeModule { }

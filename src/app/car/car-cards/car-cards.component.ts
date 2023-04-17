@@ -22,29 +22,15 @@ import { IRentRequest } from 'src/app/Models/IRentRequest';
 })
 export class CarCardsComponent implements OnInit {
   Cars: ICar[] =[];
-  animal: string='';
-  name: string='';
 
-  constructor(private carService: CarService, public dialog: MatDialog,private httpClient: HttpClient)
+  constructor(private carService: CarService, public dialog: MatDialog)
   {}
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CarProfileComponent, {
-      data: {name: this.name, animal: this.animal},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
-  }
-
   ngOnInit(): void {
     this.carService.getAllCars()
     .subscribe({
       next : (cars) => {
         this.Cars = cars;
-        this.FilteredCars = cars;
+        this.FilteredCars = cars.slice(0,3);
         this.NumberOfAvailableCarsOnly = this.Cars.filter(
           (car: ICar) => car.available == true
         ).length;
@@ -339,7 +325,7 @@ export class CarCardsComponent implements OnInit {
 
   // ];
 
-  FilteredCars: ICar[] = this.Cars.slice(0,12);;
+  FilteredCars: ICar[] = this.Cars.slice(0,3);
 
 
   //***************************************//
@@ -663,10 +649,10 @@ export class CarCardsComponent implements OnInit {
   OnPageChanges(event: PageEvent){
     const startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
-    if(endIndex> this.FilteredCars.length){
-      endIndex = this.FilteredCars.length;
+    if(endIndex> this.Cars.length){
+      endIndex = this.Cars.length;
     }
-    this.FilteredCars = this.FilteredCars.slice(startIndex,endIndex)
+    this.FilteredCars = this.Cars.slice(startIndex,endIndex)
   }
   //***************************************//
   //***** Pop up Card To Send Request *****//

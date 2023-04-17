@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PopLoginComponent } from 'src/app/Components/pop-login/pop-login.component';
 import { PopRegisterComponent } from 'src/app/Components/pop-register/pop-register.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-landing-page',
@@ -10,7 +14,7 @@ import { PopRegisterComponent } from 'src/app/Components/pop-register/pop-regist
 })
 export class LandingPageComponent {
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private breakpointObserver: BreakpointObserver) {}
 
   openRegistrationDialog(): void {
     const dialogRef = this.dialog.open(PopRegisterComponent, {
@@ -34,6 +38,8 @@ export class LandingPageComponent {
       }
     });
   }
+
+
 
 
 }

@@ -248,12 +248,12 @@
           </div>
 
           <mat-paginator [length]="this.FilteredCars.length"
-          [pageSize]="6"
-          [pageSizeOptions]="[6 ,12,24,48,96]"
+          [pageSize]="3"
+          [pageSizeOptions]="[3 ,6,12,24]"
           aria-label="Select page"
           (page) = "OnPageChanges($event)"
           class="mt-3">
-    </mat-paginator>
+          </mat-paginator>
         </div>
 
       </div>
