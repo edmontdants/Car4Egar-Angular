@@ -9,6 +9,7 @@ import { CarCardsComponent } from './car/car-cards/car-cards.component';
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { PopLoginComponent } from './Components/pop-login/pop-login.component';
 import { AuthGuard } from './auth.guard';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 
 
 // const routes: Routes = [
@@ -24,9 +25,10 @@ import { AuthGuard } from './auth.guard';
 const routes: Routes = [
 
   {path: '', component:LandingPageComponent},
-  {path: 'UserDashBoard', component:UserDashBoardComponent},
-  {path: 'SearchACar', component:CarCardsComponent},
-  {path: 'LandingPage', component:LandingPageComponent,title: 'LandingPage'}
+  {path: 'UserDashBoard', component:UserDashBoardComponent,canActivate:[AuthGuard]},
+  {path: 'SearchACar', component:CarCardsComponent,canActivate:[AuthGuard]},
+  {path: 'LandingPage', component:LandingPageComponent,title: 'LandingPage'},
+  {path: 'Admin', component:AdminDashboardComponent,title: 'Admin'}
 
   //,children:[
   //   {path: 'MyAccount', component:MyAccountComponent},
