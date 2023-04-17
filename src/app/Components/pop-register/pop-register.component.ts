@@ -26,7 +26,7 @@ export class PopRegisterComponent {
     userName: '',
     email: '',
     password: '',
-    role: '',
+    role: 'User',
     isActivated: true,
     address: '',
     phoneNumber: '',
@@ -57,33 +57,31 @@ export class PopRegisterComponent {
     private router: Router,
     private _snackBar: MatSnackBar
   ) {}
-
+  //methodes------------------------------------------------------
   addnewuser() {
     const observer = {
-      next: (user: ISystemUser) => {
-        console.log('Registration is Done');
+      next: () => {
         this.dialogRef.close();
         this.router.navigateByUrl('/UserDashBoard');
+        sessionStorage.setItem('userNID', this.newUser.nid);
+        sessionStorage.setItem('role', this.newUser.role);
+        this.router.navigate(['UserDashBoard']);
       },
       error: (error: HttpErrorResponse) => {
-        if (error.error=="This User Already Exist") {
+        if (error.error == 'This User Already Exist') {
           this._snackBar.open(`${error.error}`, 'Dismiss', {
             duration: 3000,
             panelClass: ['my-snackbar'],
           });
-
-
-        }
-        else{
-          this._snackBar.open("Cant Connect To The Server", 'Dismiss', {
+        } else {
+          this._snackBar.open('Cant Connect To The Server', 'Dismiss', {
             duration: 3000,
             panelClass: ['my-snackbar'],
           });
         }
-
       },
     };
-
     this.userRegister.RegistrationNewUser(this.newUser).subscribe(observer);
   }
+  ///----------------------------------------------------------------------------------
 }

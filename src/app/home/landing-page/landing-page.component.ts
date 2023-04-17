@@ -29,7 +29,7 @@ export class LandingPageComponent {
   }
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(PopLoginComponent, {
-      width: '500px'
+      width: '550px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

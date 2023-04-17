@@ -7,24 +7,27 @@ import { MyPaymentsComponent } from './user/my-payments/my-payments.component';
 import { MyBorrowingsComponent } from './user/my-borrowings/my-borrowings.component';
 import { CarCardsComponent } from './car/car-cards/car-cards.component';
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
+import { PopLoginComponent } from './Components/pop-login/pop-login.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path: '', component:LandingPageComponent},
-  {path: 'UserDashBoard', component:UserDashBoardComponent},
-  {path: 'SearchACar', component:CarCardsComponent},
-  {path: 'LandingPage', component:LandingPageComponent}
+  { path: '', component: LandingPageComponent },
+  { path: 'UserDashBoard', component: UserDashBoardComponent,canActivate:[AuthGuard] },
+  { path: 'SearchACar', component: CarCardsComponent,canActivate:[AuthGuard] },
+  { path: 'LandingPage', component: LandingPageComponent },
 
-//,children:[
-//   {path: 'MyAccount', component:MyAccountComponent},
-//   {path: 'MyCars', component:MyCarsComponent},
-//   {path: 'MyRequests', component:MyPaymentsComponent},
-//   {path: 'MyBorrowings', component:MyBorrowingsComponent},
-//   {path: 'MyPayments', component:MyBorrowingsComponent},
-//   ]}
- ];
+
+  //,children:[
+  //   {path: 'MyAccount', component:MyAccountComponent},
+  //   {path: 'MyCars', component:MyCarsComponent},
+  //   {path: 'MyRequests', component:MyPaymentsComponent},
+  //   {path: 'MyBorrowings', component:MyBorrowingsComponent},
+  //   {path: 'MyPayments', component:MyBorrowingsComponent},
+  //   ]}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
