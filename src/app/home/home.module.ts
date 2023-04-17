@@ -52,6 +52,9 @@ import { LayoutModule } from '@angular/cdk/layout';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Routes } from '@angular/router';
+import { UserDashBoardComponent } from '../user/user-dash-board/user-dash-board.component';
+import { CarCardsComponent } from '../car/car-cards/car-cards.component';
 
 
 
@@ -122,4 +125,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ]
 
 })
-export class HomeModule { }
+export class HomeModule {
+
+}
