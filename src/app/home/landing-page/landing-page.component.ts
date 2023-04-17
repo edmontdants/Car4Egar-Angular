@@ -9,7 +9,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { Routes } from '@angular/router';
 import { UserDashBoardComponent } from 'src/app/user/user-dash-board/user-dash-board.component';
 import { CarCardsComponent } from 'src/app/car/car-cards/car-cards.component';
-import {render} from 'creditcardpayments/creditCardPayments';
+//import {render} from 'creditcardpayments/creditCardPayments';
 
 @Component({
   selector: 'app-landing-page',

@@ -55,7 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfilePicComponent } from './profile-pic/profile-pic.component';
 import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
-import * as paypal from 'paypal-rest-sdk';
+//import * as paypal from 'paypal-rest-sdk';
 
 
 
