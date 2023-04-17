@@ -60,10 +60,10 @@
             <a class="nav-link"  (click)="onLogoutClick()" *ngIf="isLoggedIn">LogoutDemo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  (click)="openLoginDialog()" *ngIf="isLoggedIn">Login</a>
+            <a class="nav-link"  (click)="openLoginDialog()" *ngIf="!isLoggedIn">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  (click)="openRegistrationDialog()" >Register</a>
+            <a class="nav-link"  (click)="openRegistrationDialog()"  *ngIf="!isLoggedIn" >Register</a>
           </li>
 
           <li class="nav-item dropdown" *ngIf="isLoggedIn">
