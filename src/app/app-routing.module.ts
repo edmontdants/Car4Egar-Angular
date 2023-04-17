@@ -10,12 +10,23 @@ import { LandingPageComponent } from './home/landing-page/landing-page.component
 import { PopLoginComponent } from './Components/pop-login/pop-login.component';
 import { AuthGuard } from './auth.guard';
 
-const routes: Routes = [
-  { path: '', component: LandingPageComponent },
-  { path: 'UserDashBoard', component: UserDashBoardComponent,canActivate:[AuthGuard] },
-  { path: 'SearchACar', component: CarCardsComponent,canActivate:[AuthGuard] },
-  { path: 'LandingPage', component: LandingPageComponent },
 
+// const routes: Routes = [
+//   {path: '', redirectTo: '/home', pathMatch:'full'},
+//   {path : 'home', component: HomeComponent, title: 'Home'},
+//   {path: 'products', component: ProductListComponent,  canActivate: [UserAuthGuard]},
+//   {path: 'products/:id', component: ProductDetailComponent, canActivate: [UserAuthGuard, ProductDetailGuard]},
+//   {path: 'user', loadChildren: () => import('src/app/user/user.module').then((m)=> m.UserModule)},
+//   {path:"**", component:NotFoundComponent}
+// ];
+
+
+const routes: Routes = [
+
+  {path: '', component:LandingPageComponent},
+  {path: 'UserDashBoard', component:UserDashBoardComponent},
+  {path: 'SearchACar', component:CarCardsComponent},
+  {path: 'LandingPage', component:LandingPageComponent,title: 'LandingPage'}
 
   //,children:[
   //   {path: 'MyAccount', component:MyAccountComponent},

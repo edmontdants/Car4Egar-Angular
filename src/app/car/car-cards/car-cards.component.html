@@ -19,11 +19,18 @@
       </mat-select>
     </mat-form-field>
 
-    <div class="startDateSearch d-inline-block">
+    <!-- <mat-form-field appearance="fill">
+      <mat-label><i class="fa-solid fa-car-side"></i> Car Owner</mat-label>
+      <mat-select [(ngModel)]="SearchByCarOwner">
+        <mat-option *ngFor="let brand of Owners" [value]="brand">{{brand}}</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+    <!-- <div class="startDateSearch d-inline-block">
       <input [matDatepicker]="picker" placeholder="MM/DD/YYYY" class="startDateSearchInput" placeholder="StartDate">
       <mat-datepicker-toggle matIconSuffix [for]="picker" class="startDateSearchButton"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-    </div>
+    </div> -->
 
     <!-- <div class="endDateSearch">
         <input [matDatepicker]="picker" placeholder="MM/DD/YYYY" class="endDateSearchInput" placeholder="EndDate">

@@ -55,7 +55,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes } from '@angular/router';
 import { UserDashBoardComponent } from '../user/user-dash-board/user-dash-board.component';
 import { CarCardsComponent } from '../car/car-cards/car-cards.component';
-
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -118,7 +118,8 @@ import { CarCardsComponent } from '../car/car-cards/car-cards.component';
     LayoutModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    RouterModule
   ],
   exports:[
     HeaderComponent,
@@ -126,5 +127,9 @@ import { CarCardsComponent } from '../car/car-cards/car-cards.component';
 
 })
 export class HomeModule {
-
+  routes: Routes = [
+    {path: '', component:LandingPageComponent},
+    {path: 'UserDashBoard', component:UserDashBoardComponent},
+    {path: 'SearchACar', component:CarCardsComponent},
+    {path: 'LandingPage', component:LandingPageComponent,title: 'LandingPage'}]
 }
