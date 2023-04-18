@@ -1,1 +1,56 @@
-<p>admin-dashboard works!</p>
+
+<h1> Admin <i class="fa fa-dashboard" aria-hidden="true"></i> </h1>
+
+<h3 class="text-center">All Cars</h3>
+<table class="table table-light">
+  <thead>
+    <tr>
+        <th>Car VIN</th>
+        <th>Owner NID</th>
+        <th>Owner Phone</th>
+        <th> Is Available </th>
+        <th>Cost Per Day</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+    <tr *ngFor=" let car of AllCars" >
+      <td>{{car.vin}}</td>
+      <td>{{car.ownerId}}</td>
+      <td>{{car.ownerPhone}}</td>
+      <td>{{car.available}}</td>
+      <td>{{car.costPerDay}}</td>
+
+
+    </tr>
+  </tbody>
+</table>
+
+
+<h3 class="text-center">All Available Cars</h3>
+<table class="table table-light">
+  <thead>
+    <tr>
+        <th>Car VIN</th>
+        <th>Owner NID</th>
+        <th>Owner Phone</th>
+        <th> Is Available </th>
+        <th>Cost Per Day</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+    <tr *ngFor=" let car of AllCars" >
+      <ng-container *ngIf="car.available==false">
+        <td>{{car.vin}}</td>
+        <td>{{car.ownerId}}</td>
+        <td>{{car.ownerPhone}}</td>
+        <td>{{car.available}}</td>
+        <td>{{car.costPerDay}}</td>
+      </ng-container>
+
+    </tr>
+  </tbody>
+</table>

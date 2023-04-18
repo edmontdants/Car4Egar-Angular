@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-
+import { CarModule } from '../car/car.module';
+import { BrowserModule } from '@angular/platform-browser'
 
 
 @NgModule({
@@ -9,10 +10,13 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     AdminDashboardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CarModule,
+    BrowserModule
   ],
   exports:[
-    AdminDashboardComponent
+    AdminDashboardComponent,
+
   ]
 })
 export class AdminModule { }

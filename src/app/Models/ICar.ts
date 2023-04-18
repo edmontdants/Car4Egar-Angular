@@ -20,6 +20,7 @@ gearBoxType:string,
 isActivated:boolean,
 ownerId:string,
 ownerPic:string,
-ownerName:string
+ownerName:string,
+ownerPhone:string
 }
 

@@ -19,6 +19,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import { CarService } from './Services/car.service';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import {MatInputModule} from '@angular/material/input';
   exports:[
     CarCardsComponent,
     CarProfileComponent,
-    StarComponent]
+    StarComponent
+  ]
 })
 
 export class CarModule {

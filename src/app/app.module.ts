@@ -57,6 +57,7 @@ import { Component } from '@angular/core';
 import{LandingPageComponent} from './home/landing-page/landing-page.component';
 import { HomeModule } from './home/home.module';
 import { HeaderComponent } from './home/header/header.component';
+import { AdminModule } from './admin/admin.module';
 //import * as paypal from 'paypal-rest-sdk'
 
 @NgModule({
@@ -122,7 +123,8 @@ import { HeaderComponent } from './home/header/header.component';
     ScrollingModule,
     ReactiveFormsModule,
     FormsModule,
-    HomeModule
+    HomeModule,
+    AdminModule
 
   ],
   providers: [],
