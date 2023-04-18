@@ -9,6 +9,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { PopRegisterComponent } from './Components/pop-register/pop-register.component';
 import { RegistrationService } from './Services/registration.service';
 import { Router } from '@angular/router';
+import { CarRegisterComponent } from './user/car-register/car-register.component';
+import { CarModelDialogComponent } from './user/car-model-dialog/car-model-dialog.component';
+
 
 @Component({
   selector: 'app-root',
@@ -20,7 +23,8 @@ export class AppComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     public dialog: MatDialog,
     private serves: RegistrationService,
-    private router: Router
+    private router: Router,
+    private dialogListCar: MatDialog
   ) {}
   title = 'Car4Egar';
   hidden = false;
@@ -70,5 +74,8 @@ export class AppComponent implements OnInit {
       this.isLoggedIn = status;
       console.log(`${this.isLoggedIn} this loged status`);
     });
+  }
+  openDialogListCar() {
+    this.dialogListCar.open(CarModelDialogComponent)
   }
 }

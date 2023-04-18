@@ -10,6 +10,7 @@ import { LandingPageComponent } from './home/landing-page/landing-page.component
 import { PopLoginComponent } from './Components/pop-login/pop-login.component';
 import { AuthGuard } from './auth.guard';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { CarRegisterComponent } from './user/car-register/car-register.component';
 
 
 // const routes: Routes = [
@@ -25,11 +26,12 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
 const routes: Routes = [
 
   {path: '', component:LandingPageComponent},
-  {path: 'UserDashBoard', component:UserDashBoardComponent,canActivate:[AuthGuard]},
+  {path: 'LandingPage', component:LandingPageComponent,title: 'LandingPage'},
   {path: 'SearchACar', component:CarCardsComponent,canActivate:[AuthGuard]},
-  {path: 'LandingPage', component:LandingPageComponent,title: 'LandingPage'},
-  {path: 'LandingPage', component:LandingPageComponent,title: 'LandingPage'},
-  {path: 'Admin', component:AdminDashboardComponent,title: 'Admin'}
+  {path: 'UserDashBoard', component:UserDashBoardComponent,canActivate:[AuthGuard]},
+  {path: 'CarRegister', component:CarRegisterComponent,canActivate:[AuthGuard]},
+  {path: 'Admin', component:AdminDashboardComponent,title: 'Admin'},
+
 
   //,children:[
   //   {path: 'MyAccount', component:MyAccountComponent},

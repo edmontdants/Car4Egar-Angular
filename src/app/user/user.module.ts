@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NavUserComponent } from './nav-user/nav-user.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { MyCarsComponent } from './my-cars/my-cars.component';
@@ -55,6 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfilePicComponent } from './profile-pic/profile-pic.component';
 import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
+import { CarModelDialogComponent } from './car-model-dialog/car-model-dialog.component';
 
 //import * as paypal from 'paypal-rest-sdk';
 
@@ -72,6 +73,7 @@ import { Component } from '@angular/core';
     CarRegisterComponent,
     UserDashBoardComponent,
     ProfilePicComponent,
+    CarModelDialogComponent,
 
 
   ],
@@ -127,6 +129,7 @@ import { Component } from '@angular/core';
     ReactiveFormsModule,
     FormsModule,
 
-  ]
+  ],
+  providers: [DatePipe]
 })
 export class UserModule { }
