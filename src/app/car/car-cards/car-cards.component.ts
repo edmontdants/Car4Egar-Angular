@@ -22,15 +22,15 @@ import { IRentRequest } from 'src/app/Models/IRentRequest';
 })
 export class CarCardsComponent implements OnInit {
   Cars: ICar[] =[];
-
+  FilteredCars: ICar[] = [];
   constructor(private carService: CarService, public dialog: MatDialog)
-  {}
+  {this.FilteredCars = this.Cars.slice(0,6);}
   ngOnInit(): void {
     this.carService.getAllCars()
     .subscribe({
       next : (cars) => {
         this.Cars = cars;
-        this.FilteredCars = cars.slice(0,3);
+        this.FilteredCars = cars.slice(0,6);
         this.NumberOfAvailableCarsOnly = this.Cars.filter(
           (car: ICar) => car.available == true
         ).length;
@@ -325,15 +325,46 @@ export class CarCardsComponent implements OnInit {
 
   // ];
 
-  FilteredCars: ICar[] = this.Cars.slice(0,3);
 
 
+  //***************************************//
+  //**** Filter By Car Owner Name Only ****//
+  //***************************************//
+  _SearchByCarOwner:string='';
+  public get SearchByCarOwner(){
+    return this._SearchByCarOwner;
+  }
+  public set SearchByCarOwner(value:string){
+    this._SearchByCarOwner=value;
+    this.FilteredCars = this.FilterSearchByCarOwner(value);
+  }
+
+  FilterSearchByCarOwner(val:string):ICar[]{
+    this._filterByAvailableOnlyCheck = false;
+    this._filterByTopratedOnlyCheck = false;
+    this._filterByPricePerDaydOnlyValue = 0;
+    this._SearchByBrand='All';
+    this._MinModelyearValue=2010;
+    this._MaxModelyearValue=2024;
+    this._AutomaticGearboxCheck=false;
+    this._ManualGearboxCheck=false;
+    this._SearchByCarcolorValue='';
+    this._SearchByLocationValue='';
+
+    if(val==''){
+      return this.Cars;
+    }
+    else{
+      return this.Cars.filter(c => c.ownerName.includes(val))
+    }
+  }
   //***************************************//
   //**** Filter By Available Cars Only ****//
   //***************************************//
   NumberOfAvailableCarsOnly: number = 0;
   private _filterByAvailableOnlyCheck: boolean = false;
   filterByAvailableOnly(check: boolean): ICar[] {
+    this._SearchByCarOwner='';
     this._filterByTopratedOnlyCheck = false;
     this._filterByPricePerDaydOnlyValue = 0;
     this._SearchByBrand='All';
@@ -367,6 +398,7 @@ export class CarCardsComponent implements OnInit {
 
   private _filterByTopratedOnlyCheck: boolean = false;
   filterByTopratedOnly(check: boolean): ICar[] {
+    this._SearchByCarOwner='';
     this._filterByAvailableOnlyCheck = false;
     this._filterByPricePerDaydOnlyValue = 0;
     this._SearchByBrand='All';
@@ -408,6 +440,7 @@ export class CarCardsComponent implements OnInit {
     );
   }
   filterByPricePerDaydOnly(value: number): ICar[] {
+    this._SearchByCarOwner='';
     this._filterByAvailableOnlyCheck = false;
     this._filterByTopratedOnlyCheck = false;
     this._SearchByBrand='All';
@@ -455,6 +488,7 @@ export class CarCardsComponent implements OnInit {
   }
   filterBybrandNameOnly(value:string):ICar[]
   {
+    this._SearchByCarOwner='';
     this._filterByAvailableOnlyCheck = false;
     this._filterByTopratedOnlyCheck = false;
     this._filterByPricePerDaydOnlyValue = 0;
@@ -500,6 +534,7 @@ export class CarCardsComponent implements OnInit {
   }
 
   filterByyearModel(min:number, max:number):ICar[]{
+    this._SearchByCarOwner='';
     this._filterByAvailableOnlyCheck = false;
     this._filterByTopratedOnlyCheck = false;
     this._filterByPricePerDaydOnlyValue = 0;
@@ -527,6 +562,7 @@ export class CarCardsComponent implements OnInit {
   }
 
   filterByAutoGearBox(value:boolean):ICar[]{
+    this._SearchByCarOwner='';
     this._filterByAvailableOnlyCheck = false;
     this._filterByTopratedOnlyCheck = false;
     this._filterByPricePerDaydOnlyValue = 0;
@@ -560,6 +596,7 @@ export class CarCardsComponent implements OnInit {
   }
 
   filterByManualGearBox(value:boolean):ICar[]{
+    this._SearchByCarOwner='';
     this._filterByAvailableOnlyCheck = false;
     this._filterByTopratedOnlyCheck = false;
     this._filterByPricePerDaydOnlyValue = 0;
@@ -590,6 +627,7 @@ export class CarCardsComponent implements OnInit {
     this.FilteredCars = this.SearchByCarcolor(value);
   }
   SearchByCarcolor(value:string):ICar[]{
+    this._SearchByCarOwner='';
     this._filterByAvailableOnlyCheck = false;
     this._filterByTopratedOnlyCheck = false;
     this._filterByPricePerDaydOnlyValue = 0;
@@ -623,6 +661,7 @@ export class CarCardsComponent implements OnInit {
   }
 
   SearchByLocation(value:string):ICar[]{
+    this._SearchByCarOwner='';
     this._filterByAvailableOnlyCheck = false;
     this._filterByTopratedOnlyCheck = false;
     this._filterByPricePerDaydOnlyValue = 0;

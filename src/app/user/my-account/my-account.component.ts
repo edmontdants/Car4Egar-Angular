@@ -139,6 +139,7 @@ export class MyAccountComponent implements OnInit, OnChanges {
     this.UserSend.phoneNumber = this.UsarLogine.phoneNumber;
     this.UserSend.gender = this.UsarLogine.gender;
     this.UserSend.birthDate = this.UsarLogine.birthDate;
+    this.UserSend.photo = this.UsarLogine.photo;
 
     this.userRegister.EditUser(this.UserSend).subscribe(observer);
   }
@@ -176,7 +177,7 @@ export class MyAccountComponent implements OnInit, OnChanges {
     this.UserSend.birthDate = this.UsarLogine.birthDate;
     this.UserSend.driverLicenceNumber = this.UsarLogine.driverLicenceNumber;
     this.UserSend.driverLicenceEXDate = this.UsarLogine.driverLicenceEXDate;
-
+    this.UserSend.photo = this.UsarLogine.photo;
     this.userRegister.EditUser(this.UserSend).subscribe(observer);
   }
   AccountSetting1() {
@@ -237,7 +238,7 @@ export class MyAccountComponent implements OnInit, OnChanges {
         this.UserSend.birthDate = this.UsarLogine.birthDate;
         this.UserSend.driverLicenceNumber = this.UsarLogine.driverLicenceNumber;
         this.UserSend.driverLicenceEXDate = this.UsarLogine.driverLicenceEXDate;
-
+        this.UserSend.photo = this.UsarLogine.photo;
         this.userRegister.EditUser(this.UserSend).subscribe(observer);
       } else {
         this._snackBar.open('This Is Not Your Login Password', 'Dismiss', {
@@ -285,7 +286,7 @@ export class MyAccountComponent implements OnInit, OnChanges {
       this.UserSend.birthDate = this.UsarLogine.birthDate;
       this.UserSend.driverLicenceNumber = this.UsarLogine.driverLicenceNumber;
       this.UserSend.driverLicenceEXDate = this.UsarLogine.driverLicenceEXDate;
-
+      this.UserSend.photo = this.UsarLogine.photo;
       this.userRegister.EditUser(this.UserSend).subscribe(observer);
     } else {
       this._snackBar.open('This Is Not Your Login Password', 'Dismiss', {
