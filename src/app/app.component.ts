@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -7,16 +7,21 @@ import { map, shareReplay } from 'rxjs/operators';
 import { PopLoginComponent } from './Components/pop-login/pop-login.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PopRegisterComponent } from './Components/pop-register/pop-register.component';
-
-
+import { RegistrationService } from './Services/registration.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog,){}
+export class AppComponent implements OnInit {
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    public dialog: MatDialog,
+    private serves: RegistrationService,
+    private router: Router
+  ) {}
   title = 'Car4Egar';
   hidden = false;
 
@@ -24,40 +29,46 @@ export class AppComponent {
     this.hidden = !this.hidden;
   }
 
-
-  isLoggedIn = false;
+  isLoggedIn = this.serves.isUserLogged;
 
   onLoginClick() {
     // Handle the login process
-    this.isLoggedIn = true;
+    //this.isLoggedIn = true;
   }
 
   onLogoutClick() {
-    // Handle the logout process
-    this.isLoggedIn = false;
+    this.serves.logout();
+    this.router.navigate(['']);
   }
 
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(PopLoginComponent, {
-      width: '500px'
+      width: '550px',
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log(result); // This is where you would handle the login data
       }
     });
   }
 
-
   openRegistrationDialog(): void {
     const dialogRef = this.dialog.open(PopRegisterComponent, {
-      width: '550px'
+      width: '550px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log(result); // This is where you would handle the registration data
       }
+    });
+  }
+
+  ngOnInit(): void {
+    // this.isUserLogged=this.authService.isUserLogged;
+    this.serves.getloggedStatus().subscribe((status) => {
+      this.isLoggedIn = status;
+      console.log(`${this.isLoggedIn} this loged status`);
     });
   }
 }
