@@ -8,7 +8,8 @@
       ALL REQUESTS
     </ng-template>
     <div class="container-fluid my-5">
-      <div  *ngFor="let req of OnwerRequests" class="row ">
+      <div  *ngFor="let req of OnwerRequests" class="row mt-5">
+        <hr>
         <div class="col-12 col-md-6 col-lg-3" style="text-align: right;">
           <img src="assets/{{req.carImage}}" alt="CarImg" class="rounded" width="250" height="250">
         </div>
@@ -17,25 +18,19 @@
           </h2>
           <mat-divider></mat-divider>
 
-
-
-              <img src="assets/{{req.borrowerImage}}" alt="" class="rounded-circle" height="60" width="60"><br>
+          <div class="text-center">
+              <img src="assets/{{req.borrowerImage}}" alt="" class="rounded-circle mt-3" height="60" width="60"><br>
 
               <p class="text-black-50">Borrower Name: {{req.borrowerName}}</p>
               <p class="text-black-50">Borrower Location: {{req.borrowerAddress}}</p>
+          </div>
 
+          <hr>
+          <div class="text-center">
+          <button class="btn btn-danger me-2"><i class="fa-solid fa-xmark"></i> Not Agree </button>
+          <button class="btn btn-success"><i class="fa-solid fa-check"></i> Agree  </button>
+          </div>
 
-
-
-        </div>
-        <div class="col-12 col-md-6 col-lg-3" style="text-align: center;">
-
-          <br>
-          <br>
-          <p>
-            <button class="btn btn-danger me-2"><i class="fa-solid fa-xmark"></i> Not Agree </button>
-            <button class="btn btn-success"><i class="fa-solid fa-check"></i> Agree  </button>
-          </p>
         </div>
       </div>
     </div>
@@ -52,7 +47,7 @@
       CONFIRMED REQUESTS
     </ng-template>
     <div class="container-fluid my-5">
-      <div class="row ">
+      <div class="row " *ngFor="let req of ConfirmedRequests">
         <div class="col-12 col-md-6 col-lg-3" style="text-align: right;">
           <img src="assets/car4.jpg" alt="CarImg" style="height: 200px;width: 100%;">
         </div>
@@ -72,10 +67,6 @@
           <br>
           <br>
           <p>
-            <button mat-fab extended color="accent">
-              <mat-icon>highlight_off</mat-icon>
-              Cancel
-            </button>
           </p>
         </div>
       </div>
