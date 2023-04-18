@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
     if (this.service.isloggedin()) {
       if (route.url.length > 0) {
         let menu = route.url[0].path;
-        if (menu == 'SearchACar') {//Admin_Page
+        if (menu == 'Admin') {//Admin_Page
           if (this.service.getrole() =='Admin') {
             console.log("you are a Admin");
             return true;
@@ -35,7 +35,7 @@ export class AuthGuard implements CanActivate {
             console.log("you are a user");
             this.router.navigate(['']);
             this._snackBar.open("You Are Not Admin", 'I Understood!!', {
-              duration: 2000,
+              duration: 3000,
               panelClass: ['my-snackbar'],
             });
             return false;
@@ -49,7 +49,7 @@ export class AuthGuard implements CanActivate {
     } else {
       this.router.navigate(['']);
       this._snackBar.open("You Must Login First", 'Ok !', {
-        duration: 2000,
+        duration: 3000,
         panelClass: ['my-snackbar'],
       });
       return false;
