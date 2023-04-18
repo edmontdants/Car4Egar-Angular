@@ -27,7 +27,9 @@ import { Router } from '@angular/router';
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.scss'],
 })
+//-----class---------------------------------------------------
 export class MyAccountComponent implements OnInit, OnChanges {
+  //-variables------------------------------------------------------
   hide1 = true;
   hide2 = true;
   hide3 = true;
@@ -74,12 +76,13 @@ export class MyAccountComponent implements OnInit, OnChanges {
     rate: 0,
     ratedPeople: 0,
   };
-
+//-----------------construct--------------------------------------------------
   constructor(
     private userRegister: RegistrationService,
     private _snackBar: MatSnackBar,
     private router: Router
   ) {}
+  ///---methods--------------------------------------------------------------------------------
   ngOnChanges(): void {}
 
   ngOnInit(): void {
@@ -106,7 +109,7 @@ export class MyAccountComponent implements OnInit, OnChanges {
     };
     this.userRegister.getuserByNID(this.userLoginNID).subscribe(observer);
 
-    console.log(this.userLoginNID);
+   // console.log(this.userLoginNID);
   }
   saveinfo() {
     const observer = {
