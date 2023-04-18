@@ -20,6 +20,7 @@ import {
 } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-account',
@@ -31,11 +32,18 @@ export class MyAccountComponent implements OnInit, OnChanges {
   hide2 = true;
   hide3 = true;
   hide4 = true;
+  notregisterEmail = false;
   @ViewChild('fileInput') fileInput!: ElementRef;
   fileAttr = 'Driver Licence';
   fileAttr2 = 'Identity Doc';
   UsarLogine!: ISystemUser;
   userLoginNID: any;
+
+  confirmPassword: string = '';
+  NewPassword: string = '';
+
+  NewEmail: string = '';
+  CurrentPass: string = '';
 
   UserSend: ISystemUser = {
     nid: '',
@@ -69,11 +77,10 @@ export class MyAccountComponent implements OnInit, OnChanges {
 
   constructor(
     private userRegister: RegistrationService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) {}
-  ngOnChanges(): void {
-
-  }
+  ngOnChanges(): void {}
 
   ngOnInit(): void {
     this.userLoginNID = sessionStorage.getItem('userNID');
@@ -136,11 +143,156 @@ export class MyAccountComponent implements OnInit, OnChanges {
     this.userRegister.EditUser(this.UserSend).subscribe(observer);
   }
 
-  EditBorrower(){
+  VeryfiBorrower() {
+    const observer = {
+      next: () => {
+        this._snackBar.open('Verify Is Done', 'Dismiss', {
+          duration: 3000,
+          panelClass: ['my-snackbar'],
+        });
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.error == 'This User Is Not Exist') {
+          this._snackBar.open(`${error.error}`, 'Dismiss', {
+            duration: 3000,
+            panelClass: ['my-snackbar'],
+          });
+        } else {
+          this._snackBar.open('Cant Connect To The Server', 'Dismiss', {
+            duration: 3000,
+            panelClass: ['my-snackbar'],
+          });
+        }
+      },
+    };
+    this.UserSend.nid = this.UsarLogine.nid;
+    this.UserSend.userName = this.UsarLogine.userName;
+    this.UserSend.email = this.UsarLogine.email;
+    this.UserSend.password = this.UsarLogine.password;
+    this.UserSend.role = this.UsarLogine.role;
+    this.UserSend.address = this.UsarLogine.address;
+    this.UserSend.phoneNumber = this.UsarLogine.phoneNumber;
+    this.UserSend.gender = this.UsarLogine.gender;
+    this.UserSend.birthDate = this.UsarLogine.birthDate;
+    this.UserSend.driverLicenceNumber = this.UsarLogine.driverLicenceNumber;
+    this.UserSend.driverLicenceEXDate = this.UsarLogine.driverLicenceEXDate;
 
+    this.userRegister.EditUser(this.UserSend).subscribe(observer);
+  }
+  AccountSetting1() {
+    const observer = {
+      next: (userlogin: ISystemUser) => {
+        this.notregisterEmail = false;
+        this._snackBar.open('This Email Existing', 'Dismiss', {
+          duration: 3000,
+          panelClass: ['my-snackbar'],
+        });
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.error == 'Not Register User') {
+          this.notregisterEmail = true;
+        } else {
+          this._snackBar.open('Cant Connect To The Server', 'Dismiss', {
+            duration: 3000,
+            panelClass: ['my-snackbar'],
+          });
+        }
+      },
+    };
+    this.userRegister.getuserByEmail(this.NewEmail).subscribe(observer);
 
+    if (this.notregisterEmail == true) {
+      if (this.UsarLogine.password == this.CurrentPass) {
+        const observer = {
+          next: () => {
+            this.userRegister.logout();
+            this.router.navigate(['']);
+            this._snackBar.open('Changed Saved Please Login Again', 'Dismiss', {
+              duration: 3000,
+              panelClass: ['my-snackbar'],
+            });
+          },
+          error: (error: HttpErrorResponse) => {
+            if (error.error == 'This User Is Not Exist') {
+              this._snackBar.open(`${error.error}`, 'Dismiss', {
+                duration: 3000,
+                panelClass: ['my-snackbar'],
+              });
+            } else {
+              this._snackBar.open('Cant Connect To The Server', 'Dismiss', {
+                duration: 3000,
+                panelClass: ['my-snackbar'],
+              });
+            }
+          },
+        };
+        this.UserSend.nid = this.UsarLogine.nid;
+        this.UserSend.userName = this.UsarLogine.userName;
+        this.UserSend.email = this.NewEmail;
+        this.UserSend.password = this.UsarLogine.password;
+        this.UserSend.role = this.UsarLogine.role;
+        this.UserSend.address = this.UsarLogine.address;
+        this.UserSend.phoneNumber = this.UsarLogine.phoneNumber;
+        this.UserSend.gender = this.UsarLogine.gender;
+        this.UserSend.birthDate = this.UsarLogine.birthDate;
+        this.UserSend.driverLicenceNumber = this.UsarLogine.driverLicenceNumber;
+        this.UserSend.driverLicenceEXDate = this.UsarLogine.driverLicenceEXDate;
 
-    
+        this.userRegister.EditUser(this.UserSend).subscribe(observer);
+      } else {
+        this._snackBar.open('This Is Not Your Login Password', 'Dismiss', {
+          duration: 3000,
+          panelClass: ['my-snackbar'],
+        });
+      }
+    }
+  }
+  //----------------------------------
+
+  AccountSettingPass() {
+    if (this.UsarLogine.password == this.CurrentPass) {
+      const observer = {
+        next: () => {
+          this.userRegister.logout();
+          this.router.navigate(['']);
+          this._snackBar.open('Changed Saved Please Login Again', 'Dismiss', {
+            duration: 3000,
+            panelClass: ['my-snackbar'],
+          });
+        },
+        error: (error: HttpErrorResponse) => {
+          if (error.error == 'This User Is Not Exist') {
+            this._snackBar.open(`${error.error}`, 'Dismiss', {
+              duration: 3000,
+              panelClass: ['my-snackbar'],
+            });
+          } else {
+            this._snackBar.open('Cant Connect To The Server', 'Dismiss', {
+              duration: 3000,
+              panelClass: ['my-snackbar'],
+            });
+          }
+        },
+      };
+      this.UserSend.nid = this.UsarLogine.nid;
+      this.UserSend.userName = this.UsarLogine.userName;
+      this.UserSend.email = this.UsarLogine.email;
+      this.UserSend.password = this.NewPassword;
+      this.UserSend.role = this.UsarLogine.role;
+      this.UserSend.address = this.UsarLogine.address;
+      this.UserSend.phoneNumber = this.UsarLogine.phoneNumber;
+      this.UserSend.gender = this.UsarLogine.gender;
+      this.UserSend.birthDate = this.UsarLogine.birthDate;
+      this.UserSend.driverLicenceNumber = this.UsarLogine.driverLicenceNumber;
+      this.UserSend.driverLicenceEXDate = this.UsarLogine.driverLicenceEXDate;
+
+      this.userRegister.EditUser(this.UserSend).subscribe(observer);
+    } else {
+      this._snackBar.open('This Is Not Your Login Password', 'Dismiss', {
+        duration: 3000,
+        panelClass: ['my-snackbar'],
+      });
+    }
   }
 
   //---------------------------------PhotoUpload
