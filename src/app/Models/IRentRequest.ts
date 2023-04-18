@@ -7,4 +7,8 @@ export interface IRentRequest{
   requestedCarVin:string
   rentDays:number
   requestAcceptance:boolean
+  carImage:string
+  borrowerImage:string
+  carBrand:string
+  carYear:number
 }

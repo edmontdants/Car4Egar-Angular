@@ -8,17 +8,17 @@ import { IRentRequest } from 'src/app/Models/IRentRequest';
   providedIn: 'root'
 })
 export class CarService {
-
-  baseApiUrl :string = 'https://localhost:7136';
   constructor(private http : HttpClient) {}
+  baseApiUrl :string = 'https://localhost:7136';
+
   getAllCars() : Observable<ICar[]>
     {
       return this.http.get<any[]>(this.baseApiUrl + '/Admin/GetAllCars');
     }
 
-    private baseUrl2 = 'https://localhost:7136'; // Replace with your API endpoint
+
     public async sendCarRentalRequest(param1: string, param2: string, param3: number){
-      const url = `${this.baseUrl2}/Borrower/CarRentalRequest`;
+      const url = `${this.baseApiUrl}/Borrower/CarRentalRequest`;
       const headers = new HttpHeaders({
         'id': param1,
         'carVin': param2,
