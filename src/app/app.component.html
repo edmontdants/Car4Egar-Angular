@@ -63,21 +63,17 @@
             <a class="nav-link"  (click)="openLoginDialog()" *ngIf="!isLoggedIn" type="button">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  (click)="onLogoutClick()" *ngIf="isLoggedIn" type="button">LogOut</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link"  (click)="openRegistrationDialog()"  *ngIf="!isLoggedIn" type="button" >Register</a>
           </li>
 
           <li class="nav-item dropdown" *ngIf="isLoggedIn">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              User Account
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="/SearchACar">Cars</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" routerLink="/UserDashBoard">My Profile</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" (click)="onLogoutClick()" *ngIf="isLoggedIn" type="button">LogOut</a></li>
             </ul>
           </li>
 

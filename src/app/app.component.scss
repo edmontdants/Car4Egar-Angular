@@ -6,8 +6,10 @@
 
 }
 .watsapp_api svg{
-  font-size: 3.5em;
+  font-size: 3em;
   color: #E71853;
+  animation: watsLogo 1s ease-in-out 0s infinite both ;
+  animation-direction: alternate-reverse;
 }
 @media (max-width:700px) {
   .watsapp_api{
@@ -15,9 +17,22 @@
     right: 5px;
   }
   .watsapp_api svg{
-    font-size: 3em;
+    font-size: 2.5em;
   }
 }
+
+@keyframes watsLogo {
+  0%{
+    font-size: 3em;
+  }
+  100%{
+    font-size: 3.5em;
+    color: #63041f !important;
+  }
+}
+
+
+
 
 
 .spacer {
