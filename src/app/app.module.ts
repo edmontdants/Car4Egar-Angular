@@ -58,6 +58,9 @@ import{LandingPageComponent} from './home/landing-page/landing-page.component';
 import { HomeModule } from './home/home.module';
 import { HeaderComponent } from './home/header/header.component';
 import { AdminModule } from './admin/admin.module';
+import { DatePipe } from '@angular/common';
+import { CarRegisterComponent } from './user/car-register/car-register.component';
+
 //import * as paypal from 'paypal-rest-sdk'
 
 @NgModule({
@@ -65,6 +68,7 @@ import { AdminModule } from './admin/admin.module';
     AppComponent,
     PopLoginComponent,
     PopRegisterComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -124,7 +128,8 @@ import { AdminModule } from './admin/admin.module';
     ReactiveFormsModule,
     FormsModule,
     HomeModule,
-    AdminModule
+    AdminModule,
+    DatePipe,
 
   ],
   providers: [],

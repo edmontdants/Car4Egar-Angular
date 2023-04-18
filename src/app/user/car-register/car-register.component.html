@@ -1,1 +1,354 @@
-<p>car-register works!</p>
+<div class="container-fluid maindiv">
+  <form #form="ngForm" (ngSubmit)="RegistrationMCar()" class="m-5">
+    <h3 class="text-center mb-5">CAR INFORMATION</h3>
+    <div class="row">
+      <div class="row mt-2">
+        <div class="col-3">
+          <mat-label class="text-muted">Car Title</mat-label>
+          <mat-form-field class="d-block mt-2" appearance="outline">
+            <input matInput #title [formControl]="myControl" maxlength=50><!-- titleControl -->
+            <!-- <mat-error *ngIf="titleControl.hasError('required')">* Please enter Title for your Car</mat-error> -->
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <mat-label class="text-muted">Make</mat-label>
+          <mat-form-field class="d-block mt-2" appearance="outline">
+            <mat-select #make name="make" disabled name="make" [(ngModel)]="newCar.brandName">
+              <mat-option selected [value]="newCar.brandName">{{newCar.brandName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-label class="text-muted">Model</mat-label>
+          <mat-form-field class="d-block mt-2" appearance="outline">
+            <mat-select #model disabled name="model" [(ngModel)]="newCar.modelName">
+              <mat-option selected [value]="newCar.modelName">{{newCar.modelName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-label class="text-muted">Year</mat-label>
+          <mat-form-field class="d-block mt-2" appearance="outline">
+            <mat-select #year disabled name="year" [(ngModel)]="newCar.year">
+              <mat-option selected [value]="newCar.year">{{newCar.year}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <mat-label class="text-muted">Number of Seats</mat-label>
+          <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+            <mat-select #seats [(ngModel)]="newCar.seats" [formControl]="seatsControl" required placeholder="Select Seats No *">
+              <div style="height: 235px; margin-top: -8px;">
+                <mat-option style="font-size: large;" *ngFor="let seatsNo of SeatsNo"
+                  [value]="seatsNo">{{seatsNo}}</mat-option>
+              </div>
+            </mat-select>
+            <mat-error *ngIf="makeControl.hasError('required')">* Please select your car Seats No</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-label class="text-muted">Number of Doors</mat-label>
+          <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+            <mat-select #doors name="doors" [formControl]="doorsControl" required placeholder="Select Doors No *">
+              <div style="height: 185px; margin-top: -8px;">
+                <mat-option *ngFor="let doors of DoorsNo" [value]="doors" selected>{{doors}}</mat-option>
+              </div>
+            </mat-select>
+            <mat-error *ngIf="modelControl.hasError('required')">* Please select your car Doors No</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-label class="text-muted">Fuel Type</mat-label>
+          <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+            <mat-select #fuleType [formControl]="fuelControl" required placeholder="Select Fuel Type *">
+              <div style="height: 185px; margin-top: -8px;">
+                <mat-option *ngFor="let fuelType of Fuel" [value]="fuelType">{{fuelType}}</mat-option>
+              </div>
+            </mat-select>
+            <mat-error *ngIf="yearControl.hasError('required')">* Please select your car Fuel Type</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-label class="text-muted">Transmission Gearbox</mat-label>
+          <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+            <mat-select #gearbox [formControl]="gearboxControl" [(ngModel)]="newCar.gearBoxType" placeholder="Select Gearbox Type *" required>
+              <div style="height: 137px; margin-top: -8px;">
+                <mat-option *ngFor="let gearbox of Gearbox" [value]="gearbox">{{gearbox}}</mat-option>
+              </div>
+            </mat-select>
+            <mat-error *ngIf="makeControl.hasError('required')">* Please select your car Transmission Gearbox
+              Type</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-label class="text-muted">Mileage</mat-label>
+          <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+            <mat-select #mileage [formControl]="mileageControl" [(ngModel)]="newCar.mileage" required placeholder="Select Mileage Range *">
+              <div style="height: 185px; margin-top: -8px;">
+                <mat-option *ngFor="let mileage of MileageNum" [value]="mileage">{{mileage}}</mat-option>
+              </div>
+            </mat-select>
+            <mat-error *ngIf="modelControl.hasError('required')">* Please select your car Motor Mileage
+              Range</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-label class="text-muted">Color</mat-label>
+          <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+            <mat-select #color [formControl]="colorControl" [(ngModel)]="newCar.color" required placeholder="Select Car Color *">
+              <div style="height: 185px; margin-top: -8px;">
+                <mat-option *ngFor="let color of Color" [value]="color">{{color}}</mat-option>
+              </div>
+            </mat-select>
+            <mat-error *ngIf="yearControl.hasError('required')">* Please select your Car Color</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mt-2 mb-2">
+        <div class="col-3">
+          <mat-label class="text-muted">Car Type</mat-label>
+          <mat-form-field class="d-block mt-2" appearance="outline">
+            <mat-select #type [formControl]="typeControl" [(ngModel)]="newCar.carType" required placeholder="Select Vehicle Type*">
+              <div style="height: 235px; margin-top: -8px;">
+                <mat-option *ngFor="let type of Type" [value]="type">{{type}}</mat-option>
+              </div>
+            </mat-select>
+            <mat-error *ngIf="makeControl.hasError('required')">* Please select your Car Type</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <mat-label class="text-muted fw-bold">CAR DESCRIPTION</mat-label>
+        <mat-form-field class="w-100" appearance="outline">
+          <textarea matInput placeholder="General state, extras and accessories, minor issues to take in account."
+            rows="4" spellcheck="false"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- -------------------------------------------------------------------------------------------------------------- -->
+    <h3 class="text-center mb-5">LICENSE & INSURANCE</h3>
+    <div class="row">
+      <div class="text-muted">
+        <span><strong>Car License:</strong></span>
+      </div><br><br>
+      <div class="col">
+        <mat-label class="text-muted">Country of Registeration</mat-label>
+        <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+          <mat-select #country [value]="default.value">
+            <div style="height: 40px; margin-top: -5px;">
+              <mat-option #default selected value="default.value">Egypt</mat-option>
+              <!-- <mat-option style="font-size: 16px;" *ngFor="let country of Countries" [value]="country">{{country}}</mat-option> -->
+            </div>
+          </mat-select>
+          <!-- <mat-error *ngIf="cityControl.hasError('required')">* Please select your Residence Country. we only serve
+              these countries</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-label class="text-muted">City</mat-label>
+        <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+          <mat-select [formControl]="cityControl" [(ngModel)]="newCar.locationOfRent" required placeholder="Select *">
+            <div class="input-group m-1" style="width: 95%;">
+              <!-- <mat-form-field style="width: 75%; background-color: red;" class="my-auto" appearance="outline"> -->
+              <!-- <input matInput [formControl]="cityControl" type="search" class="" placeholder="Search">
+                <mat-icon matSuffix>search</mat-icon> -->
+              <input type="search" class="form-control" [formControl]="cityControl" placeholder="Search">
+              <span class="input-group-text">
+                <mat-icon>search</mat-icon>
+              </span>
+              <!-- </mat-form-field> -->
+            </div>
+            <mat-option *ngFor="let governorate of filteredGovernorates | async"
+              [value]="governorate">{{governorate}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="plateControl.hasError('required')">* Please select the City in which your car is usually
+            available</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-label class="text-muted">Plate Code</mat-label>
+        <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+          <input matInput required maxlength="10" [formControl]="plateControl" placeholder="ن م ر 1234">
+          <mat-error *ngIf="plateControl.hasError('required')">* Please enter specified Car Plate Code from Car
+            License</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-label class="text-muted">License Expire date</mat-label>
+        <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+          <input matInput [matDatepicker]="picker" [formControl]="dateControl" [(ngModel)]="newCar.licenseEXDate" [min]="minDate" [max]="maxDate"
+            onpaste="return false;" placeholder="MM/DD/YYYY *">
+          <!-- pattern="(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" -->
+          <!-- pattern="(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$" -->
+          <mat-hint>hint: always try to click on calender button to enter Valid dates</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="dateControl.hasError('required')">* Please enter your car License Expiration
+            Date</mat-error>
+          <!-- <mat-error *ngIf="dateControl.hasError('pattern')">* this is Invalid Date. Please try entering your date using
+              calender button</mat-error> -->
+          <!-- <mat-error *ngIf="dateInvalidControl.hasError('min')">* Please choose Valid License Expiration Date</mat-error> -->
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="mt-3 text-muted">
+      <span class="d-block"><strong>Upload Papers:</strong></span>
+      <span>Please upload your Car License in a PDF or JPG format with maximum file size 5 MB.</span>
+    </div>
+    <div class="m-4 text-muted">
+      <mat-label class="text-muted"><strong>Car License</strong></mat-label>
+      <div class="mt-3">
+        <!-------------------------------------------------------------------------------------------------->
+        <!-- <button mat-raised-button>
+            <input type="file">
+            Choose File
+          </button> -->
+        <!-------------------------------------------------------------------------------------------------->
+        <!-- <button mat-fab extended type="button" color="primary" (click)="fileInput.click()">Choose File</button>
+          <input #fileInput hidden type="file" id="file" (change)="onFileSelected($event)"> -->
+        <!-------------------------------------------------------------------------------------------------->
+        <button mat-fab extended type="button" color="primary" (click)="fileInput.click()">
+          <mat-icon>upload</mat-icon>
+          UPLOAD CAR LICENSE
+        </button>
+        <input #fileInput hidden type="file" (change)="onUploadLicenseSelected($event)">
+        <div class="m-2">
+          <mat-label class="file-name">{{licenseSelectedFile?.name}}</mat-label>
+        </div>
+      </div>
+      <div class="mt-2">
+        <mat-error *ngIf="uploadLicenseControl.hasError('required')">
+          <button mat-button disabled class="text-danger">
+            <mat-icon style="font-size: 24px; width: 24px; height: 24px;">info</mat-icon>
+            Information required</button>
+        </mat-error>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="text-muted">
+        <span><strong>Insurance:</strong></span>
+      </div><br><br>
+      <div class="col">
+        <mat-label class="text-muted">Insurance yearly cost</mat-label>
+        <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+          <input matInput type="number" min="0" maxlength="20" value="0" pattern="[0-9]+$" onpaste="return false">
+          <span matSuffix class="input-group-text"
+            style="height: 55px; border-radius: 0px 5px 5px 0px; border-color: white;">&nbsp; EGP</span>
+          <mat-error *ngIf="insuranceYearlyCostControl.hasError('required')">* Please select your Insurance
+            yearlycost</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-label class="text-muted">Insurance excess value</mat-label>
+        <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+          <input matInput type="number" min="0" maxlength="20" value="0" pattern="[0-9]+$" onpaste="return false">
+          <span matSuffix class="input-group-text"
+            style="height: 55px; border-radius: 0px 5px 5px 0px; border-color: white;">&nbsp; EGP</span>
+          <mat-error *ngIf="insuranceExcessValueControl.hasError('required')">* Please select your Insurance excess
+            value</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="mt-3 text-muted">
+      <span class="d-block"><strong>Upload Papers:</strong></span>
+      <span>Please upload your Car Insurance Policy in a PDF or JPG format with maximum file size 5 MB.</span>
+    </div>
+    <div class="m-4 text-muted">
+      <mat-label class="text-muted"><strong>Insurance policy</strong></mat-label>
+      <div class="mt-3">
+        <button mat-fab extended type="button" color="primary" (click)="insurancefileInput.click()">
+          <mat-icon>upload</mat-icon>
+          UPLOAD INSURANCE POLICY
+        </button>
+        <input #insurancefileInput hidden type="file" (change)="onUploadInsurancePolicySelected($event)">
+        <div class="m-2">
+          <mat-label class="file-name">{{insurancePolicySelectedFile?.name}}</mat-label>
+        </div>
+      </div>
+      <div #infoRequired class="mt-2">
+        <mat-error *ngIf="uploadLicenseControl.hasError('required')">
+          <button mat-button disabled class="text-danger">
+            <mat-icon style="font-size: 24px; width: 24px; height: 24px;">info</mat-icon>
+            Information required</button>
+        </mat-error>
+      </div>
+    </div>
+    <hr>
+    <div class="text-muted">
+      <span><strong>Phone Number</strong></span>
+    </div><br>
+    <div class="col-4">
+      <mat-form-field class="d-block mt-2 mb-2" appearance="outline">
+        <input matInput type="text" maxlength="11" [formControl]="phoneControl" pattern="01[0125][0-9]{8}$"
+          placeholder="123-456-789" required onpaste="return true">
+        <span matPrefix class="input-group-text"
+          style="height: 55px; border-radius: 5px 0px 0px 5px; border-color: white;">&nbsp; 🇪🇬 +20 &nbsp;</span>
+        <mat-error *ngIf="phoneControl.hasError('required')">* Please enter your personal Phone Number. We may Contact
+          you</mat-error>
+        <mat-error *ngIf="phoneControl.hasError('pattern')">* Please enter Valid Phone Number. We may Contact
+          you</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="mt-3 text-muted">
+      <span class="d-block"><strong>Upload Papers:</strong></span>
+      <span>Please upload your National ID or Passport in a PDF or JPG format with maximum file size 5 MB.</span>
+    </div>
+    <div class="m-4 text-muted">
+      <mat-label class="text-muted"><strong>Personal Identity</strong></mat-label>
+      <div class="mt-3">
+        <button mat-fab extended type="button" color="primary" (click)="identityfileInput.click()">
+          <mat-icon>upload</mat-icon>
+          UPLOAD IDENTITY
+        </button>
+        <input #identityfileInput hidden type="file" (change)="onUploadIdentitySelected($event)">
+        <div class="m-2">
+          <mat-label class="file-name">{{identitySelectedFile?.name}}</mat-label>
+        </div>
+      </div>
+      <div #infoRequired class="mt-2">
+        <mat-error *ngIf="uploadLicenseControl.hasError('required')">
+          <button mat-button disabled class="text-danger">
+            <mat-icon style="font-size: 24px; width: 24px; height: 24px;">info</mat-icon>
+            Information required</button>
+        </mat-error>
+      </div>
+    </div>
+    <hr>
+    <h3 class="text-center mb-5">PARKING ADDRESS</h3>
+    <div class="mb-3">
+      <mat-label class="text-muted d-block mb-2"><strong>Parking address</strong></mat-label>
+      <mat-form-field class="w-100" appearance="outline">
+        <input matInput appearance="outline">
+        <mat-icon matSuffix color="primary">my_location</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="row ">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3518.7739662178906!2d30.73729792395544!3d28.12291777594688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145b25c9ff4ca9db%3A0xb233ef3a6077958c!2sMinia%20University!5e0!3m2!1sar!2seg!4v1681569583238!5m2!1sar!2seg"
+        width="1400" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <h3 class="text-center mb-5">PUBLISH</h3>
+    <div id="publish" style="height: 500px;">Eslam Card</div>
+    <div class="row mt-4">
+      <div class="col-6">
+        <button class="m-1 w-50 float-start" style="height: 45px;" mat-fab extended color="accent">FINISH
+          LATER</button>
+      </div>
+      <div class="col-6">
+        <button type="submit" class="m-1 w-100 float-end" mat-fab extended color="primary">Publish</button>
+      </div>
+    </div>
+  </form>
+</div>
