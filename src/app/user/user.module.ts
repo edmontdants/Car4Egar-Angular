@@ -56,6 +56,8 @@ import { ProfilePicComponent } from './profile-pic/profile-pic.component';
 import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
 import { CarModelDialogComponent } from './car-model-dialog/car-model-dialog.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { CarModule } from '../car/car.module';
 
 //import * as paypal from 'paypal-rest-sdk';
 
@@ -128,6 +130,8 @@ import { CarModelDialogComponent } from './car-model-dialog/car-model-dialog.com
     ScrollingModule,
     ReactiveFormsModule,
     FormsModule,
+    AppRoutingModule,
+CarModule
 
   ],
   providers: [DatePipe]

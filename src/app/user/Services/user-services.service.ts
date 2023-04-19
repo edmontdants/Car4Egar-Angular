@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ICar } from 'src/app/Models/ICar';
 import { IRentRequest } from 'src/app/Models/IRentRequest';
 
 @Injectable({
@@ -16,6 +17,13 @@ export class UserServicesService {
 {
 
   return this.http.get<any[]>(this.baseApiUrl);
+}
+
+
+baseApiUrl2 :string = 'https://localhost:7136';
+RegisterCar(NewCar:ICar)
+{
+  return this.http.post(this.baseApiUrl2 + '/Admin/RegisterNewCarVM', NewCar);
 }
 
 }

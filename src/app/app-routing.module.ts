@@ -29,8 +29,8 @@ const routes: Routes = [
   {path: 'LandingPage', component:LandingPageComponent,title: 'LandingPage'},
   {path: 'SearchACar', component:CarCardsComponent,canActivate:[AuthGuard]},
   {path: 'UserDashBoard', component:UserDashBoardComponent,canActivate:[AuthGuard]},
-  {path: 'CarRegister', component:CarRegisterComponent,canActivate:[AuthGuard]},
-  {path: 'Admin', component:AdminDashboardComponent,title: 'Admin'},
+  {path: 'CarRegister', component:CarRegisterComponent,canActivate:[AuthGuard],title: 'CarRegister'},
+  {path: 'Admin', component:AdminDashboardComponent,title: 'Admin',canActivate:[AuthGuard]},
 
 
   //,children:[

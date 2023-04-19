@@ -503,7 +503,7 @@ export class CarCardsComponent implements OnInit {
       return this.Cars;
     }
     return this.Cars.filter(
-      (car: ICar) => car.brandName == value
+      (car: ICar) => car.modelName == value
     );
   }
 
