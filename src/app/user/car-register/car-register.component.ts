@@ -79,7 +79,7 @@ export class CarRegisterComponent implements OnInit {
     image: 'car.jpg',
     insurance: true,
     gearBoxType: 'Automatic',
-    ownerId: "12345678998760",
+    ownerId: "12345678998765",
     ownerName: "string",
     ownerPhoto: "string",
     ownerPhone: "string",
@@ -103,7 +103,7 @@ export class CarRegisterComponent implements OnInit {
     const observer = {
       next: () => {
         this.router.navigateByUrl('userDashBoard');
-        this._snackBar.open('Cant Connect To The Server', 'Dismiss', {
+        this._snackBar.open('Car Added !', 'Dismiss', {
           duration: 3000,
           panelClass: ['my-snackbar'],
         });

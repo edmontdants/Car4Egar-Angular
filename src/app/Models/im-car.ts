@@ -1,5 +1,5 @@
 export interface ImCar {
-  vin: string,
+vin: string,
 nid: string,
 color: string,
 licenseNumber: string
