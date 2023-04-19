@@ -29,10 +29,10 @@
             <hr>
             <div class="text-center">
               <button class="btn btn-danger me-2" (click)="deletereq (req.requestedCarVIN)"><i class="fa-solid fa-xmark" type="button"
-                  ></i> Not Agree </button>
-              <button class="btn btn-success" type="button" (click)="Acceptedreq(req.requestedCarVIN,1)"><i
+                  ></i> Remove Request </button>
+              <!-- <button class="btn btn-success" type="button" (click)="Acceptedreq(req.requestedCarVIN,1)"><i
                   class="fa-solid fa-check"></i> Agree </button>
-            </div>
+             --></div>
 
           </div>
         </div>
@@ -72,7 +72,8 @@
               <hr>
               <div class="text-center">
                 <button class="btn btn-success" type="button" (click)="deletereq(req.requestedCarVIN)"><i
-                    class="fa-solid fa-check"></i> Done </button>
+                    class="fa-solid fa-check"></i> Done{{req.total}} </button>
+                    <!-- <button (click)="pay(req.total)" class="btn btn-primary btn-block">Pay $20</button> -->
               </div>
 
             </div>
