@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IRentRequest } from 'src/app/Models/IRentRequest';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -23,13 +24,16 @@ import { IRentRequest } from 'src/app/Models/IRentRequest';
 export class CarCardsComponent implements OnInit {
   Cars: ICar[] =[];
   FilteredCars: ICar[] = [];
-  constructor(private carService: CarService, public dialog: MatDialog)
+  NID = String(sessionStorage.getItem('userNID'));
+  MyCars:ICar[]=[];
+  constructor(private carService: CarService, public dialog: MatDialog,private router: Router)
   {this.FilteredCars = this.Cars.slice(0,6);}
   ngOnInit(): void {
     this.carService.getAllCars()
     .subscribe({
       next : (cars) => {
         this.Cars = cars;
+        this.MyCars = cars.filter(c=> c.ownerId==this.NID);
         this.FilteredCars = cars.slice(0,6);
         this.NumberOfAvailableCarsOnly = this.Cars.filter(
           (car: ICar) => car.available == true
@@ -698,11 +702,12 @@ export class CarCardsComponent implements OnInit {
   //***************************************//
   // param1: string='';
   // param2: string='';
-  param3: number=0;
+  param3: number=7;
   async sendCarRequest(p1:string,p2:string){
     try {
       const response = await this.carService.sendCarRentalRequest(p1,p2,this.param3);
-      console.log(response);
+      console.log("Done");
+      this.router.navigate(['/UserDashBoard']);
     } catch (error) {
       console.error(error);
     }

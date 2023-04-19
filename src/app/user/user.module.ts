@@ -58,6 +58,7 @@ import { Component } from '@angular/core';
 import { CarModelDialogComponent } from './car-model-dialog/car-model-dialog.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { CarModule } from '../car/car.module';
+import { AdminModule } from '../admin/admin.module';
 
 //import * as paypal from 'paypal-rest-sdk';
 
@@ -131,7 +132,8 @@ import { CarModule } from '../car/car.module';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
-CarModule
+    CarModule,
+    AdminModule
 
   ],
   providers: [DatePipe]

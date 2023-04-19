@@ -171,7 +171,7 @@
                       <span>{{car.ownerName}}</span>
                     </div>
                     <div class="CarInfo">
-                      <!-- <span class="fw-bold">{{car.brandName}} - {{car.modelName}} </span> -->
+                      <span class="fw-bold"> {{car.modelName}} </span>
                       (<span class="yearModel fw-bold">{{car.year}}</span>)<br>
 
                       <div class="row">
@@ -220,19 +220,19 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <form #form="ngForm" class="w-100"   (ngSubmit)="sendCarRequest(car.ownerId,car.vin)">
+                        <form #form="ngForm" class="w-100" [noValidate]="false"  (ngSubmit)="sendCarRequest(car.ownerId,car.vin)">
                         <input hidden type="text" name="param1"  value="{{car.ownerId}}" [(ngModel)]="car.ownerId" >
                         <input hidden type="text" name="param2"  value="{{car.vin}}" [(ngModel)]="car.vin" >
 
                         <div class="row">
-                          <div class="col-md-4 col-sm-12">
+                          <div class="col-md-6 col-sm-12">
                             <mat-form-field class="w-100">
                               <mat-label>How many days do you want to borrow the car?</mat-label>
-                              <input matInput name="param3" [(ngModel)]="param3" pattern="[7-]" >
+                              <input matInput name="param3"  [(ngModel)]="param3" type="number" min="7" max="365" required>
                             </mat-form-field>
                           </div>
 
-                          <div class="col-md-8 col-sm-12">
+                          <div class="col-md-6 col-sm-12">
                             <h2 class="totalPriceForRequest"><span>{{param3 * car.costPerDay}}</span> L.E Total For <span>{{param3}}</span> Days</h2>
                           </div>
                         </div>

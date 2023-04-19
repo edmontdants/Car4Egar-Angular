@@ -4,7 +4,10 @@ import { ICar } from 'src/app/Models/ICar';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CarRegisterComponent } from '../car-register/car-register.component';
-
+import { CarService } from 'src/app/Services/car.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { IRentRequest } from 'src/app/Models/IRentRequest';
 
 @Component({
   selector: 'app-my-cars',
@@ -12,9 +15,70 @@ import { CarRegisterComponent } from '../car-register/car-register.component';
   styleUrls: ['./my-cars.component.scss']
 })
 export class MyCarsComponent {
-  constructor(private service:UserServicesService,private router: Router,public dialog: MatDialog) {}
+  constructor(private http: HttpClient,private service:UserServicesService,private router: Router,public dialog: MatDialog,private carService:CarService) {}
   NID = String(sessionStorage.getItem('userNID'));
 
+  MyCars:ICar[]=[];
+  baseApiUrl: string = 'https://localhost:7136'
+
+
+  DeleteCar(vin:string){
+    this.carService.DeleteCar(vin).subscribe(
+    response => {
+      console.log(response);
+      // Handle success response
+    },
+    error => {
+      console.log(error);
+      // Handle error response
+    }
+  );
+  }
+  ngOnInit(): void {
+    this.carService.getAllCars()
+    .subscribe({
+      next : (cars) => {
+        this.MyCars = cars.filter(c=> c.ownerId==this.NID);
+        console.log("Iam Here! in this Car Service");
+      },
+      error : (response)=> {console.log(response)}
+    });
+  }
+
+
+
+  onChangeFile(vin:string,event: any) {
+
+    if(event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadPicture(vin , event.target.files[0].name);
+      if(file.type == 'image/png' || file.type == 'image/jpeg') {
+        const formData = new FormData();
+        formData.append('file',file);
+
+        this.http.post('https://localhost:7136/Admin/UploadPictureAndSave',formData).subscribe((res: any)=> {
+
+        });
+
+      } else {
+        alert('Pease select only jpeg and png');
+      }
+    }
+  }
+
+
+  private baseUrl3 = 'https://localhost:7136';
+  public async uploadPicture(vin:string, filename:string) {
+    const url = `${this.baseUrl3}/Admin/UploadPictureForCar`;
+    // const body = {NID ,base64String, filename };
+    const headers = new HttpHeaders({
+      'vin': vin,
+      'Filename': filename
+    });
+    const res = await this.http.put(url,null ,{ headers }).toPromise();
+    console.log("Done!");
+    return res;
+  }
 
 
   years = Array.from({length: 15}, (_, i) => 2010 + i);

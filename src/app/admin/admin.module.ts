@@ -16,7 +16,7 @@ import { BrowserModule } from '@angular/platform-browser'
   ],
   exports:[
     AdminDashboardComponent,
-
+    CarModule
   ]
 })
 export class AdminModule { }

@@ -19,6 +19,12 @@ export class UserServicesService {
   return this.http.get<any[]>(this.baseApiUrl);
 }
 
+baseApiUrlUsers :string = 'https://localhost:7136/Admin/GetAllActivatedUsers';
+public getAllUsers() : Observable<any[]>
+{
+
+  return this.http.get<any[]>(this.baseApiUrlUsers);
+}
 
 baseApiUrl2 :string = 'https://localhost:7136';
 RegisterCar(NewCar:ICar)

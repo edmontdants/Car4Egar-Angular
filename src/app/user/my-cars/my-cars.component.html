@@ -2,7 +2,7 @@
 
 
 
-<a class="btn btn-success d-block" routerLink="/CarRegister">Register a New Car !</a>
+<a class="btn btn-success d-block mt-5" routerLink="/CarRegister">Register a New Car !</a>
 
 
 <div class="container-fluid my-5 ">
@@ -14,31 +14,34 @@
         </button>
       </p> -->
       <div class="container-fluid my-5">
-        <div class="row ">
-          <div class="col-12 col-md-6 col-lg-3" style="text-align: right;">
-            <img src="assets/car4.jpg" alt="CarImg" style="height: 200px;width: 100%;">
-          </div>
-          <div class="col-12 col-md-6 col-lg-3" style="text-align: left;">
-            <h2 style="color:#35296D;">Car Name And Model</h2>
+        <div class="row " >
+          <div class="col-md-6 col-lg-3" *ngFor="let c of MyCars">
+            <div class="avatar-container" >
+                          <img src="assets/{{c.image}}" alt="CarImg" style="height: 200px;width: 100%;">
+            <label for="avatar-input-file">
+              <div class="icon-wrapper">
+                <input type="file" id="avatar-input-file" accept="image/*" (change)="onChangeFile(c.vin,$event)" />
+                <mat-icon class="icon" fontIcon="edit"></mat-icon>
+              </div>
+            </label>
+            </div>
+
+
+
+            <h2 style="color:#35296D;">{{c.modelName}} - {{c.year}}</h2>
             <mat-divider></mat-divider>
-            Car Description<br>
+            <p class="text-black-50">Availabe For Renta: {{c.available}}</p>
+            <p class="text-black-50">Car Location: {{c.locationOfRent}}</p>
+            <p class="text-black-50">Car Gear Box Type: {{c.gearBoxType}}</p>
+            <p class="text-black-50">Cost Per Rent Day: {{c.costPerDay}}</p>
+            <button mat-fab extended color="warn" (click)="DeleteCar(c.vin)"> <i class="fa-solid fa-circle-xmark"></i> Remove The Car </button>
+
           </div>
-          <div class="col-12 col-md-6 col-lg-3" style="text-align: center;">
-            <h3>Add Date</h3>
-            <br>
-            <br>
-            <br>
-            <br>
-            <p>
-              <button mat-fab extended color="accent">
-                <mat-icon>mode_edit</mat-icon>
-                Edit On Car
-              </button>
-            </p>
-          </div>
+
         </div>
+        <mat-divider class="Row_divider"></mat-divider>
       </div>
-      <mat-divider class="Row_divider"></mat-divider>
+
     </div>
   </div>
 

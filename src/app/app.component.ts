@@ -29,6 +29,8 @@ export class AppComponent implements OnInit {
   title = 'Car4Egar';
   hidden = false;
 
+  NID = String(sessionStorage.getItem('userNID'));
+  Role = String(sessionStorage.getItem('role'));
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
   }
