@@ -11,4 +11,5 @@ export interface IRentRequest{
   borrowerImage:string
   carBrand:string
   carYear:number
+  total:number
 }
