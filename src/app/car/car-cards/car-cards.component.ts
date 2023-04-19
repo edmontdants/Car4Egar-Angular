@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject, ElementRef } from '@angular/core';
+import { Component, OnInit,Inject, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Icon } from '@fortawesome/fontawesome-svg-core';
 import { ICar } from 'src/app/Models/ICar';
@@ -20,11 +20,14 @@ import { IRentRequest } from 'src/app/Models/IRentRequest';
   templateUrl: './car-cards.component.html',
   styleUrls: ['./car-cards.component.scss'],
 })
-export class CarCardsComponent implements OnInit {
+export class CarCardsComponent implements OnInit,OnChanges {
   Cars: ICar[] =[];
   FilteredCars: ICar[] = [];
   constructor(private carService: CarService, public dialog: MatDialog)
   {this.FilteredCars = this.Cars.slice(0,6);}
+  ngOnChanges(changes: SimpleChanges): void {
+   
+  }
   ngOnInit(): void {
     this.carService.getAllCars()
     .subscribe({
@@ -38,6 +41,7 @@ export class CarCardsComponent implements OnInit {
       },
       error : (response)=> {console.log(response)}
     });
+
   }
   //*************//
   //***Lists ***//

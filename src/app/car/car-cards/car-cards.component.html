@@ -7,7 +7,7 @@
       <mat-label><i class="fa-solid fa-location-dot"></i> Location</mat-label>
       <mat-select [(ngModel)]="SearchByLocationValue">
         <mat-option *ngFor="let location of Locations" [value]="location">{{location}}</mat-option>
-        </mat-select>
+      </mat-select>
     </mat-form-field>
 
 
@@ -20,10 +20,10 @@
     </mat-form-field>
 
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Car Owner</mat-label>
-        <input matInput  [(ngModel)]="SearchByCarOwner">
-      </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Car Owner</mat-label>
+      <input matInput [(ngModel)]="SearchByCarOwner">
+    </mat-form-field>
     <!-- <div class="startDateSearch d-inline-block">
       <input [matDatepicker]="picker" placeholder="MM/DD/YYYY" class="startDateSearchInput" placeholder="StartDate">
       <mat-datepicker-toggle matIconSuffix [for]="picker" class="startDateSearchButton"></mat-datepicker-toggle>
@@ -62,12 +62,15 @@
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <hr>
-              <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByAvailableOnlyCheck">Available Cars Only</mat-checkbox>
+              <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByAvailableOnlyCheck">Available Cars
+                Only</mat-checkbox>
               <!-- <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByLocationOnlyCheck">Cars in your location only</mat-checkbox> -->
-              <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByTopratedOnlyCheck">Top rated Cars only</mat-checkbox>
-              <br><hr>
+              <mat-checkbox color="warn" class="example-margin" [(ngModel)]="filterByTopratedOnlyCheck">Top rated Cars
+                only</mat-checkbox>
+              <br>
+              <hr>
               <span>Price Per Day</span>
-              <mat-slider  min="0" max="3000" step="100" showTickMarks discrete [displayWith]="PricePerDay" color="warn">
+              <mat-slider min="0" max="3000" step="100" showTickMarks discrete [displayWith]="PricePerDay" color="warn">
                 <input matSliderThumb [(ngModel)]="filterByPricePerDaydOnlyValue">
               </mat-slider>
 
@@ -100,7 +103,8 @@
               </mat-form-field> -->
               <br><br>
               <span>year Model</span>
-              <mat-slider min="2010" max="2024" step="1" showTickMarks discrete [displayWith]="yearModelSearch" color="warn">
+              <mat-slider min="2010" max="2024" step="1" showTickMarks discrete [displayWith]="yearModelSearch"
+                color="warn">
                 <input [(ngModel)]="MinModelyearValue" value="2010" matSliderStartThumb>
                 <input [(ngModel)]="MaxModelyearValue" value="2024" matSliderEndThumb>
               </mat-slider>
@@ -118,8 +122,10 @@
                 </mat-panel-title>
               </mat-expansion-panel-header>
 
-              <mat-checkbox [(ngModel)]="AutomaticGearbox" color="warn" class="example-margin">Automatic Gearbox</mat-checkbox>
-              <mat-checkbox [(ngModel)]="ManualGearbox" color="warn" class="example-margin">Manual Gearbox</mat-checkbox>
+              <mat-checkbox [(ngModel)]="AutomaticGearbox" color="warn" class="example-margin">Automatic Gearbox
+              </mat-checkbox>
+              <mat-checkbox [(ngModel)]="ManualGearbox" color="warn" class="example-margin">Manual Gearbox
+              </mat-checkbox>
 
               <!-- <br>Car type:<br>
               <mat-form-field appearance="fill" color="warn">
@@ -158,7 +164,7 @@
 
           <div class="CarsCards">
             <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let car of FilteredCars" >
+              <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let car of FilteredCars">
 
                 <a type="button" class="cardPopUp" data-bs-toggle="modal" href='#{{car.vin}}'>
                   <div class="car_card">
@@ -175,7 +181,9 @@
                       (<span class="yearModel fw-bold">{{car.year}}</span>)<br>
 
                       <div class="row">
-                        <div class="col-sm-8"><app-star class="d-inline" [rating]="car.rate"></app-star></div>
+                        <div class="col-sm-8">
+                          <app-star class="d-inline" [rating]="car.rate"></app-star>
+                        </div>
                         <div class="col-sm-4"><span>( {{car.rate}} )</span></div>
                       </div>
 
@@ -184,7 +192,8 @@
                 </a>
 
                 <!-- Modal -->
-                <div class="modal fade" id="{{car.vin}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="{{car.vin}}" data-bs-backdrop="static" data-bs-keyboard="false"
+                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-scrollable   modal-lg">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -211,7 +220,9 @@
                             <hr>
                             <div class="row">
                               <h2>Car Rating:</h2>
-                              <div class="col-sm-3"><app-star class="d-inline" [rating]="car.rate"></app-star></div>
+                              <div class="col-sm-3">
+                                <app-star class="d-inline" [rating]="car.rate"></app-star>
+                              </div>
                               <div class="col-sm-3"><span>( {{car.rate}} OF 5 )</span></div>
                               <div class="col-sm-6"><span>(Rated By: {{car.ratedPeople}} Person )</span></div>
                             </div>
@@ -220,27 +231,28 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <form #form="ngForm" class="w-100"   (ngSubmit)="sendCarRequest(car.ownerId,car.vin)">
-                        <input hidden type="text" name="param1"  value="{{car.ownerId}}" [(ngModel)]="car.ownerId" >
-                        <input hidden type="text" name="param2"  value="{{car.vin}}" [(ngModel)]="car.vin" >
+                        <form #form="ngForm" class="w-100" (ngSubmit)="sendCarRequest(car.ownerId,car.vin)">
+                          <input hidden type="text" name="param1" value="{{car.ownerId}}" [(ngModel)]="car.ownerId">
+                          <input hidden type="text" name="param2" value="{{car.vin}}" [(ngModel)]="car.vin">
 
-                        <div class="row">
-                          <div class="col-md-4 col-sm-12">
-                            <mat-form-field class="w-100">
-                              <mat-label>How many days do you want to borrow the car?</mat-label>
-                              <input matInput name="param3" [(ngModel)]="param3" pattern="[7-]" >
-                            </mat-form-field>
+                          <div class="row">
+                            <div class="col-md-4 col-sm-12">
+                              <mat-form-field class="w-100">
+                                <mat-label>How many days do you want to borrow the car?</mat-label>
+                                <input matInput name="param3" [(ngModel)]="param3" pattern="[7-]">
+                              </mat-form-field>
+                            </div>
+
+                            <div class="col-md-8 col-sm-12">
+                              <h2 class="totalPriceForRequest"><span>{{param3 * car.costPerDay}}</span> L.E Total For
+                                <span>{{param3}}</span> Days</h2>
+                            </div>
                           </div>
 
-                          <div class="col-md-8 col-sm-12">
-                            <h2 class="totalPriceForRequest"><span>{{param3 * car.costPerDay}}</span> L.E Total For <span>{{param3}}</span> Days</h2>
-                          </div>
-                        </div>
 
-
-                        <!-- <input class="form-group" type="number"  > -->
-                        <button type="submit" class="btn btn-success w-100 SendRequestBtn">Send Request</button>
-                      </form>
+                          <!-- <input class="form-group" type="number"  > -->
+                          <button type="submit" class="btn btn-success w-100 SendRequestBtn">Send Request</button>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -252,12 +264,8 @@
 
           </div>
 
-          <mat-paginator [length]="this.Cars.length"
-          [pageSize]="6"
-          [pageSizeOptions]="[6,12,24,]"
-          aria-label="Select page"
-          (page) = "OnPageChanges($event)"
-          class="mt-3">
+          <mat-paginator [length]="this.Cars.length" [pageSize]="6" [pageSizeOptions]="[6,12,24,]"
+            aria-label="Select page" (page)="OnPageChanges($event)" class="mt-3">
           </mat-paginator>
         </div>
 

@@ -4,7 +4,7 @@ export interface IRentRequest{
   borrowerId:string
   borrowerName:string
   borrowerAddress:string
-  requestedCarVin:string
+  requestedCarVIN:string
   rentDays:number
   requestAcceptance:boolean
   carImage:string
