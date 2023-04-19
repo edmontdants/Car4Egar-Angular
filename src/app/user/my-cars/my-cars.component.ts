@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { CarModelDialogComponent } from '../car-model-dialog/car-model-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -8,15 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './my-cars.component.html',
   styleUrls: ['./my-cars.component.scss']
 })
-export class MyCarsComponent implements OnInit {
-  constructor(private dialog: MatDialog){}
-  openDialog() {
-    this.dialog.open(CarModelDialogComponent)
-  }
-
-
-  ngOnInit(): void {
-
-  }
+export class MyCarsComponent {
 
 }
