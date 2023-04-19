@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICar } from 'src/app/Models/ICar';
 import { IRentRequest } from 'src/app/Models/IRentRequest';
+import { environment } from 'src/environment/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,18 @@ RegisterCar(NewCar:ICar)
 {
   return this.http.post(this.baseApiUrl2 + '/Admin/RegisterNewCarVM', NewCar);
 }
+SetRentRequestStatus(vid: any,acc:number): Observable<any> {
+  return this.http.get<any>(
+    `${environment.apiBaseUrl}/Borrower/CarRentalRequestAcception` + '/' + vid+'/'+acc
+  );
+}
+DeleteCarRequest(vid: string): Observable<any> {
+  return this.http.delete<any>(
+    `${environment.apiBaseUrl}/Borrower/CarRentalRequestDelete` + '/' + vid
+  );
 
 }
+}
+
+
 

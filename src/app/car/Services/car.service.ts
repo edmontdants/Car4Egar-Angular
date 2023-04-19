@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ICar } from 'src/app/Models/ICar';
 import { Observable } from 'rxjs';
 import { IRentRequest } from 'src/app/Models/IRentRequest';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,13 @@ import { IRentRequest } from 'src/app/Models/IRentRequest';
 export class CarService {
   constructor(private http : HttpClient) {}
   baseApiUrl :string = 'https://localhost:7136';
+
+
+   SetRentRequestStatus(vid: string,acc:number): Observable<any> {
+    return this.http.get<any>(
+      `${environment.apiBaseUrl}/Borrower/CarRentalRequestAcception` + '/' + vid+'/'+acc
+    );
+  }
 
   getAllCars() : Observable<ICar[]>
     {
@@ -29,6 +37,8 @@ export class CarService {
       return response;
 
     }
+
+
 
 
 
