@@ -29,7 +29,7 @@ export class CarCardsComponent implements OnInit,OnChanges {
   constructor(private carService: CarService, public dialog: MatDialog,private router: Router)
   {this.FilteredCars = this.Cars.slice(0,6);}
   ngOnChanges(changes: SimpleChanges): void {
-   
+
   }
   ngOnInit(): void {
     this.carService.getAllCars()
@@ -709,7 +709,7 @@ export class CarCardsComponent implements OnInit,OnChanges {
   param3: number=7;
   async sendCarRequest(p1:string,p2:string){
     try {
-      const response = await this.carService.sendCarRentalRequest(p1,p2,this.param3);
+      const response = await this.carService.sendCarRentalRequest(this.NID,p2,this.param3);
       console.log("Done");
       this.router.navigate(['/UserDashBoard']);
     } catch (error) {

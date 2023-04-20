@@ -72,14 +72,14 @@ export class MyBorrowingsComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     throw new Error('Method not implemented.');
   }
-  OnwerRequests:IRentRequest[]=[];
+  BorowwerRequests:IRentRequest[]=[];
   ConfirmedRequests:IRentRequest[]=[];
   choosenCarVin:string =''
   ngOnInit(): void {
     this.service.getAllRentalRequests()
     .subscribe({
       next : (Requests) => {
-        this.OnwerRequests = Requests.filter(r => r.borrowerId==this.NID && r.requestAcceptance==false);
+        this.BorowwerRequests = Requests.filter(r => r.borrowerId==this.NID && r.requestAcceptance==false);
         this.ConfirmedRequests = Requests.filter(r => r.borrowerId==this.NID && r.requestAcceptance==true);
         console.log("Iam Here! in this Car Service");
       },
