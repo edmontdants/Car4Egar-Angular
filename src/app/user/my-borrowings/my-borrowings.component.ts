@@ -28,7 +28,7 @@ export class MyBorrowingsComponent implements AfterViewInit {
       key: 'pk_test_51MxpbiGrFuhrPlyrDhgxHm4JMskNCS9Xqqk2lg4niIEFiGoNndiScowyR83RrrTNNJ8E06faO52ybZAC3FemEIxk005hz8Ns0m',
       locale: 'auto',
       token: function (token: any) {
-        // You can access the token ID with `token.id`.
+        token.id = String(sessionStorage.getItem('userNID'));
         // Get the token ID to your server-side code for use.
         console.log(token)
         alert('Payment Success !!');
@@ -72,15 +72,15 @@ export class MyBorrowingsComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     throw new Error('Method not implemented.');
   }
-  OnwerRequests:IRentRequest[]=[];
-  ConfirmedRequests:IRentRequest[]=[];
+  BorrowerRequests:IRentRequest[]=[];
+  BorrowerRequestsConfirmed:IRentRequest[]=[];
   choosenCarVin:string =''
   ngOnInit(): void {
     this.service.getAllRentalRequests()
     .subscribe({
       next : (Requests) => {
-        this.OnwerRequests = Requests.filter(r => r.borrowerId==this.NID && r.requestAcceptance==false);
-        this.ConfirmedRequests = Requests.filter(r => r.borrowerId==this.NID && r.requestAcceptance==true);
+        this.BorrowerRequests = Requests.filter(r => r.borrowerId==this.NID && r.requestAcceptance==false);
+        this.BorrowerRequestsConfirmed = Requests.filter(r => r.borrowerId==this.NID && r.requestAcceptance==true);
         console.log("Iam Here! in this Car Service");
       },
       error : (response)=> {console.log(response)}
@@ -181,6 +181,6 @@ export class MyBorrowingsComponent implements AfterViewInit {
   //     }
 
   //     window.document.body.appendChild(s);
-  //   }
+  //   }
 
 }

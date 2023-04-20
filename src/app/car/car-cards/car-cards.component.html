@@ -232,7 +232,7 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <form #form="ngForm" class="w-100" [noValidate]="false"  (ngSubmit)="sendCarRequest(car.ownerId,car.vin)">
+                        <form #form="ngForm" class="w-100" [noValidate]="false"  (ngSubmit)="sendCarRequest(NID,car.vin)">
                         <input hidden type="text" name="param1"  value="{{car.ownerId}}" [(ngModel)]="car.ownerId" >
                         <input hidden type="text" name="param2"  value="{{car.vin}}" [(ngModel)]="car.vin" >
 

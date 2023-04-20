@@ -24,6 +24,9 @@ export class PopLoginComponent {
     private _snackBar: MatSnackBar
   ) {}
 
+  NID = String(sessionStorage.getItem('userNID'));
+  Role = String(sessionStorage.getItem('role'));
+
   onSubmit(): void {
     //-----------------
     const observer = {
@@ -34,7 +37,11 @@ export class PopLoginComponent {
             sessionStorage.setItem('userNID', this.userlogined.nid);
             sessionStorage.setItem('role', this.userlogined.role);
             this.userRegister.login();
-            this.router.navigateByUrl('/UserDashBoard');
+
+                this.router.navigateByUrl('/');
+
+
+
         }
         else this.inviledpass=true;
       },
