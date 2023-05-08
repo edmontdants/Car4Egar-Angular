@@ -31,15 +31,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="SubmitNewCar()">
-          <div class="mb-3">
-            <label for="vin" class="col-form-label">Car Title</label>
+        <form (ngSubmit)="SubmitNewCar()" [noValidate]="false">
+          <div class="mb-2">
+            <label for="vin" class="col-form-label">Car VIN: </label>
             <input type="text" class="form-control" id="vin" name="vin" [(ngModel)]="car.vin" required>
           </div>
 
 
 
-          <div class="form-group">
+          <div class="form-group mb-2">
             <label for="modelName">Make:</label>
             <select class="form-control" id="modelName" name="modelName" [(ngModel)]="car.modelName" required>
               <option value="">-- Select Make --</option>
@@ -107,7 +107,7 @@
             </select>
           </div>
 
-          <div class="form-group">
+          <div class="form-group mb-2">
             <label for="color">Color:</label>
             <select class="form-control" id="color" name="color" [(ngModel)]="car.color" required>
               <option value="">-- Select Color --</option>
@@ -129,7 +129,7 @@
             </select>
           </div>
 
-          <div class="form-group">
+          <div class="form-group mb-2">
             <label for="locationOfRent">Location:</label>
             <select class="form-control" id="locationOfRent" name="locationOfRent" [(ngModel)]="car.locationOfRent" required>
               <option value="">-- Select Location --</option>
@@ -165,35 +165,15 @@
             </select>
           </div>
 
-          <div class="form-group">
-            <label for="year">Year:</label>
+          <div class="form-group mb-2">
+            <label for="year">Model Year: </label>
             <select class="form-control" id="year" name="year" [(ngModel)]="car.year" required>
               <option value="">-- Select Year --</option>
               <option *ngFor="let year of years" [value]="year">{{ year }}</option>
             </select>
           </div>
 
-          <div class="mb-1">
-            <label for="mailage" class="col-form-label">Car Milage</label>
-            <input type="text" class="form-control" id="mailage" name="mailage" [(ngModel)]="car.mailage" >
-          </div>
-
-          <div class="mb-1">
-            <label for="available" class="col-form-label">Available For Rent Now</label>
-            <input type="checkbox" class="" id="available" name="available" [(ngModel)]="car.available" required>
-          </div>
-
-          <div class="mb-1">
-            <label for="costPerDay" class="col-form-label">Car Cost Per Day</label>
-            <input type="number" class="form-control" id="costPerDay" name="vin" [(ngModel)]="car.costPerDay" required>
-          </div>
-
-          <div class="mb-1">
-            <label for="insurance" class="col-form-label">Car Insurance</label>
-            <input type="checkbox" class="" id="insurance" name="insurance" [(ngModel)]="car.insurance" required>
-          </div>
-
-          <div class="form-group">
+          <div class="form-group mb-2">
             <label for="gearBoxType">Gear Box Type:</label>
             <select class="form-control" id="gearBoxType" name="gearBoxType" [(ngModel)]="car.gearBoxType" required>
               <option value="">-- Select Transmission --</option>
@@ -203,9 +183,48 @@
           </div>
 
 
+          <div class="mb-2">
+            <label for="mailage" class="col-form-label">Current Car Milage:</label>
+            <input type="text" class="form-control" id="mailage" name="mailage" [(ngModel)]="car.mailage" >
+          </div>
+
+
+          <div class="mb-2">
+            <label for="costPerDay" class="col-form-label">Car Cost Per Day</label>
+            <!-- <input type="number" class="form-control" id="costPerDay" name="costPerDay" [(ngModel)]="car.costPerDay" required> -->
+            <select class="form-control" id="costPerDay" name="costPerDay" [(ngModel)]="car.costPerDay" required>
+              <option value="" >-- Select available value --</option>
+              <option *ngFor="let price of PricePerDayAvailableValues" [value]="price">{{ price }}</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div>
+                <label for="insurance" class="col-form-label label-container">The Car Is Insured
+                  <input checked="checked" type="checkbox" id="insurance" name="insurance" [(ngModel)]="car.insurance" required>
+                  <div class="checkmark"></div>
+                </label>
+                <!-- <input type="checkbox" class="" id="insurance" name="insurance" [(ngModel)]="car.insurance" required> -->
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div >
+                <label for="available" class="col-form-label label-container">Available For Rent Now
+                  <input checked="checked" type="checkbox" id="available" name="available" [(ngModel)]="car.available" required>
+                  <div class="checkmark"></div>
+                </label>
+
+                <!-- <input type="checkbox" class="" id="available" name="available" [(ngModel)]="car.available" required> -->
+              </div>
+            </div>
+          </div>
+
 
           <br>
-          <button type="submit" class="btn btn-success d-block w-100">Done !</button>
+          <button type="submit" class="btn btn-success d-block w-100" >Done !</button>
+
 
         </form>
       </div>
@@ -214,5 +233,6 @@
         <!-- <button type="submit" class="btn btn-primary">Done !</button> -->
       </div>
     </div>
+
   </div>
 </div>

@@ -22,13 +22,18 @@ import { ICar } from 'src/app/Models/ICar';
   styleUrls: ['./car-register.component.scss'],
 })
 export class CarRegisterComponent implements OnInit {
-  constructor(private service:UserServicesService,private router: Router) {}
-  ngOnInit(): void {
+  constructor(private service:UserServicesService,private router: Router) {
 
+  }
+
+  ngOnInit(): void {
+    var element = document.getElementsByClassName("modal-backdrop")[0];
+    element.remove();
   }
   NID = String(sessionStorage.getItem('userNID'));
 
   years = Array.from({length: 15}, (_, i) => 2010 + i);
+  PricePerDayAvailableValues = Array.from({length: 30}, (_, i) => 100 + (i*100));
   car:ICar={
     vin:'',
 color:'',
@@ -49,10 +54,12 @@ ownerName:'',
 ownerPhone:''
   }
   SubmitNewCar(){
+
     this.service.RegisterCar(this.car).subscribe({
       next: () => this.router.navigate(['/UserDashBoard']),
       error: (err) => console.log("err")
     });
+    document.getElementById("ModalClose")?.click();
   }
 }
 

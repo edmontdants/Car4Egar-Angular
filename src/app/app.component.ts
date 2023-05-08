@@ -75,7 +75,9 @@ export class AppComponent implements OnInit {
     this.serves.getloggedStatus().subscribe((status) => {
       this.isLoggedIn = status;
       console.log(`${this.isLoggedIn} this loged status`);
+
     });
+
   }
   openDialogListCar() {
     this.dialogListCar.open(CarModelDialogComponent)

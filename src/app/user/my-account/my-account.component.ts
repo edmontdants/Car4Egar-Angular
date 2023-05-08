@@ -81,11 +81,20 @@ export class MyAccountComponent implements OnInit, OnChanges {
     private userRegister: RegistrationService,
     private _snackBar: MatSnackBar,
     private router: Router
-  ) {}
+  ) {
+    // setInterval(() => this.ngOnInitCloseModal(), 5000);
+  }
+  ngOnInitCloseModal(){
+
+  }
   ///---methods--------------------------------------------------------------------------------
-  ngOnChanges(): void {}
+  ngOnChanges(): void {
+
+  }
 
   ngOnInit(): void {
+    var element = document.getElementsByClassName("modal-backdrop")[0];
+    element?.remove();
     this.userLoginNID = sessionStorage.getItem('userNID');
 
     const observer = {
@@ -110,6 +119,7 @@ export class MyAccountComponent implements OnInit, OnChanges {
     this.userRegister.getuserByNID(this.userLoginNID).subscribe(observer);
 
    // console.log(this.userLoginNID);
+
   }
   saveinfo() {
     const observer = {

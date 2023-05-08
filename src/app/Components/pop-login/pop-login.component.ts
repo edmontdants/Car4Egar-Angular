@@ -37,10 +37,7 @@ export class PopLoginComponent {
             sessionStorage.setItem('userNID', this.userlogined.nid);
             sessionStorage.setItem('role', this.userlogined.role);
             this.userRegister.login();
-
-                this.router.navigateByUrl('/');
-
-
+            this.router.navigateByUrl('/');
 
         }
         else this.inviledpass=true;
