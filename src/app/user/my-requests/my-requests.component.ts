@@ -38,10 +38,9 @@ export class MyRequestsComponent implements AfterViewInit {
 
   Acceptedreq(vin:any,acc :number){
 
-
     const observer = {
       next: () => {
-
+        alert('Request Accepted Successfully!'); location.reload();
       },
       error: (error: HttpErrorResponse) => {
         if (error.error == 'Request Not Exist') {
@@ -88,4 +87,30 @@ export class MyRequestsComponent implements AfterViewInit {
     this.service.DeleteCarRequest(vin).subscribe(observer)
   }
 
+
+  Cancelreq(vin:any){
+    const observer = {
+      next: () => {
+
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.error == 'Request Not Exist') {
+          this._snackBar.open(`${error.error}`, 'Dismiss', {
+            duration: 3000,
+            panelClass: ['my-snackbar'],
+          });
+        } else {
+          this._snackBar.open('Done', 'Dismiss', {
+            duration: 3000,
+            panelClass: ['my-snackbar'],
+          });
+          this.ngOnInit()
+        }
+      },
+    };
+
+    this.service.DeleteCarRequest(vin).subscribe(observer)
+  }
+
 }
+

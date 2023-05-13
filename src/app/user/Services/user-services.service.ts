@@ -44,6 +44,15 @@ DeleteCarRequest(vid: string): Observable<any> {
   );
 
 }
+
+CancelCarRequest(vid: string): Observable<any> {
+  return this.http.delete<any>(
+    `${environment.apiBaseUrl}/Borrower/CarRentalRequestCancel` + '/' + vid
+  );
+
+}
+
+
 }
 
 

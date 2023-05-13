@@ -15,26 +15,18 @@ import { IRentRequest } from 'src/app/Models/IRentRequest';
   styleUrls: ['./my-cars.component.scss']
 })
 export class MyCarsComponent {
-  constructor(private http: HttpClient,private service:UserServicesService,private router: Router,public dialog: MatDialog,private carService:CarService) {}
+  constructor(private http: HttpClient,private service:UserServicesService,private router: Router,public dialog: MatDialog,private carService:CarService) {
+
+  }
   NID = String(sessionStorage.getItem('userNID'));
 
   MyCars:ICar[]=[];
   baseApiUrl: string = 'https://localhost:7136'
+  PricePerDayAvailableValues = Array.from({length: 30}, (_, i) => 100 + (i*100));
+  years = Array.from({length: 15}, (_, i) => 2010 + i);
 
-
-  DeleteCar(vin:string){
-    this.carService.DeleteCar(vin).subscribe(
-    response => {
-      console.log(response);
-      // Handle success response
-    },
-    error => {
-      console.log(error);
-      // Handle error response
-    }
-  );
-  }
   ngOnInit(): void {
+
     this.carService.getAllCars()
     .subscribe({
       next : (cars) => {
@@ -43,6 +35,7 @@ export class MyCarsComponent {
       },
       error : (response)=> {console.log(response)}
     });
+
   }
 
 
@@ -55,9 +48,8 @@ export class MyCarsComponent {
       if(file.type == 'image/png' || file.type == 'image/jpeg') {
         const formData = new FormData();
         formData.append('file',file);
-
         this.http.post('https://localhost:7136/Admin/UploadPictureAndSave',formData).subscribe((res: any)=> {
-
+          alert('Car Logo Updated Successfully!'); location.reload();
         });
 
       } else {
@@ -66,6 +58,25 @@ export class MyCarsComponent {
     }
   }
 
+
+  DeleteCar(vin:string){
+    if(confirm("are you sure?")){
+    this.carService.DeleteCar(vin).subscribe(
+    response => {
+      console.log(response);
+      alert('Car Removed!'); location.reload();
+    },
+    error => {
+      console.log(error);
+      // Handle error response
+    }
+  );
+    }
+    else{
+
+    }
+
+  }
 
   private baseUrl3 = 'https://localhost:7136';
   public async uploadPicture(vin:string, filename:string) {
@@ -81,7 +92,6 @@ export class MyCarsComponent {
   }
 
 
-  years = Array.from({length: 15}, (_, i) => 2010 + i);
   car:ICar={
     vin:'',
 color:'',

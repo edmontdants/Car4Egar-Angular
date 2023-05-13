@@ -44,6 +44,7 @@ export class ProfilePicComponent {
     });
     const res = await this.http.put(url,null ,{ headers }).toPromise();
     console.log("Done!");
+    alert('Profile Logo Updated Successfully!'); location.reload();
     return res;
   }
 

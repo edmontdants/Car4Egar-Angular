@@ -52,7 +52,6 @@
       <div class="container-fluid my-5">
 
         <div class="container mt-5">
-  <h2>Checkout</h2>
 
 </div>
 
@@ -77,10 +76,31 @@
               </div>
 
               <hr>
+              <p class="text-black-50">Rate This Car</p>
+              <form (ngSubmit)="CarRating(value,req.requestedCarVIN,req.borrowerId)" [noValidate]="false">
+                <!-- <input type="number" name="value" [(ngModel)]="value" required > -->
+                <div class="rate">
+                  <input type="radio" id="star5" name="value" value="5" [(ngModel)]="value" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" id="star4" name="value" value="4" [(ngModel)]="value" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" id="star3" name="value" value="3" [(ngModel)]="value"/>
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" id="star2" name="value" value="2" [(ngModel)]="value"/>
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" id="star1" name="value" value="1" [(ngModel)]="value"/>
+                  <label for="star1" title="text">1 star</label>
+                </div>
+
+                <input type="text" name="carVin" value="{{req.requestedCarVIN}}" hidden>
+                <input type="text" name="borrowerId" value="{{req.borrowerId}}" hidden>
+                <!-- <button type="submit"> Rate This Car </button> -->
+                <button type="submit" (click)="pay(req.requestedCarVIN,req.total)" class="btn btn-success d-block w-100  mb-1">Pay Now {{req.total}} L.E</button>
+              </form>
               <div class="text-center">
-                <button class="btn btn-success" type="button" (click)="deletereq(req.requestedCarVIN)"><i
-                    class="fa-solid fa-check"></i> Done{{req.total}} </button>
-                    <button (click)="pay(req.total)" class="btn btn-primary btn-block">Pay {{req.total}}</button>
+
+                <button class="btn btn-danger d-block w-100" type="button" (click)="deletereq(req.requestedCarVIN)">
+                  Remove Request </button>
               </div>
 
             </div>

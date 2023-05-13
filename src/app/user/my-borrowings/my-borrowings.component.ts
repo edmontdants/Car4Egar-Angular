@@ -1,8 +1,9 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { AfterViewInit, Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IRentRequest } from 'src/app/Models/IRentRequest';
 import { UserServicesService } from '../Services/user-services.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-my-borrowings',
@@ -15,14 +16,31 @@ export class MyBorrowingsComponent implements AfterViewInit {
   /**
    *
    */
-  constructor(private service:UserServicesService,private _snackBar: MatSnackBar) {}
+  constructor(private service:UserServicesService,private _snackBar: MatSnackBar,private http : HttpClient) {}
 
+
+  baseApiUrl: string = 'https://localhost:7136'
+  value:number=5;
+
+  public async CarRating(value: number, carVin: string, borrowerNid: string){
+    const url = `${this.baseApiUrl}/Borrower/RateCar`;
+    const headers = new HttpHeaders({
+      // 'value': $("input[type='radio'][name='value']:checked").val(),
+      'value':(String)(value),
+      'carVin': carVin,
+      'borrowerNid': borrowerNid
+    });
+
+    const response = await this.http.post(url,null ,{ headers }).toPromise();
+    return response;
+
+  }
 
   stripeAPIKey: any = 'pk_test_51MxpbiGrFuhrPlyrDhgxHm4JMskNCS9Xqqk2lg4niIEFiGoNndiScowyR83RrrTNNJ8E06faO52ybZAC3FemEIxk005hz8Ns0m';
   handler:any = null;
 
 
-  pay(amount: any) {
+  pay(vin:any,amount: any) {
 
     var handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51MxpbiGrFuhrPlyrDhgxHm4JMskNCS9Xqqk2lg4niIEFiGoNndiScowyR83RrrTNNJ8E06faO52ybZAC3FemEIxk005hz8Ns0m',
@@ -31,9 +49,13 @@ export class MyBorrowingsComponent implements AfterViewInit {
         token.id = String(sessionStorage.getItem('userNID'));
         // Get the token ID to your server-side code for use.
         console.log(token)
+
         alert('Payment Success !!');
+        this.service.DeleteCarRequest(vin).subscribe();
       }
+
     });
+
 
     handler.open({
       name: 'Car 4 Egar Payment Card',
@@ -59,6 +81,7 @@ export class MyBorrowingsComponent implements AfterViewInit {
             // Get the token ID to your server-side code for use.
             console.log(token)
             alert('Payment Success!!');
+
           }
         });
       }
@@ -115,8 +138,6 @@ export class MyBorrowingsComponent implements AfterViewInit {
   }
 
   deletereq(vin:any){
-
-
     const observer = {
       next: () => {
 
@@ -139,6 +160,31 @@ export class MyBorrowingsComponent implements AfterViewInit {
 
     this.service.DeleteCarRequest(vin).subscribe(observer)
   }
+
+  Cancelreq(vin:any){
+    const observer = {
+      next: () => {
+
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.error == 'Request Not Exist') {
+          this._snackBar.open(`${error.error}`, 'Dismiss', {
+            duration: 3000,
+            panelClass: ['my-snackbar'],
+          });
+        } else {
+          this._snackBar.open('Done', 'Dismiss', {
+            duration: 3000,
+            panelClass: ['my-snackbar'],
+          });
+          this.ngOnInit()
+        }
+      },
+    };
+
+    this.service.CancelCarRequest(vin).subscribe(observer)
+  }
+
   // pay(amount: any) {
 
   //   var handler = (<any>window).StripeCheckout.configure({
